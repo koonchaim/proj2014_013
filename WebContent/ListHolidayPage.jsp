@@ -69,7 +69,7 @@
 		</div>
 		<!----- End Select Year ----->
 		<div class="form-group">
-			<table class="span9 table table-hover">
+			<table class="span9 table table-hover" id="table-holiday">
 				<thead>
 					<tr>
 						<th>วัน</th>

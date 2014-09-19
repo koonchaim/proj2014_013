@@ -27,8 +27,6 @@
     <script type="text/javascript">
 	   $(document).ready(function() {
 	       $('#dataTables-list').dataTable();
-// 	       $('#modal-table').dataTable();
-
 	   });
    </script>
 <title>View All Attendance Page</title>
