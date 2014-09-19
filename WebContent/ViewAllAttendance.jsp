@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -116,7 +117,11 @@
 												<c:forEach items="${listDateSchedule}" var="item" varStatus="theCount">
 														<tr>
 															<td class="TextCenter">${theCount.count}</td>
-															<td class="TextCenter">${item}</td>
+															<fmt:setLocale value="th-TH"/>
+															<fmt:parseDate value="${item}" var="parsedEmpDate" pattern="yyyy-MM-dd" />
+															
+															<td class="TextCenter"><fmt:formatDate type="date" value="${parsedEmpDate}" /></td>
+															
 															<td class="TextCenter">${listPresent[theCount.index]}</td>
 															<td class="TextCenter">${listLate[theCount.index]}</td>
 															<td class="TextCenter">${listLack[theCount.index]}</td>
@@ -124,10 +129,6 @@
 															<td class="TextCenter">${listPersonalLeave[theCount.index]}</td>
 															<td class="TextCenter">${listLack[theCount.index]+listSickLeave[theCount.index]+listPersonalLeave[theCount.index]}</td>
 															<td align="center">
-<!-- 																<button type="button" class="btn btn-primary btn-circle" -->
-<%-- 																	onclick="viewAttendance('${majorStudent}','${selectEducation}','${selectEducation1}','${chkTerm}','${item}')"> --%>
-<!-- 																	<i class="fa fa-list"></i> -->
-<!-- 																</button> -->
 																<button type="button" class="btn btn-primary btn-circle"
 																	data-toggle="modal" data-target="#editAttendance"
 																	onclick="editAttendance('${majorStudent}','${selectEducation}','${selectEducation1}','${chkTerm}','${item}')">

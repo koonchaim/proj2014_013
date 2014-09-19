@@ -81,6 +81,7 @@
 												
 												
 										<div class="form-group">
+											<fmt:setLocale value="en-US"/>
 											<fmt:formatDate var="year" value="${now}" pattern="yyyy" />
 											<select class="form-control" name="selectTerm" onchange="document.test.submit();">
 											    <c:forEach var="i" begin="1" end="2">

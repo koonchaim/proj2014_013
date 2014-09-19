@@ -62,14 +62,14 @@
 		<label class="col-lg-3 control-label">ตั้งแต่ วัน/เดือน/ปี :</label>
 		<div class="col-lg-8">
 <!-- 			<input type="text" class="form-control" id="inputField" name="StartDate" /> -->
-				<input type="text" class="form_con" value="" id="dpd1" name="StartDate">
+				<input type="text" class="form-control" value="" id="dpd1" name="StartDate">
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="col-lg-3 control-label">ถึง วัน/เดือน/ปี :</label>
 		<div class="col-lg-8">
 <!-- 			<input type="text" class="form-control" id="inputField2" name="EndDate" /> -->
-				<input type="text" class="form_con" value="" id="dpd2" name="EndDate">
+				<input type="text" class="form-control" value="" id="dpd2" name="EndDate">
 		</div>
 	</div>
 	<div class="form-group">

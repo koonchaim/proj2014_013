@@ -19,74 +19,71 @@ import com.project.bean.StudentBean;
 @WebServlet("/ViewAllStudentServlet")
 public class ViewAllStudentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ViewAllStudentServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public ViewAllStudentServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		ViewAllStudentManager viewAllStudentMng = new ViewAllStudentManager();
 		try {
-			String majorStudent = request.getParameter("majorStudent");	
-			
-			if(majorStudent == null){
+			String majorStudent = request.getParameter("majorStudent");
+
+			if (majorStudent == null) {
 				LoginBean login = (LoginBean) request.getSession().getAttribute("login");
 				MajorBean major = viewAllStudentMng.findAllMajor(login.getUsername());
 				List<MajorBean> listEducationLevel = viewAllStudentMng.findAllEducationLevelByMajorName(major.getMajorName());
-				
-				/*
-				 * 
-				 */
-				String selectEducation = "ปวช";
-				int selectEducation1 = 1;
+
+				String selectEducation = listEducationLevel.get(0).getEducationLevel().getEducationalBackground();
+				int selectEducation1 = listEducationLevel.get(0).getEducationLevel().getEducationLevel();
 				request.setAttribute("selectEducation", selectEducation);
 				request.setAttribute("selectEducation1", selectEducation1);
-				List<StudentBean> listStudent = viewAllStudentMng.findAllStudent(major.getMajorName(), selectEducation,selectEducation1);
+				List<StudentBean> listStudent = viewAllStudentMng.findAllStudent(major.getMajorName(), selectEducation, selectEducation1);
 				request.setAttribute("listStudent", listStudent);
-				
-				
-				
+
 				request.getSession().setAttribute("listEducationLevel", listEducationLevel);
 				request.getSession().setAttribute("showMajor", major);
-				
+
 				request.getRequestDispatcher("ViewAllStudent.jsp").forward(request, response);
-			}else{
-				
+			} else {
+
 				LoginBean login = (LoginBean) request.getSession().getAttribute("login");
 				MajorBean major = viewAllStudentMng.findAllMajor(login.getUsername());
 				List<MajorBean> listEducationLevel = viewAllStudentMng.findAllEducationLevelByMajorName(majorStudent);
-				
-				request.getSession().setAttribute("listEducationLevel",listEducationLevel);
+
+				request.getSession().setAttribute("listEducationLevel", listEducationLevel);
 				request.getSession().setAttribute("showMajor", major);
-				
-				String selectMajorName11= request.getParameter("selectLevelEdu");
+
+				String selectMajorName11 = request.getParameter("selectLevelEdu");
 				String[] result = selectMajorName11.split(" ");
 				String selectEducation = result[0];
 				String selectEducation1 = result[1];
 				request.setAttribute("selectEducation", selectEducation);
 				request.setAttribute("selectEducation1", selectEducation1);
-				
-				List<StudentBean> listStudent = viewAllStudentMng.findAllStudent(majorStudent, selectEducation,Integer.parseInt(selectEducation1));
+
+				List<StudentBean> listStudent = viewAllStudentMng.findAllStudent(majorStudent, selectEducation, Integer.parseInt(selectEducation1));
 				request.setAttribute("listStudent", listStudent);
-				
+
 				request.getRequestDispatcher("ViewAllStudent.jsp").forward(request, response);
 			}
-			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);

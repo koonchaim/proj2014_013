@@ -31,37 +31,38 @@ public class EditTeacherServlet extends HttpServlet {
 	 * web application directory.
 	 */
 	private static final String SAVE_DIR = "images\\profile";
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public EditTeacherServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public EditTeacherServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
 		EditTeacherManager edtMng = new EditTeacherManager();
-		
+
 		if (request.getParameter("editTeacherIdCard") == null) {
-			String idCard = request.getParameter("id");			
+			String idCard = request.getParameter("id");
 			try {
 				TeacherBean teacherBean = edtMng.findTeacherByIDCard(idCard);
-				System.out.println("- : " + idCard);				
+				System.out.println("- : " + idCard);
 				String json = new Gson().toJson(teacherBean);
-			    response.setContentType("application/json");
-			    response.setCharacterEncoding("UTF-8");
-			    response.getWriter().write(json);
+				response.setContentType("application/json");
+				response.setCharacterEncoding("UTF-8");
+				response.getWriter().write(json);
 			} catch (SQLException e) {
 				e.printStackTrace();
-			}			
-		}else{
+			}
+		} else {
 			String appPath = request.getServletContext().getRealPath("");
 			// constructs path of the directory to save uploaded file
 			String savePath = appPath + File.separator + SAVE_DIR;
@@ -71,11 +72,6 @@ public class EditTeacherServlet extends HttpServlet {
 			if (!fileSaveDir.exists()) {
 				fileSaveDir.mkdir();
 			}
-
-			Part part = request.getPart("file");
-			String fileName = extractFileName(part);
-			part.write(savePath + File.separator + fileName);
-			
 			String idCardTeacher = request.getParameter("editTeacherIdCard");
 			String antecedentTeacher = request.getParameter("editTeacherAntecedent");
 			String firstNameTeacher = request.getParameter("editTeacherFirstName");
@@ -85,33 +81,61 @@ public class EditTeacherServlet extends HttpServlet {
 			String educationalMajorTeacher = request.getParameter("editTeacherEducationalMajor");
 			String vacancyTeacher = request.getParameter("editTeacherVacancy");
 			String departmentTeacher = request.getParameter("editTeacherDepartment");
-			
-			EducationBean education = new EducationBean(educationalInstitutionTeacher, educationalBackgroundTeacher, educationalMajorTeacher);
-			TeacherBean teacherBean = new TeacherBean();
-			teacherBean.setIdCard(idCardTeacher);
-			teacherBean.setAntecedent(antecedentTeacher);
-			teacherBean.setFirstName(firstNameTeacher);
-			teacherBean.setLastName(lastNameTeacher);
-			teacherBean.setVacancy(vacancyTeacher);
-			teacherBean.setPath_image(fileName);
-			teacherBean.setEducation(education);
-			
-			try {
-				boolean chkUpdate = edtMng.updateDataTeacher(teacherBean, departmentTeacher);
-				if (chkUpdate) {
-					System.out.println("Update Teacher Success");
-					response.sendRedirect("ListTeacherServlet");
+
+			Part part = request.getPart("file");
+			String fileName = extractFileName(part);
+
+			if (fileName.equals("")) {
+				EducationBean education = new EducationBean(educationalInstitutionTeacher, educationalBackgroundTeacher, educationalMajorTeacher);
+				TeacherBean teacherBean = new TeacherBean();
+				teacherBean.setIdCard(idCardTeacher);
+				teacherBean.setAntecedent(antecedentTeacher);
+				teacherBean.setFirstName(firstNameTeacher);
+				teacherBean.setLastName(lastNameTeacher);
+				teacherBean.setVacancy(vacancyTeacher);
+				teacherBean.setPath_image(fileName);
+				teacherBean.setEducation(education);
+				try {
+					boolean chkUpdate = edtMng.updateDataTeacherNoImages(teacherBean, departmentTeacher);
+					if (chkUpdate) {
+						System.out.println("Update TeacherNoImages Success");
+						response.sendRedirect("ListTeacherServlet");
+					}
+				} catch (SQLException e) {
+					System.out.println("Update TeacherNoImages Fail");
+					e.printStackTrace();
 				}
-			} catch (SQLException e) {
-				System.out.println("Update Teacher Fail");
-				e.printStackTrace();
+			} else {
+				part.write(savePath + File.separator + fileName);
+				EducationBean education = new EducationBean(educationalInstitutionTeacher, educationalBackgroundTeacher, educationalMajorTeacher);
+				TeacherBean teacherBean = new TeacherBean();
+				teacherBean.setIdCard(idCardTeacher);
+				teacherBean.setAntecedent(antecedentTeacher);
+				teacherBean.setFirstName(firstNameTeacher);
+				teacherBean.setLastName(lastNameTeacher);
+				teacherBean.setVacancy(vacancyTeacher);
+				teacherBean.setPath_image(fileName);
+				teacherBean.setEducation(education);
+
+				try {
+					boolean chkUpdate = edtMng.updateDataTeacher(teacherBean, departmentTeacher);
+					if (chkUpdate) {
+						System.out.println("Update Teacher Success");
+						response.sendRedirect("ListTeacherServlet");
+					}
+				} catch (SQLException e) {
+					System.out.println("Update Teacher Fail");
+					e.printStackTrace();
+				}
 			}
+
 		}
-		
+
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
@@ -119,7 +143,7 @@ public class EditTeacherServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		doGet(request, response);
 	}
-	
+
 	/**
 	 * Extracts file name from HTTP header content-disposition
 	 */
