@@ -165,22 +165,26 @@ function editStudentByID(id) {
 		$('#EditStudentAddNoParent').val(data1.parent.address.addNo);
 		$('#EditStudentMooParent').val(data1.parent.address.moo);
 		$('#EditStudentStreetParent').val(data1.parent.address.street);
-		$('#EditStudentSubDistrictParent')
-				.val(data1.parent.address.subDistrict);
+		$('#EditStudentSubDistrictParent').val(data1.parent.address.subDistrict);
 		$('#EditStudentDistrictParent').val(data1.parent.address.district);
 		$('#EditStudentProvinceParent').val(data1.parent.address.province);
 		$('#EditStudentZipCodeParent').val(data1.parent.address.zipCode);
 
+		
+
 		$('#selectMajorNameEdit').empty();
-		$('#selectMajorNameEdit').append(
-				$("<option></option>").attr("value", "กรุณาเลือกแผนกวิชา")
-						.text("กรุณาเลือกแผนกวิชา"));
+		$('#selectMajorNameEdit').append($("<option></option>").attr("value", "กรุณาเลือกแผนกวิชา").text("กรุณาเลือกแผนกวิชา"));
+		
 		$.each(data2, function(i, item) {
-			$('#selectMajorNameEdit').append(
-					$("<option></option>").attr("value", item.majorName).text(
-							item.majorName));
+			$('#selectMajorNameEdit').append($("<option></option>").attr("value", item.majorName).text(item.majorName));
 		});
-	});
+		
+		var antecedentToSelect = data1.antecedent;
+		$("#EditStudentAntecedent option").each(function(a, b) {
+			if ($(this).html() == antecedentToSelect)
+				$(this).attr("selected", "selected");
+		});
+	});	
 }
 
 function editTeacherByIdCard(id) {
@@ -199,9 +203,14 @@ function editTeacherByIdCard(id) {
 		$('#EditTeacherEducationalMajor').val(data.education.educationalMajor);
 		$('#EditTeacherVacancy').val(data.vacancy);
 
-		var textToSelect = data.major.majorName;
+		var majorNameToSelect = data.major.majorName;
 		$("#user_department option").each(function(a, b) {
-			if ($(this).html() == textToSelect)
+			if ($(this).html() == majorNameToSelect)
+				$(this).attr("selected", "selected");
+		});
+		var antecedentToSelect = data.antecedent;
+		$("#EditTeacherAntecedent option").each(function(a, b) {
+			if ($(this).html() == antecedentToSelect)
 				$(this).attr("selected", "selected");
 		});
 	});
@@ -239,10 +248,16 @@ function editProfileTeacherModal(id) {
 		$('#EditProfileLastName').val(data.lastName);
 		$('#EditProfileEmail').val(data.email);
 		$('#EditProfilePhone').val(data.phone);
-		// $('#EditProfileUsername').val(data.login.username);
 		$('#EditProfileIdCard').val(data.idCard);
 		$('#EditProfileIdCards').val(data.idCard);
+		
+		var antecedentToSelect = data.antecedent;
+		$("#EditProfileAntecedent option").each(function(a, b) {
+			if ($(this).html() == antecedentToSelect)
+				$(this).attr("selected", "selected");
+		});
 	});
+	
 }
 
 function editRoom(id) {
@@ -255,6 +270,7 @@ function editRoom(id) {
 		$('#e_RoomCapacity').val(data.roomCapacity);
 		$('#e_Build').val(data.build);
 	});
+	
 }
 
 function addCourseSelectCourseId() {

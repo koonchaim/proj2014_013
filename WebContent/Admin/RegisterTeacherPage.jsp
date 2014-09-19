@@ -36,7 +36,14 @@
 	<div class="form-group">
 		<label class="col-lg-3 control-label">คำนำหน้าชื่อ :</label>
 		<div class="col-lg-8">
-			<input class="form-control" type="text" name="AntecedentTeacher">
+			<div class="ui-select">
+				<select id="AntecedentTeacher" class="form-control"
+					name="AntecedentTeacher">
+					<option value="นาย">นาย</option>
+					<option value="นาง">นาง</option>
+					<option value="นางสาว">นางสาว</option>
+				</select>
+			</div>
 		</div>
 	</div>
 	<div class="form-group">
