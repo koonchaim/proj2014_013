@@ -68,9 +68,10 @@ public class EditAttendanceServlet extends HttpServlet {
 				Date result = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse(dateAttendance);
 				System.out.println(result);
 				List<ScheduleBean> listSchedule = edtMng.listStudentAndSchedule(majorName, eduBackground, intEduLevel, term, result);
-				request.getSession().setAttribute("listSchedule", listSchedule);
+				request.setAttribute("listSchedule", listSchedule);
 				for (int i = 0; i < listSchedule.size(); i++) {
-					System.out.println(listSchedule.get(i).getAttendance().getStudent().getStudentID()+"  -  "+listSchedule.get(i).getAttendance().getStatusActivity());
+					System.out.println(listSchedule.get(i).getAttendance().getStudent().getStudentID() + "  -  "
+							+ listSchedule.get(i).getAttendance().getStatusActivity());
 				}
 				String json1 = new Gson().toJson(listSchedule);
 				response.setContentType("application/json");

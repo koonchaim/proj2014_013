@@ -113,13 +113,12 @@
 														<th>ปรับปรุง</th>
 													</tr>
 												</thead>
-												
+												<fmt:setLocale value="th-TH"/>
 												<c:forEach items="${listDateSchedule}" var="item" varStatus="theCount">
 														<tr>
 															<td class="TextCenter">${theCount.count}</td>
-															<fmt:setLocale value="th-TH"/>
-															<fmt:parseDate value="${item}" var="parsedEmpDate" pattern="yyyy-MM-dd" />
 															
+															<fmt:parseDate value="${item}" var="parsedEmpDate" pattern="yyyy-MM-dd" />															
 															<td class="TextCenter"><fmt:formatDate type="date" value="${parsedEmpDate}" /></td>
 															
 															<td class="TextCenter">${listPresent[theCount.index]}</td>
