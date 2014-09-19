@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -27,7 +28,7 @@
 <link href="Admin/css/daterangepicker/daterangepicker-bs3.css">
 <link href="Admin/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 <link href="Admin/css/AdminLTE.css" rel="stylesheet">
-
+<link href="css/datepicker.css" rel="stylesheet">
 </head>
 <body class="skin-blue">
 	<!--------------Header--------------->
@@ -79,11 +80,12 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${ListHoliday}" var="item">
+					<c:forEach items="${ListHoliday}" var="item" varStatus="theCount">
 						<tr>
 							<td class="TextCenter">${item.date}</td>
-							<td class="TextCenter">${item.month}</td>
-							<td class="TextCenter">${item.year}</td>
+								<td class="TextCenter">${listMonth[theCount.index]}</td>
+
+							<td class="TextCenter">${item.year+543}</td>
 							<td class="TextCenter">${item.detail}</td>
 							<td class="TextCenter">
 								<button type="button" class="btn btn-primary btn-circle"
@@ -178,5 +180,7 @@
 	
 	<script src="js/customScript.js"></script>
 	<script type="text/javascript" src="js/validateScript.js"></script>
+	<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="js/scriptdate.js"></script>
 </body>
 </html>

@@ -19,27 +19,32 @@ import com.project.bean.HolidayBean;
 public class ListHolidayServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public ListHolidayServlet() {
-        super();
-    }
+	public ListHolidayServlet() {
+		super();
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ListHolidayManager listHolidayManager = new ListHolidayManager();
 		try {
 			String seleteYear = request.getParameter("selectYear");
-			if(seleteYear == null){
+			if (seleteYear == null) {
 				List<HolidayBean> listYear = listHolidayManager.findAllYear();
-				List<HolidayBean> listHoliday = listHolidayManager.findAllHolidayInYear(Integer.toString(listYear.get(listYear.size()-1).getYear()));
+				List<HolidayBean> listHoliday = listHolidayManager
+						.findAllHolidayInYear(Integer.toString(listYear.get(listYear.size() - 1).getYear()));
 				request.setAttribute("ListHoliday", listHoliday);
 				request.setAttribute("listYear", listYear);
-				request.setAttribute("selectYear", listYear.get(listYear.size()-1).getYear());
+				request.setAttribute("selectYear", listYear.get(listYear.size() - 1).getYear());
+				List<String> listMonth = listHolidayManager.changDate(listHoliday);
+				request.setAttribute("listMonth", listMonth);
 				request.getRequestDispatcher("ListHolidayPage.jsp").forward(request, response);
-			}else{
+			} else {
 				List<HolidayBean> listYear = listHolidayManager.findAllYear();
 				List<HolidayBean> listHoliday = listHolidayManager.findAllHolidayInYear(seleteYear);
 				request.setAttribute("ListHoliday", listHoliday);
 				request.setAttribute("listYear", listYear);
 				request.setAttribute("selectYear", seleteYear);
+				List<String> listMonth = listHolidayManager.changDate(listHoliday);
+				request.setAttribute("listMonth", listMonth);
 				request.getRequestDispatcher("ListHolidayPage.jsp").forward(request, response);
 			}
 		} catch (SQLException e) {
