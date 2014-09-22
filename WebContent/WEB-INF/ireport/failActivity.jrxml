@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fe366175-9348-412c-9ea3-8a93a5d51071">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="eduBackgroung" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="eduLevel" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="term" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="majorName" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="attendance" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT DISTINCT `student`.`studentID`, `student`.`antecedent`,`student`.`firstName`
+,`student`.`lastName`,`major`.`majorName`,`schedule`.`term`,educationlevel.`educationalBackground`,educationlevel.`educationLevel`
+FROM major
+JOIN `educationlevel` ON `educationlevel`.`Major_ID` = `major`.`Major_ID`
+JOIN `student` ON `student`.`EducationLevel_ID` = `educationlevel`.`EducationLevel_ID`
+JOIN `attendance` ON `attendance`.`studentID` = `student`.`studentID`
+JOIN `schedule` ON `schedule`.`Schedule_ID` = `attendance`.`Schedule_ID`
+WHERE `educationlevel`.`educationalBackground` = $P{eduBackgroung}
+AND `educationlevel`.`educationLevel` = $P{eduLevel}
+AND `schedule`.`term` = $P{term}
+AND `major`.`majorName` = $P{majorName}
+AND attendance.`statusActivity` = 'มา'
+GROUP BY student.`studentID`
+HAVING COUNT(attendance.`statusActivity`) < $P{attendance}]]>
+	</queryString>
+	<field name="studentID" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="antecedent" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="firstName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lastName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="majorName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="term" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="educationalBackground" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="educationLevel" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<title>
+		<band height="65" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="421" height="65" uuid="fc78c8dc-89eb-492b-8ec4-5f4ae6000a8d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="24" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[รายชื่อนักศึกษาที่ไม่ผ่านกิจกรรมหน้าเสาธง ประจำปีการศึกษา  ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="421" y="0" width="134" height="65" uuid="be0e4b70-9478-42a8-af35-da0f022ef60d"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="24" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{term}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="31">
+			<textField>
+				<reportElement x="0" y="0" width="188" height="31" uuid="54528966-2c6c-4339-a4c9-bd96ad8cea9d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="18" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{majorName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="343" y="0" width="78" height="31" uuid="e9e5a40c-febb-4439-8ed7-0d9aa27548e9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="18" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[วุฒิการศึกษา]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="421" y="0" width="58" height="31" uuid="7279a826-b333-4866-9e4c-a076eec15927"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{educationalBackground}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="479" y="0" width="76" height="31" uuid="7d7a38de-1c80-4c4e-b1c3-341d273e7633"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{educationLevel}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="32">
+			<staticText>
+				<reportElement x="0" y="0" width="44" height="32" uuid="1c77ba75-e46f-4bd0-b5ee-5c194c32ea13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ลำดับที่]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="44" y="0" width="131" height="32" uuid="7875ad1b-006b-4a24-b000-aaa28af06824"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[รหัสประจำตัวนักศึกษา]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="175" y="0" width="256" height="32" uuid="cb679690-68b7-45ae-aa5a-94b48906ab20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ชื่อ - นามสกุล]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="431" y="0" width="124" height="32" uuid="4402282e-ed94-462b-a3c9-850e59692669"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[หมายเหตุ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="589e601f-de68-4b14-bc5d-5691212c6b8a"/>
+			</line>
+			<line>
+				<reportElement x="0" y="31" width="555" height="1" uuid="9ca5624e-ef65-4637-885b-a9034131024e"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="555" height="24" uuid="7079c746-8604-4147-98c5-d6e90e77235b"/>
+				<textField>
+					<reportElement x="44" y="0" width="131" height="24" uuid="60bba083-17df-4753-b0f5-8232cc7f8a3e"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{studentID}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="175" y="0" width="41" height="24" uuid="d323d1f6-d2db-4ba3-9887-48d45c2365d6"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{antecedent}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="216" y="0" width="102" height="24" uuid="45b6c285-4198-4be2-8c71-ffb99ba1e525"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{firstName}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="318" y="0" width="113" height="24" uuid="099500a6-e909-469f-a333-ca5b4a68e736"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{lastName}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="0" width="44" height="24" uuid="5a5e60de-e051-477a-8a0a-eaf56b30e555"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="50">
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="a905b240-13a8-4966-9d47-bd2df2571c5e"/>
+			</line>
+			<textField>
+				<reportElement x="454" y="1" width="37" height="32" uuid="906b3126-0ff3-4dd1-909c-499e900c50e7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="343" y="0" width="112" height="33" uuid="cb863ce5-4e9f-48eb-a434-b7dcb3e7492a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[รวมจำนวนนักศึกษา]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="491" y="1" width="64" height="32" uuid="963617c6-0c83-48fa-8ee1-a708222546a1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[คน]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+</jasperReport>

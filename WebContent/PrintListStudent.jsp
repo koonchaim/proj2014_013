@@ -5,28 +5,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="description" content="">
-<meta name="viewport" content="width=device-width">
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/icomoon-social.css">
-<link
-	href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800'
-	rel='stylesheet' type='text/css'>
-
-<link rel="stylesheet" href="css/leaflet.css" />
 <link rel="stylesheet" href="css/main.css">
-
-<script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-
 <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
 <link rel="stylesheet" href="css/icomoon-social.css">
+
+
+
 <title>Print</title>
 </head>
 <body>
 	<!--------------Header--------------->
 	<jsp:include page="Header.jsp" />
 	<!---------------Menu---------------->
-<%-- 	<jsp:include page="Menu.jsp" /> --%>
 	<%@include file="Menu.jsp" %>
 	<div class="section">
 		<div class="container">
@@ -41,32 +32,46 @@
 
 								<!-- /.Search Education -->
 								<div class="row form-group" align="center">
-									<form class="form-inline" role="form">
+									<form class="form-inline" role="form" action="PrintListStudentForActivities">
+												<div class="form-group">
+													<input class="form-control" id="majorStudent" type="text" placeholder="${majorPrintStudent}"disabled>
+													<input type="hidden" name="majorStudent" id="majorStudent" value="${majorPrintStudent}"> 
+												</div>
 										<div class="form-group">
-											<input class="form-control" id="disabledInput" type="text"
-												placeholder="ช่างสำรวจ" disabled>
-										</div>
+													<select id="level" name="selectLevelEdu" class="form-control">
+														<c:forEach items="${listEducationLevel}" var="item">
+															<c:choose>
+																<c:when
+																	test="${item.educationLevel.educationalBackground == selectEducation && item.educationLevel.educationLevel == selectEducation1}">
+																	<option
+																		value="${item.educationLevel.educationalBackground} ${item.educationLevel.educationLevel}"
+																		selected="selected">${item.educationLevel.educationalBackground}&nbsp;&nbsp;${item.educationLevel.educationLevel}</option>
+																</c:when>
+																<c:otherwise>
+																	<option
+																		value="${item.educationLevel.educationalBackground} ${item.educationLevel.educationLevel}">${item.educationLevel.educationalBackground}&nbsp;&nbsp;${item.educationLevel.educationLevel}</option>
+																</c:otherwise>
+															</c:choose>
+														</c:forEach>
+													</select>
+												</div>
+											
+											<div class=" form-group">
+												<select class="form-control" name="selectPrintTerm">
+													<c:forEach items="${listTerm}" var="item">
+															<c:choose>
+																<c:when	test="${item == chkTerm}">
+																	<option	value="${item}"	selected="selected">${item}</option>
+																</c:when>
+																<c:otherwise>
+																	<option	value="${item}">${item}</option>
+																</c:otherwise>
+															</c:choose>
+														</c:forEach>
+												</select>												
+											</div>
 										<div class="form-group">
-											<select class="form-control">
-												<option>เลือกชั้นปี</option>
-												<option>ปวช 1</option>
-												<option>ปวช 2</option>
-												<option>ปวช 3</option>
-												<option>ปวส 1</option>
-												<option>ปวส 2</option>
-											</select>
-										</div>
-										<div class="form-group">
-											<select class="form-control">
-												<option>เลือกเทอม</option>
-												<option>1/2556</option>
-												<option>2/2556</option>
-												<option>1/2557</option>
-												<option>2/2557</option>
-											</select>
-										</div>
-										<div class="form-group">
-												<button type="button" class="btn btn-success">
+												<button class="btn btn-success" type="submit">
 													<i class="fa fa-print"></i>&nbsp;&nbsp;พิมพ์รายชื่อนักศึกษา
 												</button>
 										</div>

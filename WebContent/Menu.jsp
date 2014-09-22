@@ -54,7 +54,7 @@
 									<div>
 										<h4>Print List Student for Activity</h4>
 										<ul>
-											<li><a href="PrintListStudent.jsp">Print List Student</a></li>
+											<li><a href="PrintListStudentForActivities">Print List Student</a></li>
 										</ul>
 									</div>
 									

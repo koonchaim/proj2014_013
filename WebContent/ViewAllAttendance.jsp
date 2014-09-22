@@ -133,10 +133,7 @@
 																	onclick="editAttendance('${majorStudent}','${selectEducation}','${selectEducation1}','${chkTerm}','${item}')">
 																	<i class="fa fa-list"></i>
 																</button>
-
-															
-
-												</td>
+															</td>
 														</tr>
 												</c:forEach>
 											</table>
