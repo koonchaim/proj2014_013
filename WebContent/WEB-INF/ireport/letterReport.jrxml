@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="letter1" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e11276d0-fc04-4dae-b683-96e0e9932f3b">
+	<property name="ireport.zoom" value="1.8660295208389346"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="272"/>
+	<parameter name="RDay" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new SimpleDateFormat("dd").format(new Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="RMonth" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new SimpleDateFormat("MMMM").format(new Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="RYear" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new SimpleDateFormat("yyyy").format(new Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="studentID" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT student.`studentID`,student.`antecedent`,student.`firstName`,student.`lastName`,major.`majorName`,educationLevel.`educationalBackground`
+, educationLevel.`educationLevel`, parent.`antecedent_parent`, parent.`firstName_parent`,parent.`lastName_parent`
+, address.`addNo`,address.`moo`,address.`street`,address.`subDistrict`,address.`district`,address.`province`,address.`zipCode`
+, COUNT(attendance.`statusActivity`) AS Count_Status
+FROM student JOIN parent ON student.`studentID` = parent.`studentID`
+JOIN address ON parent.`Parent_ID` = address.`Parent_ID`
+JOIN educationlevel ON educationlevel.`EducationLevel_ID` = student.`EducationLevel_ID`
+JOIN major ON major.`Major_ID` = educationlevel.`Major_ID`
+JOIN attendance ON student.`studentID` = attendance.`studentID`
+JOIN SCHEDULE ON schedule.`Schedule_ID` = attendance.`Schedule_ID`
+WHERE attendance.`statusActivity` = 'ขาด'
+AND student.`studentID` = $P{studentID}
+GROUP BY student.`studentID`]]>
+	</queryString>
+	<field name="studentID" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="antecedent" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="firstName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lastName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="majorName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="educationalBackground" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="educationLevel" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="antecedent_parent" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="firstName_parent" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lastName_parent" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="addNo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="moo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="street" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="subDistrict" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="district" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="province" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="zipCode" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Count_Status" class="java.lang.Long"/>
+	<title>
+		<band height="51" splitType="Stretch">
+			<staticText>
+				<reportElement x="136" y="8" width="300" height="34" uuid="dd89aee4-1c76-4c75-ae6d-d90bd3d7197b"/>
+				<textElement textAlignment="Center">
+					<font fontName="TH Sarabun New" size="18" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[แบบหนังสือเตือนให้ผู้ปกครองส่งนักเรียนเข้าร่วมกิจกรรม]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="167" splitType="Stretch">
+			<image>
+				<reportElement x="263" y="15" width="138" height="57" uuid="993f289b-82d3-4964-898c-913354fc7db3"/>
+				<imageExpression><![CDATA["C:\\Users\\ITSCI\\Desktop\\k.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="355" y="61" width="98" height="25" uuid="dc1e7ff0-1efb-4004-8f54-81151d40573b"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[วิทยาลัยเทคนิคแพร่]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="86" width="190" height="25" uuid="13067c48-9f34-4979-a2ca-a2409b687118"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[5 ถนนเหมืองหิต ตำบลในเวียง อำเภอเมือง]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="111" width="94" height="24" uuid="dafc1522-8cf6-4068-8eda-b7eb8b43fbea"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[จังหวัดแพร่ 54000]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="137" width="271" height="29" uuid="55d25171-73a8-4513-8589-a81a81719894"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[วันที่.............เดือน............................ปี..................]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="320" y="135" width="25" height="28" uuid="5cb649cc-e62d-41b7-a676-1ff221c077fa"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{RDay}]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="382" y="135" width="66" height="28" uuid="239558a4-9325-4cb4-bab1-a35e1410bfda"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{RMonth}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="458" y="135" width="50" height="28" uuid="ca3097e2-d39c-431a-9b8b-71e133628850"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{RYear}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="64" splitType="Stretch">
+			<staticText>
+				<reportElement x="38" y="0" width="182" height="28" uuid="a0130b08-68d2-4515-b812-a16632dca081"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[เรื่อง นักเรียนขาดการเข้าร่วมกิจกรรม]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="38" y="33" width="261" height="28" uuid="d73d68be-58c5-456f-80af-c97fb0de2d8b"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[เรียน  คุณ ............................................................]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="87" y="31" width="88" height="25" uuid="5863ee03-34c5-485e-8dcc-a667855f195d"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{firstName_parent}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="178" y="31" width="73" height="25" uuid="8f5b3094-87e7-42da-a1a6-602452a3230b"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lastName_parent}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="469" splitType="Stretch">
+			<staticText>
+				<reportElement x="68" y="2" width="504" height="28" uuid="2f27ce11-5684-4363-8526-780003e3c012"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ด้วย ........................................................ นักเรียน .................................................. วุฒิการศึกษา ..................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="38" y="30" width="534" height="28" uuid="7ad0c4b7-26cd-496d-8bc5-926a565506f3"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ซึ่งอยู่ในความปกครองของท่าน ขาดการเข้าร่วมกิจกรรมรวม .......... วัน โดยไม่ได้รับอนุญาติและไม่แจ้งสาเหตุให้ทาง]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="38" y="58" width="534" height="28" uuid="c76bc71f-f570-4cd2-97bb-40ee9c71c6ac"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[วิทยาลัยทราบ ซึ่งก่อให้เกิดผลเสียต่อผลการเข้าร่วมกิจกรรมของนักเรียนเป็นอย่างยิ่ง ทางวิทยาลัยจึงขอเตือนท่านส่ง]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="38" y="86" width="534" height="28" uuid="33272aec-4e15-4682-a938-926059d88fdd"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[นักเรียนเข้าร่วมกิจกรรมตามปกติโดยด่วน ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="106" y="123" width="193" height="28" uuid="3f2e75d1-3f9b-44a4-9a3d-6dac600d29ff"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[จึงเรียนมาเพื่อทราบและดำเนินการต่อไป]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="240" y="153" width="100" height="28" uuid="2f707b0d-c585-4758-bf88-fe8e79364507"/>
+				<textElement textAlignment="Center">
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ขอแสดงความนับถือ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="182" y="190" width="214" height="28" uuid="4e99e89b-d0a0-4034-b450-95a5887ff881"/>
+				<textElement textAlignment="Justified">
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[(ลงชื่อ) ................................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="211" y="219" width="158" height="28" uuid="6f6eda19-aa61-403a-a70a-2c6b2dbb21be"/>
+				<textElement textAlignment="Center">
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ผู้อำนวยการวิทยาลัยเทคนิคแพร่]]></text>
+			</staticText>
+			<line>
+				<reportElement x="38" y="269" width="507" height="1" uuid="2852dcb0-7fd1-440a-95a2-9d4eebb38553"/>
+			</line>
+			<staticText>
+				<reportElement x="288" y="270" width="100" height="28" uuid="8917de01-8d5c-4249-b5b6-343e41a9265b"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[เรียน]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="298" width="225" height="28" uuid="9b978198-a9c6-4879-8b18-333cfe1d987f"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[คุณ ....................................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="326" width="225" height="28" uuid="53a97954-2f07-4df7-a3e0-9d854a554ccf"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[บ้านเลขที่ ......................... หมู่ .........................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="354" width="225" height="28" uuid="10977627-e430-492b-8f42-d49c0baa9041"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ถนน ..................................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="382" width="225" height="28" uuid="a5e1d368-92d6-42ec-a209-d706e4a0d3ff"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ตำบล ................................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="410" width="225" height="28" uuid="fe9604c0-9ffc-47bb-baeb-2c098be7c987"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[อำเภอ ...............................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="438" width="225" height="28" uuid="be12cdd4-d063-45f4-96a6-248dcd07fb5f"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[จังหวัด ............................  ................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="284" width="196" height="28" uuid="776566ef-c5b3-4362-b592-585b35a9f436"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[วิทยาลัยเทคนิคแพร่]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="312" width="196" height="28" uuid="e70e7c03-a0a3-4478-8f57-5381d9c52d10"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[5 ถนนเหมืองหิต ตำบลในเวียง อำเภอเมือง]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="340" width="196" height="28" uuid="eff26f58-1b52-4e30-8e7c-98b8936d3f65"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[จังหวัดแพร่ 54000]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="368" width="196" height="28" uuid="5ff12589-044f-4593-8ab2-ad8a01ae8bc1"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[โทร. 054 - 511142]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="396" width="196" height="28" uuid="dd991fb9-8617-44be-a20c-b434b81d4a91"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ครู ...............................................................]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="87" y="0" width="34" height="28" uuid="f24cb32d-84d6-43cd-8fe3-bd08cb3e8b10"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{antecedent}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="121" y="0" width="54" height="28" uuid="9af97d59-e609-4ca8-8e17-a74f66794fdb"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{firstName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="178" y="0" width="58" height="28" uuid="2a803acf-8854-4626-87e1-6e9f849e0c46"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lastName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="301" y="0" width="100" height="28" uuid="a786a15e-f4c3-4d7a-b30e-a412c8e37751"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{majorName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="471" y="0" width="27" height="26" uuid="ec4968f5-f735-4ede-b2c1-382a187adb76"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{educationalBackground}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="498" y="0" width="23" height="26" uuid="cdd4246c-554c-4b18-834a-359a81cd34b9"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{educationLevel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="299" y="28" width="32" height="28" uuid="875662ff-3c91-47d7-937b-efb8ae7b21f9"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Count_Status}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="345" y="296" width="91" height="24" uuid="90496ede-ee0f-4ad6-9a1f-6952eb756f37"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{firstName_parent}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="448" y="296" width="70" height="24" uuid="6f139eed-39d2-4813-aeb1-fc6a6fc5c9a8"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lastName_parent}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="367" y="323" width="67" height="25" uuid="3dc88956-d2cd-470c-aa55-6f6a75ef08cd"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{addNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="453" y="323" width="65" height="25" uuid="0d48e164-adcc-43e1-ac0e-bc6411ff2331"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{moo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="358" y="349" width="100" height="30" uuid="eb695ff6-b0ee-49e1-bb41-1fe59475361f"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{street}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="358" y="379" width="100" height="28" uuid="9ef79a7e-ff13-485c-a50b-50a5577f8f83"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{subDistrict}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="358" y="407" width="100" height="28" uuid="3ebd0a37-cb8d-43e3-94e1-a88ce8807fa6"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{district}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="358" y="435" width="80" height="28" uuid="10f26999-6bd0-453c-9d7a-ac918ea56c4e"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{province}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="448" y="435" width="100" height="28" uuid="47b3133d-deee-4c2b-872c-92d928001998"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfFontName="THSarabunNew.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{zipCode}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
