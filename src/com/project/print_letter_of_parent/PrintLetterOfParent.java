@@ -31,7 +31,6 @@ public class PrintLetterOfParent extends HttpServlet {
 	 */
 	public PrintLetterOfParent() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
