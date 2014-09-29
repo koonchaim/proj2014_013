@@ -2,12 +2,16 @@ package com.project.bean;
 
 import java.util.Date;
 
-public class Term {
+public class TermBean {
 	private String termName;
 	private Date startDate;
 	private Date endDate;
 
-	public Term(String termName, Date startDate, Date endDate) {
+	public TermBean() {
+		super();
+	}
+
+	public TermBean(String termName, Date startDate, Date endDate) {
 		super();
 		this.termName = termName;
 		this.startDate = startDate;

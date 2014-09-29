@@ -81,21 +81,10 @@
 												
 												
 										<div class="form-group">
-											<fmt:setLocale value="en-US"/>
-											<fmt:formatDate var="year" value="${now}" pattern="yyyy" />
-											<select class="form-control" name="selectTerm" onchange="document.test.submit();">
-											    <c:forEach var="i" begin="1" end="2">
-											    <c:set var="term" value="${i}/${year}" />
-											    	<c:choose>
-											    		<c:when test="${term == selectTerm }">
-											        		<option value="${i}/${year}"  selected="selected"><c:out value="${i}/${year}"/></option>
-											        	</c:when>
-											        	<c:otherwise>
-											        		<option value="${i}/${year}"><c:out value="${i}/${year}"/></option>
-											        	</c:otherwise>
-											        </c:choose>
-											    </c:forEach>
-											</select>
+										<c:set var="term" value="${selectTerm}" />
+											<input class="form-control" type="text" placeholder="${term.termName}" disabled> 
+											<input type="hidden" onchange="document.test.submit();" name="selectTerm" value="${term.termName}">
+										
 										</div>
 									</form>
 								</div>
@@ -117,6 +106,7 @@
 												<c:forEach items="${listStudent}" var="item" varStatus="theCount">
 												<c:set var="theCounter" value="${theCounter + 1}"/>
 												<input type="hidden" name="majorStudent" id="majorStudent" value="${major.majorName}">
+												<input type="hidden" name="selectTerm" value="${term.termName}">
 												<input type="hidden" name="stuID_${theCount.count}" value="${item.studentID}" >
 												<input type="hidden" name="addSelectTerm" value="${selectTerm}" >
 													<tr>

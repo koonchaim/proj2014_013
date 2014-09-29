@@ -1,20 +1,21 @@
 package com.project.bean;
+
 import java.util.Date;
 
 public class ScheduleBean {
-//	private int schedule_ID;
+	// private int schedule_ID;
 	private Date dateAttendance;
-	private String term;
+	private TermBean termBean;
 	private AttendanceBean attendance;
 
 	public ScheduleBean() {
 
 	}
 
-	public ScheduleBean(Date dateAttendance, String term, AttendanceBean attendance) {
+	public ScheduleBean(Date dateAttendance, TermBean termBean, AttendanceBean attendance) {
 		super();
 		this.dateAttendance = dateAttendance;
-		this.term = term;
+		this.termBean = termBean;
 		this.attendance = attendance;
 	}
 
@@ -26,12 +27,12 @@ public class ScheduleBean {
 		this.dateAttendance = dateAttendance;
 	}
 
-	public String getTerm() {
-		return term;
+	public TermBean getTerm() {
+		return termBean;
 	}
 
-	public void setTerm(String term) {
-		this.term = term;
+	public void setTerm(TermBean termBean) {
+		this.termBean = termBean;
 	}
 
 	public AttendanceBean getAttendance() {
@@ -42,12 +43,12 @@ public class ScheduleBean {
 		this.attendance = attendance;
 	}
 
-//	public int getSchedule_ID() {
-//		return schedule_ID;
-//	}
-//
-//	public void setSchedule_ID(int schedule_ID) {
-//		this.schedule_ID = schedule_ID;
-//	}
+	// public int getSchedule_ID() {
+	// return schedule_ID;
+	// }
+	//
+	// public void setSchedule_ID(int schedule_ID) {
+	// this.schedule_ID = schedule_ID;
+	// }
 
 }
