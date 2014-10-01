@@ -32,7 +32,7 @@
 
 								<!-- /.Search Education -->
 								<div class="row form-group" align="center">
-									<form class="form-inline" role="form" action="PrintListStudentForActivities">
+									<form class="form-inline" role="form" action="PrintListStudentForActivities" method="post" target="_blank">
 												<div class="form-group">
 													<input class="form-control" id="majorStudent" type="text" placeholder="${majorPrintStudent}"disabled>
 													<input type="hidden" name="majorStudent" id="majorStudent" value="${majorPrintStudent}"> 

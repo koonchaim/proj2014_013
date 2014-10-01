@@ -124,6 +124,7 @@ public class PrintLetterOfParent extends HttpServlet {
 
 				request.getRequestDispatcher("PrintLetterOfActivity.jsp").forward(request, response);
 			} else if (studentID != null) {
+
 				ServletOutputStream servletOutputStream = response.getOutputStream();
 				byte[] bytes = null;
 				Map<String, Object> param = new HashMap<String, Object>();

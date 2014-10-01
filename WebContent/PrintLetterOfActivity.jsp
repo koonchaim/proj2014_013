@@ -18,17 +18,6 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <script type="text/javascript" src="${contextPath}/js/customScript.js"></script>
 <title>Print</title>
-<script type="text/javascript">
-function pritnLetter(studentID){
-	$.post('PrintLetterOfParent',{
-		'studentID' : studentID
-	},function(data) {
-		
-	});
-	
-}
-
-</script>
 </head>
 <body>
 	<!--------------Header--------------->
@@ -49,8 +38,7 @@ function pritnLetter(studentID){
 
 								<!-- /.Search Education -->
 								<div class="row form-group" align="center">
-									<form class="form-inline" role="form"
-										action="PrintLetterOfParent">
+									<form class="form-inline" role="form" action="PrintLetterOfParent" method="post">
 										<div class="form-group">
 											<input class="form-control" id="majorStudent" type="text"
 												placeholder="${majorPrintStudent}" disabled> <input
@@ -117,11 +105,10 @@ function pritnLetter(studentID){
 												<td class="TextCenter">${item.firstName}</td>
 												<td class="TextCenter">${item.lastName}</td>
 												<td class="TextCenter">
-													<button type="button" class="btn btn-primary btn-circle"
-														data-toggle="modal" data-target="#editStudent"
-														onclick="pritnLetter(${item.studentID})">
-														<i class="glyphicon glyphicon-print" Title="พิมพ์"></i>
-													</button>
+													<a class="btn btn-primary btn-circle" target="_blank"
+														href="PrintLetterOfParent?studentID=${item.studentID}">
+														<i class="fa fa-print" Title="พิมพ์"></i>
+													</a>
 												</td>
 											</tr>
 										</c:forEach>
