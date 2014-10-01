@@ -48,7 +48,7 @@
 									<div>
 										<h4>Print Letter of Parent</h4>
 										<ul>
-											<li><a href="PrintLetterOfActivity.jsp">Print Letter</a></li>
+											<li><a href="PrintLetterOfParent">Print Letter</a></li>
 										</ul>
 									</div>
 									<div>

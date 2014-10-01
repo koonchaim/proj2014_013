@@ -20,6 +20,7 @@ import net.sf.jasperreports.engine.JasperRunManager;
 
 import com.project.bean.LoginBean;
 import com.project.bean.MajorBean;
+import com.project.bean.TermBean;
 import com.project.utility.ConnectDB;
 import com.project.utility.ServletUtils;
 import com.project.view_all_attendance.ViewAllAttendanceManager;
@@ -56,6 +57,7 @@ public class PrintListStudentForActivities extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		ViewAllStudentManager viewAllStudentMng = new ViewAllStudentManager();
 		ViewAllAttendanceManager viewAllAttendanceMng = new ViewAllAttendanceManager();
+		PrintListStudentForActivitiesManager printMng = new PrintListStudentForActivitiesManager();
 		LoginBean login = (LoginBean) request.getSession().getAttribute("login");
 
 		String majorName = request.getParameter("majorStudent");
@@ -92,7 +94,9 @@ public class PrintListStudentForActivities extends HttpServlet {
 				String eduBackgroung = selectEducation;
 				int eduLevel = Integer.parseInt(selectEducation1);
 				String term = request.getParameter("selectPrintTerm");
-				int attendance = 15;
+
+				TermBean findTerm = printMng.findTermByTermName(term);
+				int attendance = printMng.calAttendance(findTerm);
 
 				ServletOutputStream servletOutputStream = response.getOutputStream();
 				byte[] bytes = null;

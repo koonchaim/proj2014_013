@@ -30,9 +30,9 @@ WHERE `educationlevel`.`educationalBackground` = $P{eduBackgroung}
 AND `educationlevel`.`educationLevel` = $P{eduLevel}
 AND `schedule`.`term` = $P{term}
 AND `major`.`majorName` = $P{majorName}
-AND attendance.`statusActivity` = 'มา'
+AND attendance.`statusActivity` = 'ขาด'
 GROUP BY student.`studentID`
-HAVING COUNT(attendance.`statusActivity`) < $P{attendance}]]>
+HAVING COUNT(attendance.`statusActivity`) > $P{attendance}]]>
 	</queryString>
 	<field name="studentID" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>

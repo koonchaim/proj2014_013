@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,19 +10,25 @@
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width">
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/icomoon-social.css">
-<link
-	href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800'
-	rel='stylesheet' type='text/css'>
-
 <link rel="stylesheet" href="css/leaflet.css" />
 <link rel="stylesheet" href="css/main.css">
-
 <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-
 <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
 <link rel="stylesheet" href="css/icomoon-social.css">
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<script type="text/javascript" src="${contextPath}/js/customScript.js"></script>
 <title>Print</title>
+<script type="text/javascript">
+function pritnLetter(studentID){
+	$.post('PrintLetterOfParent',{
+		'studentID' : studentID
+	},function(data) {
+		
+	});
+	
+}
+
+</script>
 </head>
 <body>
 	<!--------------Header--------------->
@@ -41,112 +49,84 @@
 
 								<!-- /.Search Education -->
 								<div class="row form-group" align="center">
-									<form class="form-inline" role="form">
+									<form class="form-inline" role="form"
+										action="PrintLetterOfParent">
 										<div class="form-group">
-											<input class="form-control" id="disabledInput" type="text"
-												placeholder="ช่างสำรวจ" disabled>
+											<input class="form-control" id="majorStudent" type="text"
+												placeholder="${majorPrintStudent}" disabled> <input
+												type="hidden" name="majorStudent" id="majorStudent"
+												value="${majorPrintStudent}">
 										</div>
 										<div class="form-group">
-											<select class="form-control">
-												<option>เลือกชั้นปี</option>
-												<option>ปวช 1</option>
-												<option>ปวช 2</option>
-												<option>ปวช 3</option>
-												<option>ปวส 1</option>
-												<option>ปวส 2</option>
+											<select id="level" name="selectLevelEdu" class="form-control">
+												<c:forEach items="${listEducationLevel}" var="item">
+													<c:choose>
+														<c:when
+															test="${item.educationLevel.educationalBackground == selectEducation && item.educationLevel.educationLevel == selectEducation1}">
+															<option
+																value="${item.educationLevel.educationalBackground} ${item.educationLevel.educationLevel}"
+																selected="selected">${item.educationLevel.educationalBackground}&nbsp;&nbsp;${item.educationLevel.educationLevel}</option>
+														</c:when>
+														<c:otherwise>
+															<option
+																value="${item.educationLevel.educationalBackground} ${item.educationLevel.educationLevel}">${item.educationLevel.educationalBackground}&nbsp;&nbsp;${item.educationLevel.educationLevel}</option>
+														</c:otherwise>
+													</c:choose>
+												</c:forEach>
+											</select>
+										</div>
+
+										<div class=" form-group">
+											<select class="form-control" name="selectPrintTerm">
+												<c:forEach items="${listTerm}" var="item">
+													<c:choose>
+														<c:when test="${item == chkTerm}">
+															<option value="${item}" selected="selected">${item}</option>
+														</c:when>
+														<c:otherwise>
+															<option value="${item}">${item}</option>
+														</c:otherwise>
+													</c:choose>
+												</c:forEach>
 											</select>
 										</div>
 										<div class="form-group">
-											<select class="form-control">
-												<option>เลือกเทอม</option>
-												<option>1</option>
-												<option>2</option>
-											</select>
-										</div>
-										<div class="form-group">
-											<button type="submit" class="btn btn-default">ค้นหา</button>
+											<button class="btn btn-success" type="submit">
+												<i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;ค้นหา
+											</button>
 										</div>
 									</form>
 								</div>
-								
-								<div class="table-responsive">
-								<form>
-									<table id="example2" class="table table-bordered table-hover">
-										<thead>
+
+								<table class="table table-hover" id="dataTables-example">
+									<thead>
+										<tr>
+											<th>ลำดับ</th>
+											<th>รหัสประจำตัวนักศึกษา</th>
+											<th colspan="3" align="center">ชื่อ - นามสกุล</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach items="${listStudent}" var="item"
+											varStatus="theCount">
 											<tr>
-												<th>ลำดับ</th>
-												<th>รหัสประจำตัวนักศึกษา</th>
-												<th>คำนำหน้า</th>
-												<th>ชื่อ</th>
-												<th>นามสกุล</th>
-												<th>หมายเหตุ</th>
+												<td class="TextCenter">${theCount.count}</td>
+												<td class="TextCenter">${item.studentID}</td>
+												<td class="TextCenter" width="5%">${item.antecedent}</td>
+												<td class="TextCenter">${item.firstName}</td>
+												<td class="TextCenter">${item.lastName}</td>
+												<td class="TextCenter">
+													<button type="button" class="btn btn-primary btn-circle"
+														data-toggle="modal" data-target="#editStudent"
+														onclick="pritnLetter(${item.studentID})">
+														<i class="glyphicon glyphicon-print" Title="พิมพ์"></i>
+													</button>
+												</td>
 											</tr>
-										</thead>
-											<tbody>
-												<tr>
-													<td>1</td>
-													<td>5021060180</td>
-													<td>นาย</td>
-													<td>นพรัตน์</td>
-													<td>เมืองแก้ว</td>
-													<td align="center">
-														<button type="button" class="btn btn-danger">
-															<i class="fa fa-print"></i>
-														</button>
-													</td>
-												</tr>
-												<tr>
-													<td>2</td>
-													<td>5021060181</td>
-													<td>นาย</td>
-													<td>ขจรเกียรติ</td>
-													<td>ถิ่นแฝง</td>
-													<td align="center">
-														<button type="button" class="btn btn-danger">
-															<i class="fa fa-print"></i>
-														</button>
-													</td>
-												</tr>
-												<tr>
-													<td>3</td>
-													<td>5021060182</td>
-													<td>นางสาว</td>
-													<td>สิริกานต์</td>
-													<td>พจนารถ</td>
-													<td align="center">
-														<button type="button" class="btn btn-danger">
-															<i class="fa fa-print"></i>
-														</button>
-													</td>
-												</tr>
-												<tr>
-													<td>4</td>
-													<td>5021060183</td>
-													<td>นาย</td>
-													<td>อธิปกรณ์</td>
-													<td>อินจินดา</td>
-													<td align="center">
-														<button type="button" class="btn btn-danger">
-															<i class="fa fa-print"></i>
-														</button>
-													</td>
-												</tr>
-												<tr>
-													<td>5</td>
-													<td>5021060184</td>
-													<td>นาย</td>
-													<td>สุรกิจ</td>
-													<td>กาวะละ</td>
-													<td align="center">
-														<button type="button" class="btn btn-danger">
-															<i class="fa fa-print"></i>
-														</button>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-								</form>
-								</div>
+										</c:forEach>
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>
