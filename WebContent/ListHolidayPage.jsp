@@ -83,15 +83,14 @@
 					<c:forEach items="${ListHoliday}" var="item" varStatus="theCount">
 						<tr>
 							<td class="TextCenter">${item.date}</td>
-								<td class="TextCenter">${listMonth[theCount.index]}</td>
-
+							<td class="TextCenter">${listMonth[theCount.index]}</td>
 							<td class="TextCenter">${item.year+543}</td>
 							<td class="TextCenter">${item.detail}</td>
 							<td class="TextCenter">
 								<button type="button" class="btn btn-primary btn-circle"
 									data-toggle="modal" data-target="#editHoliday"
 									onclick="editHoliday(${item.date},${item.month},${item.year})">
-									<i class="glyphicon glyphicon-pencil" Title="แก้ไข"></i>
+									<i class="fa fa-wrench"  Title="แก้ไข"></i>
 								</button>
 								<a
 										href="RemoveHolidayServlet?date=${item.date}&month=${item.month}&year=${item.year}"

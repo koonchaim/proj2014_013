@@ -62,7 +62,7 @@
 								<button type="button" class="btn btn-primary btn-circle"
 									data-toggle="modal" data-target="#editTeacher"
 									onclick="editTeacherByIdCard(${item.idCard})">
-									<i class="glyphicon glyphicon-pencil" Title="แก้ไข"></i>
+									<i class="fa fa-wrench"  Title="แก้ไข"></i>
 								</button>
 								
 								<a onclick="return remove_teacher(${item.idCard});">

@@ -29,10 +29,8 @@ public class ImportStudentServlet extends HttpServlet {
 		super();
 
 	}
-	
-	@SuppressWarnings("unchecked")
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -61,47 +59,45 @@ public class ImportStudentServlet extends HttpServlet {
 					int majorID = impMng.findMajorIdByMajorName(authorList.get(i).getMajorName());
 
 					if (majorID != 0) {
-						int educationLevel_ID = impMng.findEducationLevel(authorList.get(i).getEducationLevel().getEducationalBackground(), 
+						int educationLevel_ID = impMng.findEducationLevel(authorList.get(i).getEducationLevel().getEducationalBackground(),
 								authorList.get(i).getEducationLevel().getEducationLevel(), majorID);
-						if(educationLevel_ID != 0){
+						if (educationLevel_ID != 0) {
 							// findStudentID
 							boolean student_ID = impMng.findstudentID(authorList.get(i).getEducationLevel().getStudent().getStudentID());
 							if (student_ID) {
-								//update
+								// update
 								boolean check_update = impMng.updateDataStudent(authorList.get(i).getEducationLevel().getStudent());
 								if (check_update) {
 									System.out.println("Update Success");
 									request.setAttribute("ErrorColor", "green");
-									request.setAttribute("CompleteMessage",
-											"Update Data Success");
+									request.setAttribute("CompleteMessage", "Update Data Success");
 								} else {
 									System.out.println("Update Error");
 									request.setAttribute("ErrorColor", "red");
-									request.setAttribute("CompleteMessage",
-											"Update Data Fail");
+									request.setAttribute("CompleteMessage", "Update Data Fail");
 								}
-							}else{
-								//insert
-								boolean chk_insert_student = impMng.importDataStudentAndParent(authorList.get(i).getEducationLevel().getStudent(), educationLevel_ID);
+							} else {
+								// insert
+								boolean chk_insert_student = impMng.importDataStudentAndParent(authorList.get(i).getEducationLevel().getStudent(),
+										educationLevel_ID);
 								int parent_Id = impMng.findMaxPersonIdForInsertToAddress();
-								boolean chk_insert_address = impMng.importDataAddress(authorList.get(i).getEducationLevel().getStudent().getParent().getAddress(), parent_Id);
+								boolean chk_insert_address = impMng.importDataAddress(authorList.get(i).getEducationLevel().getStudent().getParent()
+										.getAddress(), parent_Id);
 
-						if (chk_insert_student && chk_insert_address) {
-							System.out.println("Insert Success");
-							request.setAttribute("ErrorColor", "green");
-							request.setAttribute("CompleteMessage",
-									"Insert Data Success");
-						} else {
-							System.out.println("Insert Error");
-							request.setAttribute("ErrorColor", "red");
-							request.setAttribute("CompleteMessage",
-									"Insert Data Fail");
-						}
+								if (chk_insert_student && chk_insert_address) {
+									System.out.println("Insert Success");
+									request.setAttribute("ErrorColor", "green");
+									request.setAttribute("CompleteMessage", "Insert Data Success");
+								} else {
+									System.out.println("Insert Error");
+									request.setAttribute("ErrorColor", "red");
+									request.setAttribute("CompleteMessage", "Insert Data Fail");
+								}
 							}
-						}else{
+						} else {
 							System.out.println("ไม่มีชั้นปีนี้อยู่ในสาขาวิชา");
 						}
-					} else if(majorID == 0) {
+					} else if (majorID == 0) {
 						System.out.println("ไม่มีสาขาวิชาวิชานี้อยู่ในระบบ");
 					}
 				}
@@ -115,14 +111,12 @@ public class ImportStudentServlet extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else{
-			request.getRequestDispatcher("ImportStudentPage.jsp").forward(
-					request, response);
+		} else {
+			request.getRequestDispatcher("ImportStudentPage.jsp").forward(request, response);
 		}
 	}
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");

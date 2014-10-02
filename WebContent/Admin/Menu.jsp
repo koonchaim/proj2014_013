@@ -13,14 +13,10 @@
 	<section class="sidebar">
 		<!-- sidebar menu: : style can be found in sidebar.less -->
 		<ul class="sidebar-menu">
-			<li><a href="ListTeacherServlet"> <i
-					class="glyphicon glyphicon-user"></i> <span>List Teacher</span>
-			</a></li>
-			<li><a href="ListStudentServlet"> <i class="fa fa-laptop"></i>
-					<span>List Student</span>
-			</a></li>
-			<li><a href="ListHolidayServlet"> <i class="fa fa-calendar"></i>
-					<span>List Holiday</span></a></li>
+			<li><a href="ListTeacherServlet"> <i class="glyphicon glyphicon-user"></i> <span>List Teacher</span></a></li>
+			<li><a href="ListStudentServlet"> <i class="fa fa-laptop"></i>	<span>List Student</span></a></li>
+			<li><a href="ListHolidayServlet"> <i class="fa fa-calendar"></i> <span>List Holiday</span></a></li>
+			<li><a href="ListTermServlet"> <i class="fa fa-calendar-o"></i> <span>List Term</span></a></li>
 		</ul>
 	</section>
 </aside>

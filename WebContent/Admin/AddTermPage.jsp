@@ -1,68 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link rel="stylesheet" type="text/css" media="all"
-	href="css/jsDatePick_ltr.min.css" />
 
-<script type="text/javascript" src="js/jsDatePick.min.1.3.js"></script>
-
-<script type="text/javascript">
-	window.onload = function() {
-		new JsDatePick({
-			useMode : 2,
-			target : "inputField",
-			dateFormat : "%d/%M/%Y"
-		/*selectedDate:{				This is an example of what the full configuration offers.
-			day:5,						For full documentation about these settings please see the full version of the code.
-			month:9,
-			year:2006
-		},
-		yearsRange:[1978,2020],
-		limitToToday:false,
-		cellColorScheme:"beige",
-		dateFormat:"%m-%d-%Y",
-		imgPath:"img/",
-		weekStartDay:1*/
-		});
-
-		new JsDatePick({
-			useMode : 2,
-			target : "inputField2",
-			dateFormat : "%d/%M/%Y"
-		/*selectedDate:{				This is an example of what the full configuration offers.
-			day:5,						For full documentation about these settings please see the full version of the code.
-			month:9,
-			year:2006
-		},
-		yearsRange:[1978,2020],
-		limitToToday:false,
-		cellColorScheme:"beige",
-		dateFormat:"%m-%d-%Y",
-		imgPath:"img/",
-		weekStartDay:1*/
-		});
-	};
-</script>
 <form id="modal-form" accept-charset="UTF-8" data-remote="true"
-	action="AddHolidayServlet" method="post" name="addHolidayfrm"
-	onSubmit="JavaScript:return addHolidaychk();" class="form-horizontal">
+	action="AddTermServlet" method="post" class="form-horizontal">
 
 	<div class="form-group">
 		<label class="col-lg-3 control-label">ตั้งแต่ วัน/เดือน/ปี :</label>
 		<div class="col-lg-8">
-				<input type="text" class="form-control" value="" id="dpd1" name="StartDate">
+			<input type="text" class="form-control" value="" id="sDate1"
+				name="StartDate">
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="col-lg-3 control-label">ถึง วัน/เดือน/ปี :</label>
 		<div class="col-lg-8">
-				<input type="text" class="form-control" value="" id="dpd2" name="EndDate">
+			<input type="text" class="form-control" value="" id="eDate1"
+				name="EndDate">
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="col-lg-3 control-label">รายละเอียด :</label>
+		<label class="col-lg-3 control-label">เทอมการศึกษาที่ :</label>
 		<div class="col-lg-8">
-			<input type="text" name="detail" class="form-control">
+			<select class="selectpicker show-tick show-menu-arrow" data-width="25%" data-size="auto">
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+			</select>
 		</div>
 	</div>
 </form>
