@@ -3,20 +3,20 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <form id="modal-form" accept-charset="UTF-8" data-remote="true"
-	action="AddTermServlet" method="post" class="form-horizontal">
+	action="EditTermServlet" method="post" class="form-horizontal">
 
 	<div class="form-group">
 		<label class="col-lg-3 control-label">ตั้งแต่ วัน/เดือน/ปี :</label>
 		<div class="col-lg-8">
-			<input type="text" class="form-control" value="" id="sDate1"
-				name="StartDate1">
+			<input type="text" class="form-control" value="" id="sDate2"
+				name="StartDate2">
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="col-lg-3 control-label">ถึง วัน/เดือน/ปี :</label>
 		<div class="col-lg-8">
-			<input type="text" class="form-control" value="" id="eDate1"
-				name="EndDate1">
+			<input type="text" class="form-control" value="" id="eDate2"
+				name="EndDate2">
 		</div>
 	</div>
 	<div class="form-group">

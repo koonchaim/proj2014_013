@@ -126,7 +126,7 @@
 					<h4 class="modal-title">แก้ไขเทอมการศึกษา</h4>
 				</div>
 				<div class="modal-body">
-					<jsp:include page="Admin/EditHolidayPage.jsp" flush="false" />
+					<jsp:include page="Admin/EditTermPage.jsp" flush="false" />
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>

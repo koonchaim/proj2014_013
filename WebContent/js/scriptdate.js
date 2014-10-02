@@ -8,6 +8,11 @@ $(function() {
 	});
 	$('#dp2').datepicker();
 
+	$('#sDate1').datepicker();
+	$('#eDate1').datepicker();
+	$('#sDate2').datepicker();
+	$('#eDate2').datepicker();
+
 	$('#dpYears').datepicker();
 	$('#dpMonths').datepicker();
 
@@ -36,9 +41,9 @@ $(function() {
 	}).on('changeDate', function(ev) {
 		checkout.hide();
 	}).data('datepicker');
-	
+
 	/*
-	 * 
+	 * *********************************************************
 	 */
 	var checkStart = $('#sDate1').datepicker({
 		onRender : function(date) {
@@ -51,13 +56,43 @@ $(function() {
 			checkEnd.setValue(newDate);
 		}
 		checkStart.hide();
-		$('#dpd2')[0].focus();
+		$('#eDate1')[0].focus();
 	}).data('datepicker');
-	var checkEnd = $('#eDate1').datepicker({
+	var checkEnd = $('#eDate1')
+			.datepicker(
+					{
+						onRender : function(date) {
+							return date.valueOf() <= checkStart.date.valueOf() ? 'disabled'
+									: '';
+						}
+					}).on('changeDate', function(ev) {
+				checkEnd.hide();
+			}).data('datepicker');
+
+	/*
+	 * *********************************************************
+	 */
+	var checkStart2 = $('#sDate2').datepicker({
 		onRender : function(date) {
-			return date.valueOf() <= checkStart.date.valueOf() ? 'disabled' : '';
+			return date.valueOf();
 		}
 	}).on('changeDate', function(ev) {
-		checkEnd.hide();
+		if (ev.date.valueOf() > checkEnd2.date.valueOf()) {
+			var newDate = new Date(ev.date)
+			newDate.setDate(newDate.getDate() + 1);
+			checkEnd2.setValue(newDate);
+		}
+		checkStart2.hide();
+		$('#eDate2')[0].focus();
 	}).data('datepicker');
+	var checkEnd2 = $('#eDate2')
+			.datepicker(
+					{
+						onRender : function(date) {
+							return date.valueOf() <= checkStart2.date.valueOf() ? 'disabled'
+									: '';
+						}
+					}).on('changeDate', function(ev) {
+				checkEnd2.hide();
+			}).data('datepicker');
 });
