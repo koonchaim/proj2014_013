@@ -63,4 +63,10 @@ public class EditAttendanceManager {
 		}
 		return listSchedule;
 	}
+
+	public boolean updateAttendance(String status, String studentID) {
+		boolean chk = false;
+
+		return chk;
+	}
 }

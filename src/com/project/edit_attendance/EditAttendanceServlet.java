@@ -15,7 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.project.bean.AttendanceBean;
 import com.project.bean.ScheduleBean;
+import com.project.bean.StudentBean;
 
 /**
  * Servlet implementation class EditAttendanceServlet
@@ -52,7 +54,8 @@ public class EditAttendanceServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 
 		EditAttendanceManager edtMng = new EditAttendanceManager();
-		if (request.getParameter("studentID") == null) {
+		String[] studentID = request.getParameterValues("stuID[]");
+		if (studentID == null) {
 			String majorName = request.getParameter("majorName");
 			String eduBackground = request.getParameter("eduBackground");
 			String eduLevel = request.getParameter("eduLevel");
@@ -81,6 +84,27 @@ public class EditAttendanceServlet extends HttpServlet {
 				e.printStackTrace();
 			} catch (SQLException e) {
 				e.printStackTrace();
+			}
+
+		} else {
+			int count = 1;
+
+			for (int i = 0; i < studentID.length; i++) {
+				String status = request.getParameter("status_" + count);
+
+				System.out.println("Attendance : " + studentID[i] + " - " + status);
+
+				AttendanceBean attendanceBean = new AttendanceBean();
+				attendanceBean.setStatusActivity(status);
+
+				StudentBean studentBean = new StudentBean();
+				studentBean.setStudentID(studentID[i]);
+				attendanceBean.setStudent(studentBean);
+
+				ScheduleBean scheduleBean = new ScheduleBean();
+				scheduleBean.setAttendance(attendanceBean);
+
+				count++;
 			}
 
 		}

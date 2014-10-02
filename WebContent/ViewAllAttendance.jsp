@@ -163,7 +163,7 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal" onclick="cancelEdit()">ยกเลิก</button>
 					<a id="modal-form-submitEditTeacher" class='btn btn-primary'
-						href="#">แก้ไข</a>
+						onclick="document.getElementById('editAttendanceFrom').submit();">แก้ไข</a>
 				</div>
 			</div>
 			<!-- /.modal-content -->

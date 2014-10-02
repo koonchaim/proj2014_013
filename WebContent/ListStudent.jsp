@@ -68,8 +68,8 @@ function ListEducation(){
 	<div class="wrapper row-offcanvas row-offcanvas-left">
 
 		<!---------------Menu---------------->
-		<%@include file="Admin/Menu.jsp" %>
-<%-- 		<jsp:include page="Admin/Menu.jsp" /> --%>
+		<%@include file="Admin/Menu.jsp"%>
+		<%-- 		<jsp:include page="Admin/Menu.jsp" /> --%>
 
 		<aside class="right-side"> <section class="content-header">
 		<h1>
@@ -141,13 +141,11 @@ function ListEducation(){
 								data-toggle="modal" data-target="#editStudent"
 								onclick="editStudentByID(${item.studentID})">
 								<i class="glyphicon glyphicon-pencil" Title="แก้ไข"></i>
-							</button>
-							
-								<a onclick="return remove_student(${item.studentID});">
-									<button type="button" class="btn btn-danger btn-circle">
-										<i class="glyphicon glyphicon-trash" Title="ลบ"></i>
-									</button>
-								</a>
+							</button> <a onclick="return remove_student(${item.studentID});">
+								<button type="button" class="btn btn-danger btn-circle">
+									<i class="glyphicon glyphicon-trash" Title="ลบ"></i>
+								</button>
+						</a>
 						</td>
 					</tr>
 				</c:forEach>
@@ -155,11 +153,14 @@ function ListEducation(){
 				<tr>
 					<td colspan="6" align="right">
 						<div class="form-group">
-							<button class="btn btn-primary btn-lg" data-toggle="modal" onclick="listAllMajor('0')"
-								data-target="#addStudent">
+							<button class="btn btn-primary btn-lg" data-toggle="modal"
+								onclick="listAllMajor('0')" data-target="#addStudent">
 								<i class="glyphicon glyphicon-plus"></i>&nbsp;&nbsp;เพิ่มนักศึกษา
 							</button>
-							<button type="submit" class="btn btn-primary btn-lg" onclick="window.location.href='ImportStudentServlet'"><i class="ion ion-upload"></i>&nbsp;&nbsp;อัพโหลดไฟล์</button>
+							<button type="submit" class="btn btn-primary btn-lg"
+								onclick="window.location.href='ImportStudentServlet'">
+								<i class="ion ion-upload"></i>&nbsp;&nbsp;อัพโหลดไฟล์
+							</button>
 						</div>
 					</td>
 				</tr>
@@ -208,7 +209,8 @@ function ListEducation(){
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
-					<a class='btn btn-primary' onclick="document.getElementById('regis-student').submit();">บันทึก</a>
+					<a class='btn btn-primary'
+						onclick="document.getElementById('regis-student').submit();">บันทึก</a>
 				</div>
 			</div>
 			<!-- /.modal-content -->
@@ -216,32 +218,31 @@ function ListEducation(){
 		<!-- /.modal-dialog -->
 	</div>
 	<!-- /.modal -->
-<!-- 	<form id="modal-form" accept-charset="UTF-8" data-remote="true" -->
-<!-- 		action="EditStudentServlet" method="post" class="form-horizontal" -->
-<!-- 		role="form"> -->
-		<div class="modal fade" id="editStudent">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-hidden="true">&times;</button>
-						<h4 class="modal-title">แก้ไขข้อมูลนักศึกษา</h4>
-					</div>
-					<div class="modal-body">
-						<jsp:include page="Admin/EditStudentPage.jsp" flush="false" />
-					</div>
-					<div class="modal-footer">
-<!-- 						<button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button> -->
-<!-- 						<input type="submit" value="แก้ไข" class='btn btn-primary'> -->
-<button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
-					<a class='btn btn-primary' onclick="document.getElementById('edit-studentForm').submit();">แก้ไข</a>
-					</div>
+	<!-- 	<form id="modal-form" accept-charset="UTF-8" data-remote="true" -->
+	<!-- 		action="EditStudentServlet" method="post" class="form-horizontal" -->
+	<!-- 		role="form"> -->
+	<div class="modal fade" id="editStudent">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title">แก้ไขข้อมูลนักศึกษา</h4>
 				</div>
-				<!-- /.modal-content -->
+				<div class="modal-body">
+					<jsp:include page="Admin/EditStudentPage.jsp" flush="false" />
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
+					<a class='btn btn-primary'
+						onclick="document.getElementById('edit-studentForm').submit();">แก้ไข</a>
+				</div>
 			</div>
-			<!-- /.modal-dialog -->
+			<!-- /.modal-content -->
 		</div>
-<!-- 	</form> -->
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- 	</form> -->
 	<!-- /.modal -->
 	<!-- script -->
 

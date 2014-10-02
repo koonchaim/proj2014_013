@@ -90,7 +90,7 @@ function editAttendance(majorName, eduBackground, eduLevel, term,
 			
 			if (item.attendance.statusActivity == 'มา') {
 				var t = $('#modal-table').DataTable().row.add(
-						[ counter, item.attendance.student.studentID, name,
+						[ counter, item.attendance.student.studentID +'<input name="stuID[]" type="hidden" value="'+item.attendance.student.studentID+'">', name,
 								item.attendance.student.lastName,					
 								'<div class="radiocheckbox"><input id="radio'+count+'" type="radio" name="status_'+counter+'" value="มา" checked="checked"><label for="radio'+count+++'">มา</label>'
 								+'<input id="radio'+count+'" type="radio" name="status_'+counter+'" value="สาย"><label for="radio'+count+++'">สาย</label>'
@@ -100,7 +100,7 @@ function editAttendance(majorName, eduBackground, eduLevel, term,
 								+'</div>']).draw();
 			}else if (item.attendance.statusActivity == 'สาย') {
 				var t = $('#modal-table').DataTable().row.add(
-						[ counter, item.attendance.student.studentID, name,
+						[ counter, item.attendance.student.studentID+'<input name="stuID[]" type="hidden" value="'+item.attendance.student.studentID+'">', name,
 								item.attendance.student.lastName,					
 								'<div class="radiocheckbox"><input id="radio'+count+'" type="radio" name="status_'+counter+'" value="มา"><label for="radio'+count+++'">มา</label>'
 								+'<input id="radio'+count+'" type="radio" name="status_'+counter+'" value="สาย"  checked="checked"><label for="radio'+count+++'">สาย</label>'
@@ -110,7 +110,7 @@ function editAttendance(majorName, eduBackground, eduLevel, term,
 								+'</div>']).draw();
 			}else if (item.attendance.statusActivity == 'ขาด') {
 				var t = $('#modal-table').DataTable().row.add(
-						[ counter, item.attendance.student.studentID, name,
+						[ counter, item.attendance.student.studentID+'<input name="stuID[]" type="hidden" value="'+item.attendance.student.studentID+'">', name,
 								item.attendance.student.lastName,					
 								'<div class="radiocheckbox"><input id="radio'+count+'" type="radio" name="status_'+counter+'" value="มา"><label for="radio'+count+++'">มา</label>'
 								+'<input id="radio'+count+'" type="radio" name="status_'+counter+'" value="สาย"><label for="radio'+count+++'">สาย</label>'
@@ -120,7 +120,7 @@ function editAttendance(majorName, eduBackground, eduLevel, term,
 								+'</div>']).draw();
 			}else if (item.attendance.statusActivity == 'ลาป่วย') {
 				var t = $('#modal-table').DataTable().row.add(
-						[ counter, item.attendance.student.studentID, name,
+						[ counter, item.attendance.student.studentID+'<input name="stuID[]" type="hidden" value="'+item.attendance.student.studentID+'">', name,
 								item.attendance.student.lastName,					
 								'<div class="radiocheckbox"><input id="radio'+count+'" type="radio" name="status_'+counter+'" value="มา"><label for="radio'+count+++'">มา</label>'
 								+'<input id="radio'+count+'" type="radio" name="status_'+counter+'" value="สาย"><label for="radio'+count+++'">สาย</label>'
@@ -130,7 +130,7 @@ function editAttendance(majorName, eduBackground, eduLevel, term,
 								+'</div>']).draw();
 			}else if (item.attendance.statusActivity == 'ลากิจ') {
 				var t = $('#modal-table').DataTable().row.add(
-						[ counter, item.attendance.student.studentID, name,
+						[ counter, item.attendance.student.studentID+'<input name="stuID[]" type="hidden" value="'+item.attendance.student.studentID+'">', name,
 								item.attendance.student.lastName,					
 								'<div class="radiocheckbox"><input id="radio'+count+'" type="radio" name="status_'+counter+'" value="มา"><label for="radio'+count+++'">มา</label>'
 								+'<input id="radio'+count+'" type="radio" name="status_'+counter+'" value="สาย"><label for="radio'+count+++'">สาย</label>'

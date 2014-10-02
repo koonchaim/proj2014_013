@@ -18,7 +18,7 @@
 				</div>
 
 				<div class="table-responsive">
-					<form>
+					<form action="EditAttendanceServlet" method="post" id="editAttendanceFrom">
 						<table id="modal-table" class="table table-bordered table-hover">
 							<thead>
 								<tr>
