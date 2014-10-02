@@ -81,6 +81,11 @@ function editAttendance(majorName, eduBackground, eduLevel, term,
 		$('#DateShow').val(dShow);
 		$('#EducationShow').val(eShow);
 		$('#TermShow').val(tShow);
+		
+		$('#EditDateShow').val(dateAttendance);
+		$('#EditEduBackground').val(eduBackground);
+		$('#EditEduLevel').val(eduLevel);
+		$('#EditTermShow').val(term);
 
 		var counter = 1;
 		var count = 1;

@@ -88,23 +88,38 @@ public class EditAttendanceServlet extends HttpServlet {
 
 		} else {
 			int count = 1;
+			String editDate = request.getParameter("EditDateShow");
+			Date dateAttendance;
+			try {
+				dateAttendance = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse(editDate);
 
-			for (int i = 0; i < studentID.length; i++) {
-				String status = request.getParameter("status_" + count);
+				for (int i = 0; i < studentID.length; i++) {
+					String status = request.getParameter("status_" + count);
 
-				System.out.println("Attendance : " + studentID[i] + " - " + status);
+					System.out.println("Attendance : " + studentID[i] + " - " + status);
 
-				AttendanceBean attendanceBean = new AttendanceBean();
-				attendanceBean.setStatusActivity(status);
+					AttendanceBean attendanceBean = new AttendanceBean();
+					attendanceBean.setStatusActivity(status);
 
-				StudentBean studentBean = new StudentBean();
-				studentBean.setStudentID(studentID[i]);
-				attendanceBean.setStudent(studentBean);
+					StudentBean studentBean = new StudentBean();
+					studentBean.setStudentID(studentID[i]);
+					attendanceBean.setStudent(studentBean);
 
-				ScheduleBean scheduleBean = new ScheduleBean();
-				scheduleBean.setAttendance(attendanceBean);
+					ScheduleBean scheduleBean = new ScheduleBean();
+					scheduleBean.setDateAttendance(dateAttendance);
+					scheduleBean.setAttendance(attendanceBean);
 
-				count++;
+					boolean chkUpdateAttendance = edtMng.updateAttendance(scheduleBean);
+					if (chkUpdateAttendance) {
+						System.out.println("Update : " + studentID[i] + " - " + status + " Success");
+						response.sendRedirect("ViewAllAttendanceServlet");
+					}
+
+					count++;
+				}
+			} catch (ParseException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 
 		}

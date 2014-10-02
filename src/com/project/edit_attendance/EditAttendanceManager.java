@@ -64,9 +64,33 @@ public class EditAttendanceManager {
 		return listSchedule;
 	}
 
-	public boolean updateAttendance(String status, String studentID) {
-		boolean chk = false;
+	public boolean updateAttendance(ScheduleBean scheduleBean) throws SQLException {
+		Connection dbConnection = null;
+		PreparedStatement preparedStatement = null;
+		String updateSQL = "UPDATE attendance JOIN schedule ON schedule.Schedule_ID = attendance.Schedule_ID"
+				+ " SET attendance.statusActivity = ? WHERE attendance.studentID = ? AND schedule.dateAttendance = ?";
+		try {
+			dbConnection = ConnectDB.getInstance().DBConnection();
+			preparedStatement = dbConnection.prepareStatement(updateSQL);
+			preparedStatement.setString(1, scheduleBean.getAttendance().getStatusActivity());
+			preparedStatement.setString(2, scheduleBean.getAttendance().getStudent().getStudentID());
 
-		return chk;
+			java.sql.Date sqlCreateDate = new java.sql.Date(scheduleBean.getDateAttendance().getTime());
+			preparedStatement.setDate(3, sqlCreateDate);
+
+			preparedStatement.executeUpdate();
+			return true;
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (preparedStatement != null) {
+				preparedStatement.close();
+			}
+			if (dbConnection != null) {
+				dbConnection.close();
+			}
+		}
+		return false;
 	}
 }

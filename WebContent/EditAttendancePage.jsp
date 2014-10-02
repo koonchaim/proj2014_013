@@ -19,6 +19,7 @@
 
 				<div class="table-responsive">
 					<form action="EditAttendanceServlet" method="post" id="editAttendanceFrom">
+					<input name="EditDateShow" id="EditDateShow" type="hidden" value="EditDateShow">
 						<table id="modal-table" class="table table-bordered table-hover">
 							<thead>
 								<tr>
@@ -33,7 +34,6 @@
 	
 							</tbody>
 						</table>
-
 					</form>
 				</div>
 				<!-- /.box-body -->
