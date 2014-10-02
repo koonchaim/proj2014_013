@@ -112,11 +112,10 @@ public class EditAttendanceServlet extends HttpServlet {
 					boolean chkUpdateAttendance = edtMng.updateAttendance(scheduleBean);
 					if (chkUpdateAttendance) {
 						System.out.println("Update : " + studentID[i] + " - " + status + " Success");
-						response.sendRedirect("ViewAllAttendanceServlet");
 					}
-
 					count++;
 				}
+				response.sendRedirect("ViewAllAttendanceServlet");
 			} catch (ParseException | SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
