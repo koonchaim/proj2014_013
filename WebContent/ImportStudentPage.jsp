@@ -36,6 +36,7 @@
 			<h1>
 				<i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;Import Student Data
 			</h1>
+			<p align="right"><a href="${pageContext.request.contextPath}/fileExcel/student.xlsx"><i class="glyphicon glyphicon-download-alt">  โหลดตัวอย่างการอัพโหลดไฟล์</i></a></p>
 			</section> 
 			<section class="content">
 			<form class="form-horizontal" role="form"
