@@ -43,7 +43,7 @@
 			<div class="col-md-6 col-md-offset-3">
 				<div class="thumbnail">
 					<c:forEach  items="${ViewProfile}" var="item">
-						<img data-src="holder.js/300x200" alt="..." src="images/profile/${item.path_image }">
+						<img data-src="holder.js/300x200" alt="..." src="${pageContext.request.contextPath}/images/profile/${item.path_image }">
 						<div align="center">
 							<p style="color: ${ErrorColor}">${ErrorMassage}</p>
 						</div>
