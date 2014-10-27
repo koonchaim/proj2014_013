@@ -107,6 +107,7 @@ public class PrintLetterOfParent extends HttpServlet {
 				request.setAttribute("selectEducation", selectEducation);
 				request.setAttribute("selectEducation1", selectEducation1);
 				String term = request.getParameter("selectPrintTerm");
+				request.setAttribute("term", term);
 
 				List<String> listTerm = viewAllAttendanceMng.findAllTerm(majorName, selectEducation, Integer.parseInt(selectEducation1));
 				request.setAttribute("listTerm", listTerm);
@@ -124,7 +125,7 @@ public class PrintLetterOfParent extends HttpServlet {
 
 				request.getRequestDispatcher("PrintLetterOfActivity.jsp").forward(request, response);
 			} else if (studentID != null) {
-
+				String termName = request.getParameter("term");
 				ServletOutputStream servletOutputStream = response.getOutputStream();
 				byte[] bytes = null;
 				Map<String, Object> param = new HashMap<String, Object>();
@@ -135,6 +136,7 @@ public class PrintLetterOfParent extends HttpServlet {
 					Connection conn = ConnectDB.getInstance().DBConnection();
 					// ทำการส่งค่าพารามิเตอร์ไปยัง iReport
 					param.put("studentID", studentID);
+					param.put("termName", termName);
 					// กำหนด path ของไฟล์ i-report
 					System.out.print(ServletUtils.getReportFile(getServletContext(), "letterReport.jasper"));
 					bytes = JasperRunManager.runReportToPdf(ServletUtils.getReportFile(getServletContext(), "letterReport.jasper"), param, conn);

@@ -15,6 +15,9 @@
 	<parameter name="studentID" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="termName" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT student.`studentID`,student.`antecedent`,student.`firstName`,student.`lastName`,major.`majorName`,educationLevel.`educationalBackground`
 , educationLevel.`educationLevel`, parent.`antecedent_parent`, parent.`firstName_parent`,parent.`lastName_parent`
@@ -28,6 +31,7 @@ JOIN attendance ON student.`studentID` = attendance.`studentID`
 JOIN SCHEDULE ON schedule.`Schedule_ID` = attendance.`Schedule_ID`
 WHERE attendance.`statusActivity` = 'ขาด'
 AND student.`studentID` = $P{studentID}
+AND `schedule`.`term` = $P{termName}
 GROUP BY student.`studentID`]]>
 	</queryString>
 	<field name="studentID" class="java.lang.String">

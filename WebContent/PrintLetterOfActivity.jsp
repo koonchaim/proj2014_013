@@ -106,7 +106,7 @@
 												<td class="TextCenter">${item.lastName}</td>
 												<td class="TextCenter">
 													<a class="btn btn-primary btn-circle" target="_blank"
-														href="PrintLetterOfParent?studentID=${item.studentID}">
+														href="PrintLetterOfParent?studentID=${item.studentID}&term=${term}">
 														<i class="fa fa-print" Title="พิมพ์"></i>
 													</a>
 												</td>
