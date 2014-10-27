@@ -54,8 +54,6 @@ public class PrintListStudentForActivitiesManager {
 		int diffTotal = (totalDay * 80) / 100;
 		int diffDayTotal = totalDay - diffTotal;
 
-		System.out.println("StartWeek  : " + startCalendar.get(Calendar.WEEK_OF_YEAR) + "\tWeek");
-		System.out.println("EndWeek    : " + endCalendar.get(Calendar.WEEK_OF_YEAR) + "\tWeek");
 		System.out.println("Diff Weeks : " + diffWeeks + "\tWeek");
 		System.out.println("Diff Days  : " + diffDays + "\tDay");
 		System.out.println("TotalDay   : " + totalDay + "\tDay");

@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="letter1" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e11276d0-fc04-4dae-b683-96e0e9932f3b">
 	<property name="ireport.zoom" value="1.8660295208389346"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="272"/>
+	<property name="ireport.y" value="32"/>
 	<parameter name="RDay" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA[new SimpleDateFormat("dd").format(new Date())]]></defaultValueExpression>
 	</parameter>
@@ -97,7 +97,7 @@ GROUP BY student.`studentID`]]>
 		<band height="167" splitType="Stretch">
 			<image>
 				<reportElement x="263" y="15" width="138" height="57" uuid="993f289b-82d3-4964-898c-913354fc7db3"/>
-				<imageExpression><![CDATA["C:\\Users\\ITSCI\\Desktop\\k.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["k.jpg"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="355" y="61" width="98" height="25" uuid="dc1e7ff0-1efb-4004-8f54-81151d40573b"/>
