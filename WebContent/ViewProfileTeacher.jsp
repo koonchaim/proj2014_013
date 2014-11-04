@@ -12,14 +12,8 @@
 <link rel="stylesheet" href="css/sb-admin.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/icomoon-social.css">
-<link
-	href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800'
-	rel='stylesheet' type='text/css'>
 
 <link rel="stylesheet" href="css/leaflet.css" />
-<!--[if lte IE 8]>
-		    <link rel="stylesheet" href="css/leaflet.ie.css" />
-		<![endif]-->
 <link rel="stylesheet" href="css/main.css">
 <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 <link rel='stylesheet' type='text/css' href='css/menu_source/styles.css' />
@@ -100,8 +94,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
-					<a id="modal-form-submitEditTeacher" class='btn btn-primary'
-						href="#">แก้ไข</a>
+					<a id="modal-form-submitEditTeacher" class='btn btn-primary'>แก้ไข</a>
 				</div>
 			</div>
 			<!-- /.modal-content -->

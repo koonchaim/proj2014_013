@@ -9,7 +9,7 @@
 			<ul>
 				<li class="active"><a href="index.jsp">Home</a></li>
 				<li><a href="SearchStudentDataServlet">Search Student Data</a></li>
-				<li><a href="LoginServlet">Login</a></li>
+				<li><a href="LoginPage.jsp">Login</a></li>
 			</ul>
 		</nav>
 	</div>

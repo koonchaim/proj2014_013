@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <div class="row">
 <form id="modal-formEditTeacher" accept-charset="UTF-8" data-remote="true"
-		action="EditProfileTeacherServlet" method="post" class="form-horizontal" role="form" >
+		action="EditProfileTeacherServlet" method="post" class="form-horizontal" name="editProfileChk" onSubmit="JavaScript:return editProfileTeacher();">
 			<!-- edit form column -->
 				<h3>ข้อมูลส่วนตัว</h3>
 				<div class="form-group">

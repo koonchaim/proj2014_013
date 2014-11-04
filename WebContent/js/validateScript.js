@@ -17,6 +17,101 @@ function SearchStudentData() {
 		return false;
 	} 
 }
+function editProfileTeacher() {
+	if (document.editProfileChk.profileFirstName.value == "") {
+		alert('กรุณากรอก ชื่อ');
+		return false;
+	} else if (document.editProfileChk.profileLastName.value == "") {
+		alert("กรุณากรอก นามสกุล ");
+		return false;
+	}  else if (document.editProfileChk.profileEmail.value == "") {
+		alert("กรุณากรอก อีเมล ");
+		return false;
+	}  else if (document.editProfileChk.profilePhone.value == "") {
+		alert("กรุณากรอก เบอโทรศัพท์ ");
+		return false;
+	} else if (document.editProfileChk.profilePhone.value.length != 10) {
+		alert("หมายเลขโทรศัพท์ต้องมี 10 หลักเท่านั้น");
+		return false;
+	} else if (!document.editProfileChk.profilePhone.value.match(/^\d*$/)) {
+		alert("กรุณา กรอกหมายหมายเลขโทรศัพท์เป็นตัวเลขเท่านั้น ");
+		return false;
+	}  else if (!document.editProfileChk.profileEmail.value.match(/^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*\@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.([a-zA-Z]){2,4})$/)) {
+		alert("รูปแบบ email ไม่ถูกต้อง ");
+		return false;
+	}
+}
+
+function registerTeacher() {
+	if (document.regisTeacherchk.IdCardTeacher.value == "") {
+		alert('กรุณากรอกข้อมูล หมายเลขบัตรประชาชน');
+		return false;
+	} else if (!document.regisTeacherchk.IdCardTeacher.value.match(/^\d*$/)) {
+		alert("กรุณา กรอกหมายเลขบัตรประชาชนเป็นตัวเลขเท่านั้น ");
+		return false;
+	} else if (document.regisTeacherchk.IdCardTeacher.value.length != 13) {
+		alert("หมายเลขบัตรประชาชนต้องมี 13 หลักเท่านั้น");
+		return false;
+	} else if (document.regisTeacherchk.FirstNameTeacher.value == "") {
+		alert("กรุณากรอกข้อมูล ชื่อ");
+		return false;
+	} else if (document.regisTeacherchk.LastNameTeacher.value == "") {
+		alert("กรุณากรอกข้อมูล นามสกุล");
+		return false;
+	} else if (document.regisTeacherchk.EducationalBackgroundTeacher.value == "") {
+		alert("กรุณากรอกข้อมูล สถาบันการศึกษา");
+		return false;
+	} else if (document.regisTeacherchk.EducationalInstitutionTeacher.value == "") {
+		alert("กรุณากรอกข้อมูล วุฒิการศึกษา");
+		return false;
+	} else if (document.regisTeacherchk.EducationalMajorTeacher.value == "") {
+		alert("กรุณากรอกข้อมูล สาขาวิชา");
+		return false;
+	} else if (document.regisTeacherchk.EmailTeacher.value == "") {
+		alert("กรุณากรอกข้อมูล อีเมล");
+		return false;
+	}  else if (!document.regisTeacherchk.EmailTeacher.value.match(/^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*\@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.([a-zA-Z]){2,4})$/)) {
+		alert("รูปแบบ email ไม่ถูกต้อง ");
+		return false;
+	} else if (document.regisTeacherchk.PhoneTeacher.value == "") {
+		alert("กรุณากรอกข้อมูล เบอร์โทรศัพท์");
+		return false;
+	} else if (!document.regisTeacherchk.PhoneTeacher.value.match(/^\d*$/)) {
+		alert("กรุณา กรอกหมายหมายเลขโทรศัพท์เป็นตัวเลขเท่านั้น ");
+		return false;
+	} else if (document.regisTeacherchk.PhoneTeacher.value.length != 10) {
+		alert("หมายเลขโทรศัพท์ต้องมี 10 หลักเท่านั้น");
+		return false;
+	} else if (document.regisTeacherchk.VacancyTeacher.value == "") {
+		alert("กรุณากรอกข้อมูล ตำแหน่งงาน");
+		return false;
+	} else if (document.regisTeacherchk.UsernameTeacher.value == "") {
+		alert("กรุณากรอกข้อมูล username");
+		return false;
+	} else if (!document.regisTeacherchk.UsernameTeacher.value.match(/^([a-z0-9\_])+$/i)) {
+		alert("ชื่อผู้ใช้ กรอกได้เฉพาะ a-Z, A-Z, 0-9 ");
+		return false;
+	} else if (document.regisTeacherchk.UsernameTeacher.value.length > 15) {
+		alert("ชื่อผู้ใช้ต้องไม่เกิน 15 ตัวอักษร");
+		return false;
+	} else if (document.regisTeacherchk.PasswordTeacher.value == "") {
+		alert("กรุณากรอกข้อมูล password");
+		return false;
+	} else if (document.regisTeacherchk.ConfirmPasswordTeacher.value == "") {
+		alert("กรุณากรอกข้อมูล confirm password");
+		return false;
+	} else if (document.regisTeacherchk.PasswordTeacher.value != document.regisTeacherchk.ConfirmPasswordTeacher.value) {
+		alert('รหัสผ่านไม่ตรงกัน');
+		return false;
+	} else if (!document.regisTeacherchk.PasswordTeacher.value.match(/^([a-z0-9\_])+$/i)) {
+		alert("รหัสผ่าน กรอกได้เฉพาะ a-Z, A-Z, 0-9 ");
+		return false;
+	} else if (document.regisTeacherchk.PasswordTeacher.value.length >= 16 || document.regisTeacherchk.PasswordTeacher.value.length <= 5) {
+		alert("รหัสผ่านต้องไม่ตำกว่า 5 ตัว และไม่เกิน 16 ตัว");
+		return false;
+	}
+}
+/*
 
 function addTeacher() {
 	if (document.frm.username.value == "") {
@@ -215,3 +310,4 @@ function CancelClasschk() {
 		return false;
 	}
 }
+*/

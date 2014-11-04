@@ -142,12 +142,10 @@
 
 	<!-- script -->
 
-	<script
-		src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+	<script	src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 	<script src="Admin/js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
 	<script src="Admin/js/bootstrap.min.js" type="text/javascript"></script>
-	<script
-		src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+	<script	src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 	<script src="Admin/js/AdminLTE/app.js" type="text/javascript"></script>
 	<script type="text/javascript" src="js/validateScript.js"></script>
 	<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>

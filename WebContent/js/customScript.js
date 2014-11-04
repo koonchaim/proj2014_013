@@ -1,19 +1,21 @@
 $('#modal-form-submit').on('click', function(e) {
-	// We don't want this to act as a link so cancel the link action
 	e.preventDefault();
-
-	// Find form and submit it
 	$('#modal-form').submit();
-
-	// alert("Hello");
 });
 
 $('#modal-form-submitEditTeacher').on('click', function(e) {
-	// We don't want this to act as a link so cancel the link action
 	e.preventDefault();
-
-	// Find form and submit it
 	$('#modal-formEditTeacher').submit();
+});
+
+$('#modal-form-submit-register-teacher').on('click', function(e) {
+	e.preventDefault();
+	$('#modal-form-regis-teacher').submit();
+});
+
+$('#modal-form-submit-edit-teacher').on('click', function(e) {
+	e.preventDefault();
+	$('#modal-form-edit-teacher').submit();
 });
 
 function confirm_delete() {
@@ -95,8 +97,8 @@ function editAttendance(majorName, eduBackground, eduLevel, term,
 			
 			if (item.attendance.statusActivity == 'มา') {
 				var t = $('#modal-table').DataTable().row.add(
-						[ counter, item.attendance.student.studentID +'<input name="stuID[]" type="hidden" value="'+item.attendance.student.studentID+'">', name,
-								item.attendance.student.lastName,					
+						[ counter, item.attendance.student.studentID+'<input name="stuID[]" type="hidden" value="'+item.attendance.student.studentID+'">' , name,
+								item.attendance.student.lastName,								
 								'<div class="radiocheckbox"><input id="radio'+count+'" type="radio" name="status_'+counter+'" value="มา" checked="checked"><label for="radio'+count+++'">มา</label>'
 								+'<input id="radio'+count+'" type="radio" name="status_'+counter+'" value="สาย"><label for="radio'+count+++'">สาย</label>'
 								+'<input id="radio'+count+'" type="radio" name="status_'+counter+'" value="ขาด"><label for="radio'+count+++'">ขาด</label>'

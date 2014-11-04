@@ -170,32 +170,6 @@ function ListEducation(){
 	</div>
 
 	<!-- Modal -->
-	<div class="modal fade" id="uploadStudent">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
-					<h4 class="modal-title">เพิ่มนักศึกษา อัพโหลดไฟล์</h4>
-				</div>
-				<div class="modal-body">
-					<jsp:include page="Admin/RegisterStudentUploadfilePage.jsp"
-						flush="false" />
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
-					<button type="button" class="btn btn-info">
-						<i class="ion ion-upload"></i>&nbsp;&nbsp;Upload
-					</button>
-
-				</div>
-			</div>
-			<!-- /.modal-content -->
-		</div>
-		<!-- /.modal-dialog -->
-	</div>
-	<!-- /.modal -->
-
 	<div class="modal fade" id="addStudent">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -252,19 +226,12 @@ function ListEducation(){
 	<script src="Admin/js/bootstrap.min.js" type="text/javascript"></script>
 	<script
 		src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-	<script src="Admin/js/plugins/morris/morris.min.js"
-		type="text/javascript"></script>
-	<script src="Admin/js/plugins/sparkline/jquery.sparkline.min.js"
-		type="text/javascript"></script>
-	<script
-		src="Admin/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"
-		type="text/javascript"></script>
-	<script
-		src="Admin/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"
-		type="text/javascript"></script>
+	<script src="Admin/js/plugins/morris/morris.min.js"	type="text/javascript"></script>
+	<script src="Admin/js/plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
+	<script	src="Admin/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
+	<script	src="Admin/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
 
-	<script src="Admin/js/plugins/iCheck/icheck.min.js"
-		type="text/javascript"></script>
+	<script src="Admin/js/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
 	<script src="Admin/js/AdminLTE/app.js" type="text/javascript"></script>
 	<script type="text/javascript" src="js/validateScript.js"></script>
 
