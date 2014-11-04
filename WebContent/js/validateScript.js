@@ -7,6 +7,17 @@ function LoginSubmit() {
 		return false;
 	}
 }
+
+function SearchStudentData() {
+	if (document.frmChk.searchStudentID.value.length != 10) {
+		alert('รหัสประจำตัวนักศึกษาต้องมี 10 หลักเท่านั้น');
+		return false;
+	} else if (!document.frmChk.searchStudentID.value.match(/^\d*$/)) {
+		alert("กรุณา กรอกรหัสประจำตัวนักศึกษาเป็นตัวเลขเท่านั้น ");
+		return false;
+	} 
+}
+
 function addTeacher() {
 	if (document.frm.username.value == "") {
 		alert('กรุณากรอกข้อมูล ชื่อผู้ใข้');

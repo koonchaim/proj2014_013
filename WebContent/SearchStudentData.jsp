@@ -12,10 +12,6 @@
 
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/icomoon-social.css">
-<link
-	href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800'
-	rel='stylesheet' type='text/css'>
-
 <link rel="stylesheet" href="css/leaflet.css" />
 
 <link rel="stylesheet" href="css/main.css">
@@ -49,10 +45,10 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="col-md-3"></div>
-									<form role="form" action="SearchStudentDataServlet" method="post">
+									<form action="SearchStudentDataServlet" method="post" name="frmChk" onSubmit="JavaScript:return SearchStudentData();">
 										<div class="col-md-4">
 											<div class="form-group">
-												<input class="form-control" name="searchStudentID">
+												<input type="text" class="form-control" name="searchStudentID" >
 											</div>
 										</div>
 										<div class="col-md-3">
@@ -208,5 +204,7 @@
 	<script src="js/jquery.bxslider.js"></script>
 	<script src="js/main-menu.js"></script>
 	<script src="js/template.js"></script>
+	
+	<script type="text/javascript" src="js/validateScript.js"></script>
 </body>
 </html>
