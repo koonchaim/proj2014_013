@@ -13,10 +13,12 @@ $('#modal-form-submit-register-teacher').on('click', function(e) {
 	$('#modal-form-regis-teacher').submit();
 });
 
-$('#modal-form-submit-edit-teacher').on('click', function(e) {
+$('#modal-form-edit-teacher-submit').on('click', function(e) {
 	e.preventDefault();
-	$('#modal-form-edit-teacher').submit();
+	$('#formEditTeacher').submit();
 });
+
+$('#btnImportTeacher').attr('href','ImportTeacherServlet');
 
 function confirm_delete() {
 	if (confirm(urldecode('Confirm Delete!!!'))) {

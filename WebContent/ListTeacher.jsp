@@ -68,7 +68,6 @@
 										<i class="glyphicon glyphicon-trash" Title="ลบ"></i>
 									</button>
 								</a>
-
 							</td>
 						</tr>
 					</c:forEach>
@@ -79,7 +78,7 @@
 									data-target="#addTeacher">
 									<i class="glyphicon glyphicon-plus"></i>&nbsp;&nbsp;เพิ่มอาจารย์
 								</button>
-								<button type="submit" class="btn btn-primary btn-lg" onclick="window.location.href='ImportTeacherServlet'"><i class="ion ion-upload"></i>&nbsp;&nbsp;อัพโหลดไฟล์</button>
+								<a id="btnImportTeacher" class='btn btn-primary btn-lg'><i class="ion ion-upload"></i>&nbsp;&nbsp;อัพโหลดไฟล์</a>
 							</div>
 						</td>
 					</tr>
@@ -88,10 +87,7 @@
 		</div>
 		</section> </aside>
 	</div>
-	<!-- Modal -->
-<!-- <form id="modal-form-regis" accept-charset="UTF-8" data-remote="true" -->
-<!-- 	method="post" action="RegisterTeacherServlet" -->
-<!-- 	enctype="multipart/form-data" class="form-horizontal"> -->
+	<!-- Modal addTeacher -->
 	<div class="modal fade" id="addTeacher">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -105,18 +101,14 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
-<!-- 					<input type="submit" value="เพิ่ม" class='btn btn-primary'> -->
 					<a id="modal-form-submit-register-teacher" class='btn btn-primary'>เพิ่ม</a>
-				</div>
-				
+				</div>				
 			</div>
-			<!-- /.modal-content -->
 		</div>
-		<!-- /.modal-dialog -->
 	</div>
-<!-- </form> -->
 	<!-- /.modal -->
 
+	<!-- Modal editTeacher-->
 	<div class="modal fade" id="editTeacher">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -130,13 +122,10 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
-<!-- 					<a class='btn btn-primary' onclick="document.getElementById('formEditTeacher').submit();">บันทึก</a> -->
-					<a id="modal-form-submit-edit-teacher" class='btn btn-primary'>แก้ไข</a>
+					<a id="modal-form-edit-teacher-submit" class='btn btn-primary'>แก้ไข</a>
 				</div>
 			</div>
-			<!-- /.modal-content -->
 		</div>
-		<!-- /.modal-dialog -->
 	</div>
 	<!-- /.modal -->
 

@@ -3,6 +3,7 @@
 	pageEncoding="UTF-8"%>
 <!-- Navigation & Logo-->
 <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+<link rel="stylesheet" href="css/modalMessage.css">
 <div class="mainmenu-wrapper">
 		<div class="container">
 			<header>

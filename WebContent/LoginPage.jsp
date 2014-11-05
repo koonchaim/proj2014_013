@@ -12,10 +12,7 @@
 
 <link rel="stylesheet" href="css/icomoon-social.css">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<link
-	href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800'
-	rel='stylesheet' type='text/css'>
-
+<link rel="stylesheet" href="css/modalMessage.css">
 <link rel="stylesheet" href="css/leaflet.css" />
 <link rel="stylesheet" href="css/main.css">
 <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
@@ -26,7 +23,7 @@
 
 	<div class="section">
 		<div class="container">
-<p style="color: red;text-align: center;">${loginError}</p>
+			<p style="color: red;text-align: center;">${loginError}</p>
 			<div id="loginbox" style="margin-top: 50px;"
 				class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 				<div class="panel panel-info">
@@ -85,7 +82,7 @@
 			</div>
 		</div>
 	</div>
-
+<jsp:include page="modalMessage.jsp" />
 	<!-- Javascripts -->
 	<script
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

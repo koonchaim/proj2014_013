@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<div class="row">		
-<form id="modal-form-edit-teacher" accept-charset="UTF-8" data-remote="true"
+    pageEncoding="UTF-8"%>	
+<form id="formEditTeacher" accept-charset="UTF-8" data-remote="true"
 	method="post" action="EditTeacherServlet"
-	enctype="multipart/form-data" class="form-horizontal">
+	enctype="multipart/form-data" class="form-horizontal" name="editTeacherDataChk" 
+	onSubmit="JavaScript:return editTeacherData();">
 			<!-- left column -->
 			<div class="form-group">
 				<div align="center">
@@ -106,4 +106,3 @@
 						</div>
 					</div>	
 			</form>
-		</div>

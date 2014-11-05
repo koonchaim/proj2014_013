@@ -1,16 +1,20 @@
 function LoginSubmit() {
 	if (document.login.username.value == "") {
-		alert('กรุณากรอก ชื่อผู้ใข้');
+		$('#MessageAlert').text('กรุณากรอก ชื่อผู้ใข้');
+		$('#danger').modal('show');
 		return false;
 	} else if (document.login.password.value == "") {
-		alert('กรุณากรอก รหัสผ่าน');
+		$('#MessageAlert').text('กรุณากรอก รหัสผ่าน');
+		$('#danger').modal('show');
 		return false;
 	}
 }
 
 function SearchStudentData() {
 	if (document.frmChk.searchStudentID.value.length != 10) {
-		alert('รหัสประจำตัวนักศึกษาต้องมี 10 หลักเท่านั้น');
+		$('#MessageAlert').text('รหัสประจำตัวนักศึกษาต้องมี 10 หลักเท่านั้น');
+		$('#danger').modal('show');
+//		alert('รหัสประจำตัวนักศึกษาต้องมี 10 หลักเท่านั้น');
 		return false;
 	} else if (!document.frmChk.searchStudentID.value.match(/^\d*$/)) {
 		alert("กรุณา กรอกรหัสประจำตัวนักศึกษาเป็นตัวเลขเท่านั้น ");
@@ -108,6 +112,28 @@ function registerTeacher() {
 		return false;
 	} else if (document.regisTeacherchk.PasswordTeacher.value.length >= 16 || document.regisTeacherchk.PasswordTeacher.value.length <= 5) {
 		alert("รหัสผ่านต้องไม่ตำกว่า 5 ตัว และไม่เกิน 16 ตัว");
+		return false;
+	}
+}
+
+function editTeacherData() {
+	if (document.editTeacherDataChk.editTeacherFirstName.value == "") {
+		alert("กรุณากรอกข้อมูล ชื่อ");
+		return false;
+	} else if (document.editTeacherDataChk.editTeacherLastName.value == "") {
+		alert("กรุณากรอกข้อมูล นามสกุล");
+		return false;
+	} else if (document.editTeacherDataChk.editTeacherEducationalInstitution.value == "") {
+		alert("กรุณากรอกข้อมูล วุฒิการศึกษา");
+		return false;
+	} else if (document.editTeacherDataChk.editTeacherEducationalMajor.value == "") {
+		alert("กรุณากรอกข้อมูล สาขาวิชา");
+		return false;
+	} else if (document.editTeacherDataChk.editTeacherEducationalBackground.value == "") {
+		alert("กรุณากรอกข้อมูล สถาบันการศึกษา");
+		return false;
+	} else if (document.editTeacherDataChk.editTeacherVacancy.value == "") {
+		alert("กรุณากรอกข้อมูล ตำแหน่งงาน");
 		return false;
 	}
 }

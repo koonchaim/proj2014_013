@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 	<form id="modal-form-regis-teacher" accept-charset="UTF-8" data-remote="true"
 	method="post" action="RegisterTeacherServlet"
-	enctype="multipart/form-data" class="form-horizontal" name="regisTeacherchk" onSubmit="JavaScript:return registerTeacher();">
+	enctype="multipart/form-data" class="form-horizontal" name="regisTeacherchk" 
+	onSubmit="JavaScript:return registerTeacher();">
 	<div class="form-group">
 		<div align="center">
 			<div class="fileinput fileinput-new" data-provides="fileinput">
