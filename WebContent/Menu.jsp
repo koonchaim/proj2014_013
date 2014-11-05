@@ -6,11 +6,11 @@
 
 <c:set var="login" value="${login }" scope="session" />
 <c:if test="${empty sessionScope['login']}">
-    <c:redirect url="LoginServlet" />
+    <c:redirect url="LoginPage.jsp" />
 </c:if>
 <%
 	int timeout = session.getMaxInactiveInterval();
-	response.setHeader("Refresh", timeout + "; URL = LoginServlet");
+	response.setHeader("Refresh", timeout + "; URL = LoginPage.jsp");
 %>
 	        <div class="container">
 		        <nav id="mainmenu" class="mainmenu">

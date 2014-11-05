@@ -14,128 +14,174 @@ function SearchStudentData() {
 	if (document.frmChk.searchStudentID.value.length != 10) {
 		$('#MessageAlert').text('รหัสประจำตัวนักศึกษาต้องมี 10 หลักเท่านั้น');
 		$('#danger').modal('show');
-//		alert('รหัสประจำตัวนักศึกษาต้องมี 10 หลักเท่านั้น');
 		return false;
 	} else if (!document.frmChk.searchStudentID.value.match(/^\d*$/)) {
-		alert("กรุณา กรอกรหัสประจำตัวนักศึกษาเป็นตัวเลขเท่านั้น ");
+		$('#MessageAlert').text('กรุณา กรอกรหัสประจำตัวนักศึกษาเป็นตัวเลขเท่านั้น');
+		$('#danger').modal('show');
 		return false;
 	} 
 }
+
 function editProfileTeacher() {
 	if (document.editProfileChk.profileFirstName.value == "") {
-		alert('กรุณากรอก ชื่อ');
+		$('#MessageAlert').text('กรุณากรอก ชื่อ');
+		$('#danger').modal('show');
 		return false;
 	} else if (document.editProfileChk.profileLastName.value == "") {
-		alert("กรุณากรอก นามสกุล ");
+		$('#MessageAlert').text('กรุณากรอก นามสกุล');
+		$('#danger').modal('show');
 		return false;
 	}  else if (document.editProfileChk.profileEmail.value == "") {
-		alert("กรุณากรอก อีเมล ");
+		$('#MessageAlert').text('กรุณากรอก อีเมล');
+		$('#danger').modal('show');
 		return false;
 	}  else if (document.editProfileChk.profilePhone.value == "") {
-		alert("กรุณากรอก เบอโทรศัพท์ ");
+		$('#MessageAlert').text('กรุณากรอก เบอโทรศัพท์');
+		$('#danger').modal('show');
 		return false;
 	} else if (document.editProfileChk.profilePhone.value.length != 10) {
-		alert("หมายเลขโทรศัพท์ต้องมี 10 หลักเท่านั้น");
+		$('#MessageAlert').text('หมายเลขโทรศัพท์ต้องมี 10 หลักเท่านั้น');
+		$('#danger').modal('show');
 		return false;
 	} else if (!document.editProfileChk.profilePhone.value.match(/^\d*$/)) {
-		alert("กรุณา กรอกหมายหมายเลขโทรศัพท์เป็นตัวเลขเท่านั้น ");
+		$('#MessageAlert').text('กรุณา กรอกหมายหมายเลขโทรศัพท์เป็นตัวเลขเท่านั้น ');
+		$('#danger').modal('show');
 		return false;
 	}  else if (!document.editProfileChk.profileEmail.value.match(/^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*\@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.([a-zA-Z]){2,4})$/)) {
-		alert("รูปแบบ email ไม่ถูกต้อง ");
+		$('#MessageAlert').text('รูปแบบ email ไม่ถูกต้อง ');
+		$('#danger').modal('show');
 		return false;
 	}
 }
+
 
 function registerTeacher() {
 	if (document.regisTeacherchk.IdCardTeacher.value == "") {
-		alert('กรุณากรอกข้อมูล หมายเลขบัตรประชาชน');
+		$('#MessageAlert').text('กรุณากรอกข้อมูล หมายเลขบัตรประชาชน');
+		$('#danger').modal('show');
 		return false;
 	} else if (!document.regisTeacherchk.IdCardTeacher.value.match(/^\d*$/)) {
-		alert("กรุณา กรอกหมายเลขบัตรประชาชนเป็นตัวเลขเท่านั้น ");
+		$('#MessageAlert').text('กรุณา กรอกหมายเลขบัตรประชาชนเป็นตัวเลขเท่านั้น ');
+		$('#danger').modal('show');
 		return false;
 	} else if (document.regisTeacherchk.IdCardTeacher.value.length != 13) {
-		alert("หมายเลขบัตรประชาชนต้องมี 13 หลักเท่านั้น");
+		$('#MessageAlert').text('หมายเลขบัตรประชาชนต้องมี 13 หลักเท่านั้น');
+		$('#danger').modal('show');
 		return false;
 	} else if (document.regisTeacherchk.FirstNameTeacher.value == "") {
-		alert("กรุณากรอกข้อมูล ชื่อ");
+		$('#MessageAlert').text('กรุณากรอกข้อมูล ชื่อ');
+		$('#danger').modal('show');
 		return false;
 	} else if (document.regisTeacherchk.LastNameTeacher.value == "") {
-		alert("กรุณากรอกข้อมูล นามสกุล");
+		$('#MessageAlert').text('กรุณากรอกข้อมูล นามสกุล');
+		$('#danger').modal('show');
 		return false;
 	} else if (document.regisTeacherchk.EducationalBackgroundTeacher.value == "") {
-		alert("กรุณากรอกข้อมูล สถาบันการศึกษา");
+		$('#MessageAlert').text('กรุณากรอกข้อมูล สถาบันการศึกษา');
+		$('#danger').modal('show');
 		return false;
 	} else if (document.regisTeacherchk.EducationalInstitutionTeacher.value == "") {
-		alert("กรุณากรอกข้อมูล วุฒิการศึกษา");
+		$('#MessageAlert').text('กรุณากรอกข้อมูล วุฒิการศึกษา');
+		$('#danger').modal('show');
 		return false;
 	} else if (document.regisTeacherchk.EducationalMajorTeacher.value == "") {
-		alert("กรุณากรอกข้อมูล สาขาวิชา");
+		$('#MessageAlert').text('กรุณากรอกข้อมูล สาขาวิชา');
+		$('#danger').modal('show');
 		return false;
 	} else if (document.regisTeacherchk.EmailTeacher.value == "") {
-		alert("กรุณากรอกข้อมูล อีเมล");
+		$('#MessageAlert').text('กรุณากรอกข้อมูล อีเมล');
+		$('#danger').modal('show');
 		return false;
 	}  else if (!document.regisTeacherchk.EmailTeacher.value.match(/^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*\@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.([a-zA-Z]){2,4})$/)) {
-		alert("รูปแบบ email ไม่ถูกต้อง ");
+		$('#MessageAlert').text('รูปแบบ email ไม่ถูกต้อง ');
+		$('#danger').modal('show');
 		return false;
 	} else if (document.regisTeacherchk.PhoneTeacher.value == "") {
-		alert("กรุณากรอกข้อมูล เบอร์โทรศัพท์");
+		$('#MessageAlert').text('กรุณากรอกข้อมูล เบอร์โทรศัพท์');
+		$('#danger').modal('show');
 		return false;
 	} else if (!document.regisTeacherchk.PhoneTeacher.value.match(/^\d*$/)) {
-		alert("กรุณา กรอกหมายหมายเลขโทรศัพท์เป็นตัวเลขเท่านั้น ");
+		$('#MessageAlert').text('กรุณา กรอกหมายหมายเลขโทรศัพท์เป็นตัวเลขเท่านั้น ');
+		$('#danger').modal('show');
 		return false;
 	} else if (document.regisTeacherchk.PhoneTeacher.value.length != 10) {
-		alert("หมายเลขโทรศัพท์ต้องมี 10 หลักเท่านั้น");
+		$('#MessageAlert').text('หมายเลขโทรศัพท์ต้องมี 10 หลักเท่านั้น');
+		$('#danger').modal('show');
 		return false;
 	} else if (document.regisTeacherchk.VacancyTeacher.value == "") {
-		alert("กรุณากรอกข้อมูล ตำแหน่งงาน");
+		$('#MessageAlert').text('กรุณากรอกข้อมูล ตำแหน่งงาน');
+		$('#danger').modal('show');
 		return false;
 	} else if (document.regisTeacherchk.UsernameTeacher.value == "") {
-		alert("กรุณากรอกข้อมูล username");
+		$('#MessageAlert').text('กรุณากรอกข้อมูล username');
+		$('#danger').modal('show');
 		return false;
 	} else if (!document.regisTeacherchk.UsernameTeacher.value.match(/^([a-z0-9\_])+$/i)) {
-		alert("ชื่อผู้ใช้ กรอกได้เฉพาะ a-Z, A-Z, 0-9 ");
+		$('#MessageAlert').text('ชื่อผู้ใช้ กรอกได้เฉพาะ a-Z, A-Z, 0-9 ');
+		$('#danger').modal('show');
 		return false;
 	} else if (document.regisTeacherchk.UsernameTeacher.value.length > 15) {
-		alert("ชื่อผู้ใช้ต้องไม่เกิน 15 ตัวอักษร");
+		$('#MessageAlert').text('ชื่อผู้ใช้ต้องไม่เกิน 15 ตัวอักษร');
+		$('#danger').modal('show');
 		return false;
 	} else if (document.regisTeacherchk.PasswordTeacher.value == "") {
-		alert("กรุณากรอกข้อมูล password");
+		$('#MessageAlert').text('กรุณากรอกข้อมูล password');
+		$('#danger').modal('show');
 		return false;
 	} else if (document.regisTeacherchk.ConfirmPasswordTeacher.value == "") {
-		alert("กรุณากรอกข้อมูล confirm password");
+		$('#MessageAlert').text('กรุณากรอกข้อมูล confirm password');
+		$('#danger').modal('show');
 		return false;
 	} else if (document.regisTeacherchk.PasswordTeacher.value != document.regisTeacherchk.ConfirmPasswordTeacher.value) {
-		alert('รหัสผ่านไม่ตรงกัน');
+		$('#MessageAlert').text('รหัสผ่านไม่ตรงกัน');
+		$('#danger').modal('show');
 		return false;
 	} else if (!document.regisTeacherchk.PasswordTeacher.value.match(/^([a-z0-9\_])+$/i)) {
-		alert("รหัสผ่าน กรอกได้เฉพาะ a-Z, A-Z, 0-9 ");
+		$('#MessageAlert').text('รหัสผ่าน กรอกได้เฉพาะ a-Z, A-Z, 0-9 ');
+		$('#danger').modal('show');
 		return false;
 	} else if (document.regisTeacherchk.PasswordTeacher.value.length >= 16 || document.regisTeacherchk.PasswordTeacher.value.length <= 5) {
-		alert("รหัสผ่านต้องไม่ตำกว่า 5 ตัว และไม่เกิน 16 ตัว");
+		$('#MessageAlert').text('รหัสผ่านต้องไม่ตำกว่า 5 ตัว และไม่เกิน 16 ตัว');
+		$('#danger').modal('show');
 		return false;
 	}
 }
 
+
 function editTeacherData() {
 	if (document.editTeacherDataChk.editTeacherFirstName.value == "") {
-		alert("กรุณากรอกข้อมูล ชื่อ");
+		$('#MessageAlert').text('กรุณากรอกข้อมูล ชื่อ');
+		$('#danger').modal('show');
 		return false;
 	} else if (document.editTeacherDataChk.editTeacherLastName.value == "") {
-		alert("กรุณากรอกข้อมูล นามสกุล");
+		$('#MessageAlert').text('กรุณากรอกข้อมูล นามสกุล');
+		$('#danger').modal('show');
 		return false;
 	} else if (document.editTeacherDataChk.editTeacherEducationalInstitution.value == "") {
-		alert("กรุณากรอกข้อมูล วุฒิการศึกษา");
+		$('#MessageAlert').text('กรุณากรอกข้อมูล วุฒิการศึกษา');
+		$('#danger').modal('show');
 		return false;
 	} else if (document.editTeacherDataChk.editTeacherEducationalMajor.value == "") {
-		alert("กรุณากรอกข้อมูล สาขาวิชา");
+		$('#MessageAlert').text('กรุณากรอกข้อมูล สาขาวิชา');
+		$('#danger').modal('show');
 		return false;
 	} else if (document.editTeacherDataChk.editTeacherEducationalBackground.value == "") {
-		alert("กรุณากรอกข้อมูล สถาบันการศึกษา");
+		$('#MessageAlert').text('กรุณากรอกข้อมูล สถาบันการศึกษา');
+		$('#danger').modal('show');
 		return false;
 	} else if (document.editTeacherDataChk.editTeacherVacancy.value == "") {
-		alert("กรุณากรอกข้อมูล ตำแหน่งงาน");
+		$('#MessageAlert').text('กรุณากรอกข้อมูล ตำแหน่งงาน');
+		$('#danger').modal('show');
 		return false;
 	}
+}
+
+function registerStudent(){
+	
+}
+
+function editRegisterStudent(){
+	
 }
 /*
 

@@ -84,19 +84,25 @@ public class RegisterTeacherServlet extends HttpServlet {
 			try {
 				int major_ID = regisMng.findMajorID(departmentTeacher);
 				if (major_ID != 0) {
-					boolean addteacher = regisMng.addTeacherNoImages(teacherBean, major_ID);
-					if (addteacher) {
-						System.out.println("Insert NoImages Success");
+					boolean chkIdcard = regisMng.findIdCardTeacher(teacherBean.getIdCard());
+					// เช็ค รหัสประชาชนไม่มีในฐานข้อมูล
+					if (chkIdcard) {
+						boolean addteacher = regisMng.addTeacherNoImages(teacherBean, major_ID);
+						if (addteacher) {
+							System.out.println("Insert NoImages Success");
+						} else {
+							System.out.println("Insert NoImages Fail");
+						}
+						response.sendRedirect("ListTeacherServlet");
 					} else {
-						System.out.println("Insert NoImages Fail");
+						System.out.println("รหัสประจำตัวประชาชนซ้ำ");
+						request.setAttribute("message", "รหัสประจำตัวประชาชนซ้ำ");
+						response.sendRedirect("ListTeacherServlet");
 					}
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-
-			request.setAttribute("message", "Upload has been done successfully!");
-			response.sendRedirect("ListTeacherServlet");
 		} else {
 			part.write(savePath + File.separator + fileName);
 
@@ -117,21 +123,26 @@ public class RegisterTeacherServlet extends HttpServlet {
 			try {
 				int major_ID = regisMng.findMajorID(departmentTeacher);
 				if (major_ID != 0) {
-					boolean addteacher = regisMng.addTeacher(teacherBean, major_ID);
-					if (addteacher) {
-						System.out.println("Insert Success");
+					boolean chkIdcard = regisMng.findIdCardTeacher(teacherBean.getIdCard());
+					// เช็ค รหัสประชาชนไม่มีในฐานข้อมูล
+					if (chkIdcard) {
+						boolean addteacher = regisMng.addTeacher(teacherBean, major_ID);
+						if (addteacher) {
+							System.out.println("Insert Success");
+						} else {
+							System.out.println("Insert Fail");
+						}
+						response.sendRedirect("ListTeacherServlet");
 					} else {
-						System.out.println("Insert Fail");
+						System.out.println("รหัสประจำตัวประชาชนซ้ำ");
+						request.setAttribute("message", "รหัสประจำตัวประชาชนซ้ำ");
+						response.sendRedirect("ListTeacherServlet");
 					}
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-
-			request.setAttribute("message", "Upload has been done successfully!");
-			response.sendRedirect("ListTeacherServlet");
 		}
-
 	}
 
 	/**

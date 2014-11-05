@@ -23,7 +23,7 @@
 
 	<div class="section">
 		<div class="container">
-			<p style="color: red;text-align: center;">${loginError}</p>
+			<input type="hidden" id="loginError" name="loginError" value="${loginError}">
 			<div id="loginbox" style="margin-top: 50px;"
 				class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 				<div class="panel panel-info">
@@ -101,5 +101,17 @@
 
 	<script src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/validateScript.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+	    var loginError = $('#loginError').val();
+	    
+	    if (loginError != '') {
+	    	$('#MessageAlert').text(loginError);
+			$('#danger').modal('show');
+		}else{
+			
+		}
+	});
+	</script>
 </body>
 </html>

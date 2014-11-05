@@ -138,6 +138,7 @@
 		</div>
 		<!-- /.modal-dialog -->
 	</div>
+	<jsp:include page="modalMessage.jsp" />
 	<!-- /.modal -->
 
 	<!-- script -->

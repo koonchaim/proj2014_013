@@ -3,6 +3,7 @@
 	pageEncoding="UTF-8"%>
 <!-- header logo: style can be found in header.less -->
 <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico">
+<link rel="stylesheet" href="css/modalMessage.css">
 <header class="header">
 	<a href="index.jsp" class="logo"> Admin </a>
 	<!-- Header Navbar: style can be found in header.less -->

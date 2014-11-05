@@ -21,6 +21,7 @@
 <script type='text/javascript' src='js/menu_source/menu_jquery.js'></script>
 <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 <script type="text/javascript">
+	
 </script>
 <title>Search Student Data</title>
 </head>
@@ -41,14 +42,17 @@
 							<!-- /.col-lg-12 -->
 
 							<!-- Search -->
-							
+
 							<div class="row">
 								<div class="col-md-12">
 									<div class="col-md-3"></div>
-									<form action="SearchStudentDataServlet" method="post" name="frmChk" onSubmit="JavaScript:return SearchStudentData();">
+									<form action="SearchStudentDataServlet" method="post"
+										name="frmChk"
+										onSubmit="JavaScript:return SearchStudentData();">
 										<div class="col-md-4">
 											<div class="form-group">
-												<input type="text" class="form-control" name="searchStudentID" >
+												<input type="text" class="form-control"
+													name="searchStudentID">
 											</div>
 										</div>
 										<div class="col-md-3">
@@ -61,119 +65,123 @@
 							</div>
 						</div>
 						<!-- /.row -->
+						<input type="hidden" id="ErrorMassage" value="${ErrorMassage}">
 						<c:set var="major" value="${major}" />
 						<!-- ================================================================================================ -->
 						<c:choose>
-						  <c:when test="${empty major}"></c:when>
-						  <c:otherwise>
+							<c:when test="${empty major}"></c:when>
+							<c:otherwise>
 								<c:choose>
 									<c:when test="${empty major.educationLevel.student.studentID}">
-								    	<div align="center">
-											<p style="color: ${ErrorColor}">${ErrorMassage}</p>
-										</div>
-								  	</c:when>
-								 	<c:otherwise>
-								 	<div class="row">
-							<div class="panel panel-default">
-								    	<div class="panel-heading">ข้อมูลนักศึกษา</div>
-									<div class="panel-body">
+										
+									</c:when>
+									<c:otherwise>
 										<div class="row">
-											<div class="col-xs-6 col-sm-2">
-												<p class="help-block">รหัสประจำตัวนักศึกษา</p>
+											<div class="panel panel-default">
+												<div class="panel-heading">ข้อมูลนักศึกษา</div>
+												<div class="panel-body">
+													<div class="row">
+														<div class="col-xs-6 col-sm-2">
+															<p class="help-block">รหัสประจำตัวนักศึกษา</p>
+														</div>
+														<div class="col-xs-6 col-sm-2">
+															<p class="help-block">${major.educationLevel.student.studentID}</p>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-xs-6 col-sm-2">
+															<p class="help-block">ชื่อ - นามสกุล</p>
+														</div>
+														<div class="col-xs-6 col-sm-2">
+															<p class="help-block">${major.educationLevel.student.antecedent}
+																${major.educationLevel.student.firstName}
+																${major.educationLevel.student.lastName}</p>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-xs-6 col-sm-2">
+															<p class="help-block">สาขาวิชา</p>
+														</div>
+														<div class="col-xs-6 col-sm-2">
+															<p class="help-block">${major.majorName}</p>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-xs-6 col-sm-2">
+															<p class="help-block">ระดับการศึกษา</p>
+														</div>
+														<div class="col-xs-6 col-sm-2">
+															<p class="help-block">${major.educationLevel.educationalBackground}
+																${major.educationLevel.educationLevel}</p>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-xs-12">
+															<br> <label>ข้อมูลการเข้าร่วมกิจกรรมหน้าเสาธง</label>
+														</div>
+													</div>
+
+													<div class="col-md-6 col-md-offset-3">
+														<div class="table-responsive">
+															<table
+																class="table table-striped table-bordered table-hover">
+																<thead>
+																	<tr>
+																		<th></th>
+																		<th><p align="center">วัน</p></th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr>
+																		<td>เข้าร่วมกิจกรรม</td>
+																		<td><p align="center">${present }</p></td>
+																	</tr>
+																	<tr>
+																		<td>ขาด</td>
+																		<td><p align="center">${lackLate }</p></td>
+																	</tr>
+																	<tr>
+																		<td>ลาป่วย</td>
+																		<td><p align="center">${sickLeave }</p></td>
+																	</tr>
+																	<tr>
+																		<td>ลากิจ</td>
+																		<td><p align="center">${personalLeave }</p></td>
+																	</tr>
+																</tbody>
+															</table>
+														</div>
+														<!-- /.Table -->
+													</div>
+													<!-- /.Offset -->
+
+													<div class="row">
+														<div class="col-md-12"></div>
+														<div class="col-xs-6 col-sm-2">
+															<p class="help-block">ผลการตรวจสอบ</p>
+														</div>
+														<div class="col-xs-6 col-sm-2">
+															<p class="help-block">Fail</p>
+														</div>
+													</div>
+													<div class="col-md-12">
+														<button type="submit" class="btn btn-default"
+															onclick="window.location.href='StatForRoleServlet'">ดูสถิติการเข้าแถว</button>
+													</div>
+												</div>
+												<!-- /.panel-body -->
 											</div>
-											<div class="col-xs-6 col-sm-2">
-												<p class="help-block">${major.educationLevel.student.studentID}</p>
-											</div>
+											<!-- /.panel default-->
 										</div>
-										<div class="row">
-											<div class="col-xs-6 col-sm-2">
-												<p class="help-block">ชื่อ - นามสกุล</p>
-											</div>
-											<div class="col-xs-6 col-sm-2">
-												<p class="help-block">${major.educationLevel.student.antecedent} ${major.educationLevel.student.firstName} ${major.educationLevel.student.lastName}</p>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-xs-6 col-sm-2">
-												<p class="help-block">สาขาวิชา</p>
-											</div>
-											<div class="col-xs-6 col-sm-2">
-												<p class="help-block">${major.majorName}</p>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-xs-6 col-sm-2">
-												<p class="help-block">ระดับการศึกษา</p>
-											</div>
-											<div class="col-xs-6 col-sm-2">
-												<p class="help-block">${major.educationLevel.educationalBackground} ${major.educationLevel.educationLevel}</p>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-xs-12">
-												<br> <label>ข้อมูลการเข้าร่วมกิจกรรมหน้าเสาธง</label>
-											</div>
-										</div>
-	
-										<div class="col-md-6 col-md-offset-3">
-											<div class="table-responsive">
-												<table class="table table-striped table-bordered table-hover">
-													<thead>
-														<tr>
-															<th></th>
-															<th><p align="center">วัน</p></th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<td>เข้าร่วมกิจกรรม</td>
-															<td><p align="center">${present }</p></td>
-														</tr>
-														<tr>
-															<td>ขาด</td>
-															<td><p align="center">${lackLate }</p></td>
-														</tr>
-														<tr>
-															<td>ลาป่วย</td>
-															<td><p align="center">${sickLeave }</p></td>
-														</tr>
-														<tr>
-															<td>ลากิจ</td>
-															<td><p align="center">${personalLeave }</p></td>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-											<!-- /.Table -->
-										</div>
-										<!-- /.Offset -->
-	
-										<div class="row">
-											<div class="col-md-12"></div>
-											<div class="col-xs-6 col-sm-2">
-												<p class="help-block">ผลการตรวจสอบ</p>
-											</div>
-											<div class="col-xs-6 col-sm-2">
-												<p class="help-block">Fail</p>
-											</div>
-										</div>
-										<div class="col-md-12">
-											<button type="submit" class="btn btn-default" onclick="window.location.href='StatForRoleServlet'">ดูสถิติการเข้าแถว</button>
-										</div>
-									</div>
-									<!-- /.panel-body -->
-								</div>
-								<!-- /.panel default-->
-							</div>
-						<!-- /.row -->
-								 	</c:otherwise>
+										<!-- /.row -->
+									</c:otherwise>
 								</c:choose>
-							
-								
-						  </c:otherwise>
+
+
+							</c:otherwise>
 						</c:choose>
-						
-						
+
+
 						<!-- ================================================================================================ -->
 
 					</div>
@@ -204,7 +212,19 @@
 	<script src="js/jquery.bxslider.js"></script>
 	<script src="js/main-menu.js"></script>
 	<script src="js/template.js"></script>
-	
+
 	<script type="text/javascript" src="js/validateScript.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+	    var ErrorMassage = $('#ErrorMassage').val();
+	    
+	    if (ErrorMassage != '') {
+	    	$('#MessageAlert').text(ErrorMassage);
+			$('#danger').modal('show');
+		}else{
+			
+		}
+	});
+	</script>
 </body>
 </html>

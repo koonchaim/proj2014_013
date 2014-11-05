@@ -28,15 +28,13 @@
 	<div class="wrapper row-offcanvas row-offcanvas-left">
 		<!---------------Menu---------------->
 		<%@include file="Admin/Menu.jsp" %>
-<%-- 		<jsp:include page="Admin/Menu.jsp" /> --%>
-		<aside class="right-side"> <!-- Content Header (Page header) -->
+		<aside class="right-side">
 		<section class="content-header">
 		<h1>
 			<i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;List Teacher <small>Control
 				panel</small>
 		</h1>
 		</section> <section class="content">
-
 		<div class="form-group">
 			<table class="span9 table table-hover">
 				<thead>
@@ -100,7 +98,7 @@
 					<jsp:include page="Admin/RegisterTeacherPage.jsp" flush="false" />
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
+					<button id="resetEditTeacherFrom"  type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
 					<a id="modal-form-submit-register-teacher" class='btn btn-primary'>เพิ่ม</a>
 				</div>				
 			</div>
@@ -121,12 +119,13 @@
 					<jsp:include page="Admin/EditTeacherPage.jsp" flush="false" />
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
+					<button id="resetEditFromTeacher" type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
 					<a id="modal-form-edit-teacher-submit" class='btn btn-primary'>แก้ไข</a>
 				</div>
 			</div>
 		</div>
 	</div>
+	<jsp:include page="modalMessage.jsp" />
 	<!-- /.modal -->
 
 	<!-- script -->

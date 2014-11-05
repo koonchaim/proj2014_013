@@ -20,6 +20,22 @@ $('#modal-form-edit-teacher-submit').on('click', function(e) {
 
 $('#btnImportTeacher').attr('href','ImportTeacherServlet');
 
+
+$('#resetEditTeacherFrom').on('click', function(e) {
+	e.preventDefault();
+	$('#modal-form-regis-teacher').each (function(){
+		  this.reset();
+		});
+});
+
+$('#resetEditFromTeacher').on('click', function(e) {
+	e.preventDefault();
+	$('#formEditTeacher').each (function(){
+		  this.reset();
+		});
+});
+
+
 function confirm_delete() {
 	if (confirm(urldecode('Confirm Delete!!!'))) {
 		return true;

@@ -214,6 +214,7 @@ function ListEducation(){
 			</div>
 		</div>
 	</div>
+	<jsp:include page="modalMessage.jsp" />
 	<!-- /.modal -->
 	<!-- script -->
 	<script
