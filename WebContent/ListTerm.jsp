@@ -66,11 +66,19 @@
 							
 							<td><fmt:formatDate type="date" dateStyle="long" value="${item.endDate}" /></td>
 							<td>
-							<button type="button" class="btn btn-primary btn-circle"
-									data-toggle="modal" data-target="#editTerm"
-									onclick="editTeacherByIdCard(${item.termName})">									
-									<i class="fa fa-wrench"  Title="แก้ไข"></i>
-							</button>
+<!-- 							<button type="button" class="btn btn-primary btn-circle" -->
+<!-- 									data-toggle="modal" data-target="#editTerm" -->
+<%-- 									onclick="editTermByTermName('${item.termName}')">									 --%>
+<!-- 									<i class="fa fa-wrench"  Title="แก้ไข"></i> -->
+<!-- 							</button> -->
+							
+							<a
+										href="ListTermServlet?termName=${item.termName}"
+										OnClick="return confirm_delete();">
+								<button type="button" class="btn btn-danger btn-circle">
+									<i class="glyphicon glyphicon-trash" Title="ลบ"></i>
+								</button>
+								</a>
 							</td>
 						</tr>
 					</c:forEach>
@@ -130,8 +138,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
-					<a id="modal-form-submitEditTeacher" class='btn btn-primary'
-						href="#">แก้ไข</a>
+					<button type="button" class="btn btn-primary" id="form-submit-editterm" >แก้ไข</button>
 				</div>
 			</div>
 			<!-- /.modal-content -->
@@ -155,6 +162,6 @@
 	<script type="text/javascript" src="Admin/js/bootstrap-select.min.js"></script>
 	
 	<script type="text/javascript" src="js/customScript.js"></script>
-<!-- 	<script type="text/javascript" src="js/validateScript.js"></script> -->
+	<script type="text/javascript" src="js/validateScript.js"></script>
 </body>
 </html>

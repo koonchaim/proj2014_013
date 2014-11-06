@@ -49,6 +49,28 @@ public class ListTermServlet extends HttpServlet {
 		ListTermManager termMng = new ListTermManager();
 
 		try {
+			String termName = request.getParameter("termName");
+			if (termName != null) {
+				boolean removeTerm = termMng.removeTerm(termName);
+				if (removeTerm) {
+					System.out.println("Remove Term Success");
+					List<TermBean> listTerm = termMng.findAllTerm();
+
+					List<String> listTermName = new ArrayList<String>();
+					for (int i = 0; i < listTerm.size(); i++) {
+						String result = listTerm.get(i).getTermName();
+						String[] parts = result.split("/");
+						String term = parts[0] + "/" + (Integer.parseInt(parts[1]) + 543);
+						listTermName.add(term);
+					}
+
+					request.setAttribute("listTerm", listTerm);
+					request.setAttribute("listTermName", listTermName);
+					request.getRequestDispatcher("ListTerm.jsp").forward(request, response);
+					
+				}
+				
+			}else{
 			List<TermBean> listTerm = termMng.findAllTerm();
 
 			List<String> listTermName = new ArrayList<String>();
@@ -62,7 +84,7 @@ public class ListTermServlet extends HttpServlet {
 			request.setAttribute("listTerm", listTerm);
 			request.setAttribute("listTermName", listTermName);
 			request.getRequestDispatcher("ListTerm.jsp").forward(request, response);
-
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

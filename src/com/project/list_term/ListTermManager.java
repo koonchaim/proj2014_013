@@ -39,5 +39,28 @@ public class ListTermManager {
 		}
 		return listTerm;
 	}
+	
+	public boolean removeTerm(String termName) throws SQLException {
+		Connection conn = null;
+		PreparedStatement prep = null;
+		String removeTerm = "delete from term where termName = ?";
+		try {
+			conn = ConnectDB.getInstance().DBConnection();
+			prep = conn.prepareStatement(removeTerm);
+			prep.setString(1, termName);
+			prep.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (prep != null) {
+				prep.close();
+			}
+			if (conn != null) {
+				conn.close();
+			}
+		}
+		return false;
+	}
 
 }

@@ -18,7 +18,6 @@ public class AddTermManager {
 			preparedStatement = dbConnection.prepareStatement(addSQL);
 			java.sql.Date sqlStartDate = new java.sql.Date(term.getStartDate().getTime());
 			java.sql.Date sqlEndDate = new java.sql.Date(term.getEndDate().getTime());
-			System.out.println("-==-"+sqlStartDate);
 			preparedStatement.setDate(1, sqlStartDate);
 			preparedStatement.setDate(2, sqlEndDate);
 			

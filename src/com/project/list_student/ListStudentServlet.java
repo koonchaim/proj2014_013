@@ -37,8 +37,9 @@ public class ListStudentServlet extends HttpServlet {
 		ListStudentManager listAllMajor = new ListStudentManager();
 		try {
 			String selectMajorName = request.getParameter("selectMajorName");
+			String selectMajorName11 = request.getParameter("selectLevelEdu");
 			String id = request.getParameter("id");
-			if (selectMajorName == null && id == null) {
+			if (selectMajorName == null || selectMajorName11 == null) {
 				List<MajorBean> listMajor = listAllMajor.findAllMajor();
 				List<MajorBean> listEducationLevel = listAllMajor
 						.findAllEducationLevelByMajorName(listMajor.get(listMajor.size() - 1).getMajorName());
@@ -53,7 +54,7 @@ public class ListStudentServlet extends HttpServlet {
 						selectEducation1);
 				request.setAttribute("listStudent", listStudent);
 				request.getRequestDispatcher("ListStudent.jsp").forward(request, response);
-			} else if (selectMajorName != null) {
+			} else if (selectMajorName != null && selectMajorName11 != null) {
 				List<MajorBean> listMajor = listAllMajor.findAllMajor();
 				List<MajorBean> listEducationLevel = listAllMajor.findAllEducationLevelByMajorName(selectMajorName);
 
@@ -61,7 +62,7 @@ public class ListStudentServlet extends HttpServlet {
 				request.setAttribute("listMajor", listMajor);
 				request.setAttribute("selectMajorName", selectMajorName);
 
-				String selectMajorName11 = request.getParameter("selectLevelEdu");
+				
 				String[] result = selectMajorName11.split(" ");
 				String selectEducation = result[0];
 				String selectEducation1 = result[1];

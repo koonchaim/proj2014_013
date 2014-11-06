@@ -82,6 +82,11 @@ $('#reset-form-addTerm').on('click', function(e) {
 		});
 });
 
+$('#form-submit-editterm').on('click', function(e) {
+	e.preventDefault();
+	$('#modal-form-editterm').submit();
+});
+
 
 
 function confirm_delete() {
@@ -331,171 +336,27 @@ function editProfileTeacherModal(id) {
 	
 }
 
-function editRoom(id) {
-	$.get('EditRoomServlet', {
-		'id' : id
+function editTermByTermName(termName) {
+	$.get('EditTermServlet', {
+		'termName' : termName
 	}, function(data) {
-		$('#e_roomId').val(data.roomId);
-		$('#e_RoomIds').val(data.roomId);
-		$('#e_RoomType').val(data.roomType);
-		$('#e_RoomCapacity').val(data.roomCapacity);
-		$('#e_Build').val(data.build);
-	});
-	
-}
+		$('#sDate2').val(data.startDate);
+		$('#eDate2').val(data.endDate);
 
-function addCourseSelectCourseId() {
-	var selectCourseName = $('#addcourseId').find(":selected").val();
-	var selectCourseId = $('#addcourseId').find(":selected").text();
-	$('#addCourseName').val(selectCourseName);
-	$('#addcourseIds').val(selectCourseId);
-}
-
-function addCourse() {
-	$.get('AddCourseServlet', {}, function(data) {
-		var data1 = data[0], data2 = data[1];
-		$('#teacher').empty();
-		$('#lectureRoom').empty();
-		$('#labRoom').empty();
-		$.each(data2,
-				function(i, item) {
-					$('#teacher').append(
-							$("<option></option>").attr("value", item.idCard)
-									.text(
-											"อาจารย์ " + item.firstName + " "
-													+ item.lastName));
-				});
-		$.each(data1, function(i, item) {
-
-			$('#lectureRoom').append(
-					$("<option></option>").attr("value", item.roomId).text(
-							item.roomId));
-			$('#labRoom').append(
-					$("<option></option>").attr("value", item.roomId).text(
-							item.roomId));
+		var str = data.termName;
+		var res = str.split("/"); 
+		$("#editTermName option").each(function(a, b) {
+			if ($(this).html() == res[0])
+				$(this).attr("selected", "selected");
+		});
+		
+		$("#editYear option").each(function(a, b) {
+			if ($(this).html() == res[1])
+				$(this).attr("selected", "selected");
 		});
 	});
 }
 
-function editCourse(courseId, term, year, section) {
-	$.get('EditCourseServlet', {
-		'courseId' : courseId,
-		'term' : term,
-		'year' : year,
-		'section' : section
-	}, function(data) {
-		var data1 = data[0], data2 = data[1], data3 = data[2];
-		$('#editTeacher').empty();
-		$('#editLectureRoom').empty();
-		$('#editLabRoom').empty();
-		$.each(data2, function(i, item) {
-			if (item.idCard == data3.teacher.idCard) {
-				$('#editTeacher').append(
-						$("<option selected></option>").attr("value",
-								item.idCard).text(item.firstName));
-			} else {
-				$('#editTeacher').append(
-						$("<option></option>").attr("value", item.idCard).text(
-								"อาจารย์ " + item.firstName + " "
-										+ item.lastName));
-			}
-
-		});
-		$.each(data1, function(i, item) {
-			if (item.roomId == data3.listCourseDetailBean[0].room.roomId) {
-				$('#editLectureRoom').append(
-						$("<option selected></option>").attr("value",
-								item.roomId).text(item.roomId));
-			} else {
-				$('#editLectureRoom').append(
-						$("<option></option>").attr("value", item.roomId).text(
-								item.roomId));
-			}
-			if (item.roomId == data3.listCourseDetailBean[1].room.roomId) {
-				$('#editLabRoom').append(
-						$("<option selected></option>").attr("value",
-								item.roomId).text(item.roomId));
-			} else {
-				$('#editLabRoom').append(
-						$("<option></option>").attr("value", item.roomId).text(
-								item.roomId));
-			}
-
-		});
-		$('#courseIds').val(data3.courseId);
-		$('#courseName').val(data3.courseName);
-		$('#sections').val(data3.section);
-		$('#terms').val(data3.term);
-		$('#years').val(data3.year);
-		$('#courseId').val(data3.courseId);
-		$('#section').val(data3.section);
-		$('#term').val(data3.term);
-		$('#year').val(data3.year);
-		$('#startDate').val(data3.startDate);
-		$('#endDate').val(data3.endDate);
-		var tmp1 = data3.listCourseDetailBean[0].time.split("-");
-		var tmp2 = data3.listCourseDetailBean[1].time.split("-");
-		$('#editletureTimeStart').val(tmp1[0]);
-		$('#editletureTimeEnd').val(tmp1[1]);
-		$('#lectureDate').val(data3.listCourseDetailBean[0].date);
-		$('#editlabTimeStart').val(tmp2[0]);
-		$('#editlabTimeEnd').val(tmp2[1]);
-		$('#labDate').val(data3.listCourseDetailBean[1].date);
-
-	});
-}
-
-function cancelClass(id) {
-	$.get('CancelClassServlet', {
-		'id' : id,
-	}, function(data) {
-		$('#c_day').empty();
-		$('#c_date').empty();
-		$('#c_time').empty();
-		$('#c_room').empty();
-		$('#c_lab').empty();
-		$('#c_lecture').empty();
-
-		$('#c_day').append(data.scheduleDay);
-		$('#c_date').append(
-				data.scheduleDate + "/" + data.scheduleMonth + "/"
-						+ data.scheduleYear);
-		$('#c_time').append(data.scheduleTime);
-		$('#c_room').append(data.scheduleRoom);
-		if (data.studyType == "Lab") {
-			$('#c_lab').append(data.hourOfTeach);
-			$('#c_lecture').append("-");
-		} else {
-			$('#c_lecture').append(data.hourOfTeach);
-			$('#c_lab').append("-");
-		}
-		$('#c_because').val(data.because);
-		$('#c_id').val(data.id);
-	});
-}
-
-function addMakeUp(courseId, term, year, section) {
-	$.get('AddMakeUpServlet', {
-		'courseId' : courseId,
-		'term' : term,
-		'year' : year,
-		'section' : section
-	}, function(data) {
-		var course = data[0], room = data[1];
-		$('#showCourse').empty();
-		$('#a_room').empty();
-		$('#showCourse').append(course.courseId + " " + course.courseName);
-		$('#a_courseId').val(course.courseId);
-		$('#a_term').val(course.term);
-		$('#a_years').val(course.year);
-		$('#a_section').val(course.section);
-		$.each(room, function(i, item) {
-			$('#a_room').append(
-					$("<option></option>").attr("value", item.roomId).text(
-							item.roomId));
-		});
-	});
-}
 function urldecode(str) {
 	return decodeURIComponent((str + '').replace(/\+/g, '%20'));
 }

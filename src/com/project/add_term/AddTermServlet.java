@@ -59,8 +59,7 @@ public class AddTermServlet extends HttpServlet {
 			String[] startDate = date1.split("/");
 			String[] endDate = date2.split("/");
 			startDay.set(Integer.parseInt(startDate[2]), Integer.parseInt(startDate[1]) - 1, Integer.parseInt(startDate[0]));
-			endDay.set(Integer.parseInt(endDate[2]), Integer.parseInt(endDate[1]) - 1, Integer.parseInt(endDate[0]));
-			
+			endDay.set(Integer.parseInt(endDate[2]), Integer.parseInt(endDate[1]) - 1, Integer.parseInt(endDate[0]));			
 			termBean.setStartDate(startDay.getTime());
 			termBean.setEndDate(endDay.getTime());
 			termBean.setTermName(termName);

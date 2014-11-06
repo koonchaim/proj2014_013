@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<form id="modal-form" accept-charset="UTF-8" data-remote="true"
+<form id="modal-form-editterm" accept-charset="UTF-8" 
 	action="EditTermServlet" method="post" class="form-horizontal">
 
 	<div class="form-group">
@@ -15,17 +15,31 @@
 	<div class="form-group">
 		<label class="col-lg-3 control-label">ถึง วัน/เดือน/ปี :</label>
 		<div class="col-lg-8">
-			<input type="text" class="form-control" value="" id="eDate2"
-				name="EndDate2">
+			<input type="text" class="form-control" value="" id="eDate2" name="EndDate2">
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="col-lg-3 control-label">เทอมการศึกษาที่ :</label>
 		<div class="col-lg-8">
-			<select class="selectpicker show-tick show-menu-arrow" data-width="25%" data-size="auto">
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
+			<select class="selectpicker show-tick show-menu-arrow" data-width="25%" data-size="auto" name="editTermName" id="editTermName">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select>
+		</div>
+	</div>	
+	<div class="form-group">
+		<label class="col-lg-3 control-label">ปีการศึกษา :</label>
+		<div class="col-lg-8">
+			<select class="selectpicker show-tick show-menu-arrow" data-width="25%" data-size="auto" name="editYear" name="editYear">
+				<option value="2013">2013</option>
+				<option value="2014">2014</option>
+				<option value="2015">2015</option>
+				<option value="2016">2016</option>
+				<option value="2017">2017</option>
+				<option value="2018">2018</option>
+				<option value="2019">2019</option>
+				<option value="2020">2020</option>
 			</select>
 		</div>
 	</div>
