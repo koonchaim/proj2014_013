@@ -28,7 +28,7 @@
 <link href="Admin/css/bootstrap-select.css" rel="stylesheet">
 <link href="Admin/css/AdminLTE.css" rel="stylesheet">
 <link href="css/datepicker.css" rel="stylesheet">
-<script type="text/javascript" src="js/customScript.js"></script>
+
 </head>
 <body class="skin-blue">
 	<!--------------Header--------------->
@@ -108,8 +108,8 @@
 					<jsp:include page="Admin/AddTermPage.jsp" flush="false" />
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
-					<a id="modal-form-submit" class='btn btn-primary' href="#">เพิ่ม</a>
+					<button type="button" class="btn btn-default" data-dismiss="modal" id="reset-form-addTerm">ยกเลิก</button>
+					<button type="button" class="btn btn-primary" id="form-submit-addTerm" >เพิ่ม</button>
 				</div>
 			</div>
 			<!-- /.modal-content -->
@@ -148,10 +148,13 @@
 	<script src="Admin/js/bootstrap.min.js" type="text/javascript"></script>
 	<script	src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 	<script src="Admin/js/AdminLTE/app.js" type="text/javascript"></script>
-	<script type="text/javascript" src="js/validateScript.js"></script>
+	
 	<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
 	<script type="text/javascript" src="js/scriptdate.js"></script>
 	<script type="text/javascript" src="Admin/js/bootstrap-select.js"></script>
 	<script type="text/javascript" src="Admin/js/bootstrap-select.min.js"></script>
+	
+	<script type="text/javascript" src="js/customScript.js"></script>
+<!-- 	<script type="text/javascript" src="js/validateScript.js"></script> -->
 </body>
 </html>

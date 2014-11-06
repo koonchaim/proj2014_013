@@ -70,6 +70,19 @@ $('#addHoliday-form-submit').click(function() {
 	$('#form-add-holiday').submit();
 });
 
+$('#form-submit-addTerm').on('click', function(e) {
+	e.preventDefault();
+	$('#modal-form-add-term').submit();
+});
+
+$('#reset-form-addTerm').on('click', function(e) {
+	e.preventDefault();
+	$('#modal-form-add-term').each (function(){
+		  this.reset();
+		});
+});
+
+
 
 function confirm_delete() {
 	if (confirm(urldecode('Confirm Delete!!!'))) {

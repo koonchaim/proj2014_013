@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<form id="modal-form" accept-charset="UTF-8" data-remote="true"
-	action="AddTermServlet" method="post" class="form-horizontal">
+<form id="modal-form-add-term" accept-charset="UTF-8" action="AddTermServlet" 
+	method="post" class="form-horizontal">
 
 	<div class="form-group">
 		<label class="col-lg-3 control-label">ตั้งแต่ วัน/เดือน/ปี :</label>
@@ -22,11 +22,17 @@
 	<div class="form-group">
 		<label class="col-lg-3 control-label">เทอมการศึกษาที่ :</label>
 		<div class="col-lg-8">
-			<select class="selectpicker show-tick show-menu-arrow" data-width="25%" data-size="auto">
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
+			<select class="selectpicker show-tick show-menu-arrow" data-width="25%" data-size="auto" name="termName">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
 			</select>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-lg-3 control-label">ปีการศึกษา :</label>
+		<div class="col-lg-8">
+			<input type="text" class="form-control"	name="year">
 		</div>
 	</div>
 </form>
@@ -120,7 +126,7 @@
 			<thead>
 				<tr>
 					<th class="prev">‹</th>
-					<th colspan="5" class="switch">2014</th>
+					<th colspan="5" class="switch">2557</th>
 					<th class="next">›</th>
 				</tr>
 			</thead>
@@ -142,19 +148,19 @@
 			<thead>
 				<tr>
 					<th class="prev">‹</th>
-					<th colspan="5" class="switch">2010-2019</th>
+					<th colspan="5" class="switch">2553-2562</th>
 					<th class="next">›</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td colspan="7"><span class="year old">2009</span><span
-						class="year">2010</span><span class="year">2011</span><span
-						class="year">2012</span><span class="year">2013</span><span
-						class="year active">2014</span><span class="year">2015</span><span
-						class="year">2016</span><span class="year">2017</span><span
-						class="year">2018</span><span class="year">2019</span><span
-						class="year old">2020</span></td>
+					<td colspan="7"><span class="year old">2552</span><span
+						class="year">2553</span><span class="year">2554</span><span
+						class="year">2555</span><span class="year">2556</span><span
+						class="year active">2557</span><span class="year">2558</span><span
+						class="year">2559</span><span class="year">2560</span><span
+						class="year">2561</span><span class="year">2562</span><span
+						class="year old">2563</span></td>
 				</tr>
 			</tbody>
 		</table>
@@ -243,7 +249,7 @@
 			<thead>
 				<tr>
 					<th class="prev">‹</th>
-					<th colspan="5" class="switch">2015</th>
+					<th colspan="5" class="switch">2558</th>
 					<th class="next">›</th>
 				</tr>
 			</thead>
@@ -265,19 +271,19 @@
 			<thead>
 				<tr>
 					<th class="prev">‹</th>
-					<th colspan="5" class="switch">2010-2019</th>
+					<th colspan="5" class="switch">2553-2562</th>
 					<th class="next">›</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td colspan="7"><span class="year old">2009</span><span
-						class="year">2010</span><span class="year">2011</span><span
-						class="year">2012</span><span class="year">2013</span><span
-						class="year">2014</span><span class="year active">2015</span><span
-						class="year">2016</span><span class="year">2017</span><span
-						class="year">2018</span><span class="year">2019</span><span
-						class="year old">2020</span></td>
+					<td colspan="7"><span class="year old">2552</span><span
+						class="year">2553</span><span class="year">2554</span><span
+						class="year">2555</span><span class="year">2556</span><span
+						class="year active">2557</span><span class="year">2558</span><span
+						class="year">2559</span><span class="year">2560</span><span
+						class="year">2561</span><span class="year">2562</span><span
+						class="year old">2563</span></td>
 				</tr>
 			</tbody>
 		</table>
