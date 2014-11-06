@@ -26,9 +26,6 @@
 <link href="Admin/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 <link href="Admin/css/AdminLTE.css" rel="stylesheet">
 
-<c:set var="contextPath" value="${pageContext.request.contextPath}" />
-<script type="text/javascript" src="${contextPath}/js/customScript.js"></script>
-
 <script type="text/javascript">
 function listAllMajor(){
 	$.post('RegisterStudentServlet',{},function(data) {

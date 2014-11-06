@@ -65,10 +65,10 @@ $('#resetAddHoliday').on('click', function(e) {
 		  this.reset();
 		});
 });
-$('#submitHoliday').on('click', function(e) {
-	e.preventDefault();
-	$('#modal-form-addholiday').submit();
-});
+//$('#submitHoliday').on('click', function(e) {
+//	e.preventDefault();
+//	$('#modal-form-addholiday').submit();
+//});
 
 function confirm_delete() {
 	if (confirm(urldecode('Confirm Delete!!!'))) {

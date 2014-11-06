@@ -36,7 +36,6 @@
 
 	<div class="wrapper row-offcanvas row-offcanvas-left">
 		<!---------------Menu---------------->
-<%-- 		<jsp:include page="Admin/Menu.jsp" /> --%>
 		<%@include file="Admin/Menu.jsp" %>
 		<aside class="right-side"> <!-- Content Header (Page header) -->
 		<section class="content-header">
@@ -133,7 +132,8 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal" id="resetAddHoliday">ยกเลิก</button>
-					<a id="submitHoliday" class='btn btn-primary' href="#">เพิ่ม</a>
+<!-- 					<a class='btn btn-primary' id="submitHoliday">เพิ่ม</a> -->
+					<button type="button" class="btn btn-default" onclick="document.getElementById('modal-form-addholiday').submit();">เพิ่ม</button>
 				</div>
 			</div>
 			<!-- /.modal-content -->
@@ -154,8 +154,8 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
-					<a id="modal-form-submitEditTeacher" class='btn btn-primary'
-						href="#">แก้ไข</a>
+<!-- 					<a id="modal-form-submitEditTeacher" class='btn btn-primary' href="#">แก้ไข</a> -->
+					<button type="button" class="btn btn-default" onclick="document.getElementById('modal-formEditTeacher').submit();">แก้ไข</button>
 				</div>
 			</div>
 			<!-- /.modal-content -->
@@ -166,13 +166,8 @@
 	<!-- /.modal -->
 
 	<!-- script -->
-	<script
-		src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script>
-		window.jQuery
-				|| document
-						.write('<script src="js/jquery-1.9.1.min.js"><\/script>');
-	</script>
+	
+	<script	src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 	<script src="Admin/js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
 	<script src="Admin/js/bootstrap.min.js" type="text/javascript"></script>
 	<script	src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
@@ -185,7 +180,7 @@
 	
 	<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
 	<script type="text/javascript" src="js/scriptdate.js"></script>
-	<script src="js/customScript.js"></script>
+	<script type="text/javascript" src="js/customScript.js"></script>
 	<script type="text/javascript" src="js/validateScript.js"></script>
 </body>
 </html>
