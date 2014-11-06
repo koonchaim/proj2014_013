@@ -447,7 +447,7 @@ function addHolidaychk() {
 	var startDate = document.addHolidayfrm.StartDate.value;
 	var startDateSplit = startDate.split('/');
 	
-	 if (startDate == "") {
+	 if (document.addHolidayfrm.StartDate.value == "") {
 		 $('#MessageAlert').text('กรุณากรอก วัน/เดือน/ปี');
 		 $('#danger').modal('show');
 		 return false;
@@ -456,10 +456,6 @@ function addHolidaychk() {
 		 $('#danger').modal('show');
 		 return false;
 	 } else if (document.addHolidayfrm.detail.value == "") {
-		 $('#MessageAlert').text('กรุณากรอก รายละเอียด');
-		 $('#danger').modal('show');
-		 return false;
-	 } else if(startDateSplit[2] == yyyy){
 		 $('#MessageAlert').text('กรุณากรอก รายละเอียด');
 		 $('#danger').modal('show');
 		 return false;

@@ -71,28 +71,25 @@ public class CheckAttendanceServlet extends HttpServlet {
 
 				request.getRequestDispatcher("CheckAttendance.jsp").forward(request, response);
 			} else {
-				String stu = request.getParameter("stuID_1");
+				String[] stu = request.getParameterValues("stuID[]");
 
 				if (stu != null) {
-					int theCount = Integer.parseInt(request.getParameter("theCount"));
 					int count = 1;
 
 					Date createNow = new Date();
 
 					String getTerm = request.getParameter("selectTerm");
-					// String getTerm = request.getParameter("addSelectTerm");
 					TermBean termBean = new TermBean();
 					termBean.setTermName(getTerm);
 
-					for (int i = 0; i < theCount; i++) {
+					for (int i = 0; i < stu.length; i++) {
 						String status = request.getParameter("status_" + count);
-						String studentID = request.getParameter("stuID_" + count);
-
+						System.out.println(stu[i] +"_"+status);
 						AttendanceBean attendanceBean = new AttendanceBean();
 						attendanceBean.setStatusActivity(status);
 
 						StudentBean studentBean = new StudentBean();
-						studentBean.setStudentID(studentID);
+						studentBean.setStudentID(stu[i]);
 						attendanceBean.setStudent(studentBean);
 
 						ScheduleBean scheduleBean = new ScheduleBean(createNow, termBean, attendanceBean);

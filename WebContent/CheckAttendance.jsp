@@ -107,7 +107,7 @@
 												<c:set var="theCounter" value="${theCounter + 1}"/>
 												<input type="hidden" name="majorStudent" id="majorStudent" value="${major.majorName}">
 												<input type="hidden" name="selectTerm" value="${term.termName}">
-												<input type="hidden" name="stuID_${theCount.count}" value="${item.studentID}" >
+												<input type="hidden" name="stuID[]" value="${item.studentID}" >
 												<input type="hidden" name="addSelectTerm" value="${selectTerm}" >
 													<tr>
 														<td class="TextCenter">${theCount.count}</td>
