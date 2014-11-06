@@ -1,7 +1,7 @@
-//$('#submitHoliday').on('click', function(e) {
-//	e.preventDefault();
-//	$('#modal-form-addholiday').submit();
-//});
+$('#modal-form-submit-editadd-holiday').on('click', function(e) {
+	e.preventDefault();
+	$('#modal-form-editadd-holiday').submit();
+});
 
 $('#modal-form-submitEditTeacher').on('click', function(e) {
 	e.preventDefault();
@@ -61,14 +61,15 @@ $('#resetEditFromTeacher').on('click', function(e) {
 
 $('#resetAddHoliday').on('click', function(e) {
 	e.preventDefault();
-	$('#modal-form-addholiday').each (function(){
+	$('#form-add-holiday').each (function(){
 		  this.reset();
 		});
 });
-//$('#submitHoliday').on('click', function(e) {
-//	e.preventDefault();
-//	$('#modal-form-addholiday').submit();
-//});
+
+$('#addHoliday-form-submit').click(function() {
+	$('#form-add-holiday').submit();
+});
+
 
 function confirm_delete() {
 	if (confirm(urldecode('Confirm Delete!!!'))) {

@@ -132,8 +132,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal" id="resetAddHoliday">ยกเลิก</button>
-<!-- 					<a class='btn btn-primary' id="submitHoliday">เพิ่ม</a> -->
-					<button type="button" class="btn btn-default" onclick="document.getElementById('modal-form-addholiday').submit();">เพิ่ม</button>
+					<button type="button" class="btn btn-primary" id="addHoliday-form-submit">เพิ่ม</button>
 				</div>
 			</div>
 			<!-- /.modal-content -->
@@ -154,8 +153,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
-<!-- 					<a id="modal-form-submitEditTeacher" class='btn btn-primary' href="#">แก้ไข</a> -->
-					<button type="button" class="btn btn-default" onclick="document.getElementById('modal-formEditTeacher').submit();">แก้ไข</button>
+					<a id="modal-form-submit-editadd-holiday" class='btn btn-primary' href="#">แก้ไข</a>
 				</div>
 			</div>
 			<!-- /.modal-content -->
@@ -166,21 +164,15 @@
 	<!-- /.modal -->
 
 	<!-- script -->
-	
 	<script	src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 	<script src="Admin/js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
 	<script src="Admin/js/bootstrap.min.js" type="text/javascript"></script>
-	<script	src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-	<script src="Admin/js/plugins/morris/morris.min.js"	type="text/javascript"></script>
-	<script src="Admin/js/plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
-	<script	src="Admin/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
-	<script	src="Admin/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
-	<script src="Admin/js/plugins/iCheck/icheck.min.js"	type="text/javascript"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 	<script src="Admin/js/AdminLTE/app.js" type="text/javascript"></script>
-	
-	<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
-	<script type="text/javascript" src="js/scriptdate.js"></script>
 	<script type="text/javascript" src="js/customScript.js"></script>
 	<script type="text/javascript" src="js/validateScript.js"></script>
+	<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="js/scriptdate.js"></script>
+	
 </body>
 </html>

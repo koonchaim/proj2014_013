@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-	<form id="modal-formEditTeacher" accept-charset="UTF-8"
+	<form id="modal-form-editadd-holiday" accept-charset="UTF-8"
 		data-remote="true" action="EditHolidayServlet" method="get"
 		name="editHolidayfrm" onSubmit="JavaScript:return editHolidaychk();"
 		class="form-horizontal">

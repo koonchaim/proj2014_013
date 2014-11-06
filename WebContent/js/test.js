@@ -17,26 +17,15 @@ $(document)
 										var yyyy = dateNow.getFullYear();
 										// alert(dd+"/"+mm+"/"+yyyy);
 
-										$('input[datatype=textEvaluation]')
-												.each(
-														function() {
-															var datatype = $
-																	.trim($(
-																			this)
-																			.val());
+										$('input[datatype=textEvaluation]').each(function() {
+											var datatype = $.trim($(this).val());
 
-															if ($.trim($(this)
-																	.val()) == '') {
-																isValid = false;
-																$(this)
-																		.css(
-																				{
-																					"border" : "1px solid red",
-																					"background" : "#FFCECE"
-																				});
+											if ($.trim($(this).val()) == '') {
+												isValid = false;
+												$(this).css({"border" : "1px solid red","background" : "#FFCECE"});
 
-															} else {
-																if (/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/
+											} else {
+												if (/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/
 																		.test(datatype)) {
 																	isValid = false;
 																	$(this)

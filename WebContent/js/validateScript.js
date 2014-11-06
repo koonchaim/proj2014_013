@@ -409,7 +409,7 @@ function editregisterStudent() {
 		$('#MessageAlert').text('หมู่ ห้ามมีอักขระพิเศษ');
 		$('#danger').modal('show');
 		return false;
-	} else if (document.editregisterStudentchk.parentStreet.value.match(/^[.?!@&#+%:;/<>*$'",\[\]\{\}^()]$/)) {
+	} else if (document.editregisterStudentchk.parentStreet.value.match(/^[.?!@&#+%:;/<>*$'",\[\]\{\}^()]*$/)) {
 		$('#MessageAlert').text('ถนน ห้ามมีอักขระพิเศษ');
 		$('#danger').modal('show');
 		return false;
@@ -430,6 +430,40 @@ function editregisterStudent() {
 		$('#danger').modal('show');
 		return false;
 	}
+}
+
+function editHolidaychk() {
+	 if (document.editHolidayfrm.detail.value == "") {
+		 $('#MessageAlert').text('กรุณากรอก รายละเอียด');
+		 $('#danger').modal('show');
+		 return false;
+	 }
+}
+
+function addHolidaychk() {
+	dateNow = new Date();
+	var yyyy = dateNow.getFullYear();
+	
+	var startDate = document.addHolidayfrm.StartDate.value;
+	var startDateSplit = startDate.split('/');
+	
+	 if (startDate == "") {
+		 $('#MessageAlert').text('กรุณากรอก วัน/เดือน/ปี');
+		 $('#danger').modal('show');
+		 return false;
+	 } else if (document.addHolidayfrm.EndDate.value == "") {
+		 $('#MessageAlert').text('กรุณากรอก วัน/เดือน/ปี');
+		 $('#danger').modal('show');
+		 return false;
+	 } else if (document.addHolidayfrm.detail.value == "") {
+		 $('#MessageAlert').text('กรุณากรอก รายละเอียด');
+		 $('#danger').modal('show');
+		 return false;
+	 } else if(startDateSplit[2] == yyyy){
+		 $('#MessageAlert').text('กรุณากรอก รายละเอียด');
+		 $('#danger').modal('show');
+		 return false;
+	 }
 }
 /*
 

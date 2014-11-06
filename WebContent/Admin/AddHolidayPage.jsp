@@ -12,51 +12,31 @@
 			useMode : 2,
 			target : "inputField",
 			dateFormat : "%d/%M/%Y"
-		/*selectedDate:{				This is an example of what the full configuration offers.
-			day:5,						For full documentation about these settings please see the full version of the code.
-			month:9,
-			year:2006
-		},
-		yearsRange:[1978,2020],
-		limitToToday:false,
-		cellColorScheme:"beige",
-		dateFormat:"%m-%d-%Y",
-		imgPath:"img/",
-		weekStartDay:1*/
 		});
 
 		new JsDatePick({
 			useMode : 2,
 			target : "inputField2",
 			dateFormat : "%d/%M/%Y"
-		/*selectedDate:{				This is an example of what the full configuration offers.
-			day:5,						For full documentation about these settings please see the full version of the code.
-			month:9,
-			year:2006
-		},
-		yearsRange:[1978,2020],
-		limitToToday:false,
-		cellColorScheme:"beige",
-		dateFormat:"%m-%d-%Y",
-		imgPath:"img/",
-		weekStartDay:1*/
 		});
 	};
 </script>
-<form id="modal-form-addholiday" accept-charset="UTF-8" data-remote="true"
+<form id="form-add-holiday" accept-charset="UTF-8" data-remote="true"
 	action="AddHolidayServlet" method="post" name="addHolidayfrm"
 	onSubmit="JavaScript:return addHolidaychk();" class="form-horizontal">
 
 	<div class="form-group">
 		<label class="col-lg-3 control-label">ตั้งแต่ วัน/เดือน/ปี :</label>
 		<div class="col-lg-8">
-				<input type="text" class="form-control" value="" id="dpd1" name="StartDate">
+			<input type="text" class="form-control" value="" id="dpd1"
+				name="StartDate">
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="col-lg-3 control-label">ถึง วัน/เดือน/ปี :</label>
 		<div class="col-lg-8">
-				<input type="text" class="form-control" value="" id="dpd2" name="EndDate">
+			<input type="text" class="form-control" value="" id="dpd2"
+				name="EndDate">
 		</div>
 	</div>
 	<div class="form-group">
