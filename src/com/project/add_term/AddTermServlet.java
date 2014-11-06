@@ -52,22 +52,8 @@ public class AddTermServlet extends HttpServlet {
 			String term = request.getParameter("termName");
 			String date1 = request.getParameter("StartDate1");
 			String date2 = request.getParameter("EndDate1");
-			String year = request.getParameter("year");
-			
+			String year = request.getParameter("year");			
 			String termName = term+"/"+year;
-
-//			SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/YYYY");
-//
-//			termBean.setStartDate(formatDate.parse(startDate));
-//			termBean.setEndDate(formatDate.parse(endDate));
-//			termBean.setTermName(termName);
-//			
-//			Date createNow = new Date();
-//			System.out.println("******"+createNow.getTime());
-//			System.out.println("######"+termBean.getStartDate().getTime());
-			
-			
-			SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/YYYY", Locale.ENGLISH);
 			Calendar startDay = Calendar.getInstance(Locale.ENGLISH);
 			Calendar endDay = Calendar.getInstance(Locale.ENGLISH);
 			String[] startDate = date1.split("/");
@@ -78,7 +64,6 @@ public class AddTermServlet extends HttpServlet {
 			termBean.setStartDate(startDay.getTime());
 			termBean.setEndDate(endDay.getTime());
 			termBean.setTermName(termName);
-			//
 			
 			boolean addTerm = addTermMng.addTerm(termBean);
 			if (addTerm) {
