@@ -3,7 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <form id="edit-studentForm" accept-charset="UTF-8" data-remote="true"
-		action="EditStudentServlet" method="post" class="form-horizontal" role="form">
+		action="EditStudentServlet" method="post" class="form-horizontal"
+		name="editregisterStudentchk" onSubmit="JavaScript:return editregisterStudent();">
 			<!-- edit form column -->
 
 				<hr>
@@ -56,13 +57,20 @@
 						</div>
 					</div>
 					<h3>Parent info</h3>
-					<hr>
+					<hr>					
 					<div class="form-group">
 						<label class="col-lg-3 control-label">คำนำหน้าชื่อผู้ปกครอง :</label>
-						<div class="col-lg-8">
-							<input class="form-control" type="text" id="EditStudentAntecedentParent" name="parentAntecedent">
+						<div class="col-lg-8">						
+						<div class="ui-select">
+							<select id="EditStudentAntecedentParent" class="form-control" name="parentAntecedent">
+								<option value="นาย">นาย</option>
+								<option value="นาง">นาง</option>
+								<option value="นางสาว">นางสาว</option>
+							</select>
+						</div>
 						</div>
 					</div>
+					
 					<div class="form-group">
 						<label class="col-lg-3 control-label">ชื่อผู้ปกครอง :</label>
 						<div class="col-lg-8">

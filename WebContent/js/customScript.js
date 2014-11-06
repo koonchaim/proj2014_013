@@ -1,7 +1,7 @@
-$('#modal-form-submit').on('click', function(e) {
-	e.preventDefault();
-	$('#modal-form').submit();
-});
+//$('#submitHoliday').on('click', function(e) {
+//	e.preventDefault();
+//	$('#modal-form-addholiday').submit();
+//});
 
 $('#modal-form-submitEditTeacher').on('click', function(e) {
 	e.preventDefault();
@@ -13,6 +13,16 @@ $('#modal-form-submit-register-teacher').on('click', function(e) {
 	$('#modal-form-regis-teacher').submit();
 });
 
+$('#modal-submit-regis-student').on('click', function(e) {
+	e.preventDefault();
+	$('#modal-form-regis-student').submit();
+});
+
+$('#modal-submit-editregis-student').on('click', function(e) {
+	e.preventDefault();
+	$('#edit-studentForm').submit();
+});
+
 $('#modal-form-edit-teacher-submit').on('click', function(e) {
 	e.preventDefault();
 	$('#formEditTeacher').submit();
@@ -20,6 +30,20 @@ $('#modal-form-edit-teacher-submit').on('click', function(e) {
 
 $('#btnImportTeacher').attr('href','ImportTeacherServlet');
 
+
+$('#modal-cancel-regis-student').on('click', function(e) {
+	e.preventDefault();
+	$('#modal-form-regis-student').each (function(){
+		  this.reset();
+		});
+});
+
+$('#modal-cancel-editregis-student').on('click', function(e) {
+	e.preventDefault();
+	$('#edit-studentForm').each (function(){
+		  this.reset();
+		});
+});
 
 $('#resetEditTeacherFrom').on('click', function(e) {
 	e.preventDefault();
@@ -35,6 +59,16 @@ $('#resetEditFromTeacher').on('click', function(e) {
 		});
 });
 
+$('#resetAddHoliday').on('click', function(e) {
+	e.preventDefault();
+	$('#modal-form-addholiday').each (function(){
+		  this.reset();
+		});
+});
+$('#submitHoliday').on('click', function(e) {
+	e.preventDefault();
+	$('#modal-form-addholiday').submit();
+});
 
 function confirm_delete() {
 	if (confirm(urldecode('Confirm Delete!!!'))) {
@@ -221,10 +255,8 @@ function editTeacherByIdCard(id) {
 		$('#EditTeacherAntecedent').val(data.antecedent);
 		$('#EditTeacherFirstName').val(data.firstName);
 		$('#EditTeacherLastName').val(data.lastName);
-		$('#EditTeacherEducationalBackground').val(
-				data.education.educationalBackground);
-		$('#EditTeacherEducationalInstitution').val(
-				data.education.educationalInstitution);
+		$('#EditTeacherEducationalBackground').val(data.education.educationalBackground);
+		$('#EditTeacherEducationalInstitution').val(data.education.educationalInstitution);
 		$('#EditTeacherEducationalMajor').val(data.education.educationalMajor);
 		$('#EditTeacherVacancy').val(data.vacancy);
 

@@ -54,15 +54,6 @@ public class RegisterTeacherManager {
 			preparedStatement.setInt(8, MajorID);
 			preparedStatement.setString(9, teacher.getPath_image());
 			preparedStatement.executeUpdate();
-
-			// String addLogin =
-			// "insert into login (username,password,status,teacherID) VALUES (?,?,?,?)";
-			// preparedStatement = dbConnection.prepareStatement(addLogin);
-			// preparedStatement.setString(1, teacher.getLogin().getUsername());
-			// preparedStatement.setString(2, teacher.getLogin().getPassword());
-			// preparedStatement.setString(3, "Teacher");
-			// preparedStatement.setString(4, teacher.getIdCard());
-			// preparedStatement.executeUpdate();
 			addLogin(teacher.getLogin().getUsername(), teacher.getLogin().getPassword(), "Teacher", teacher.getIdCard());
 			addEducation(teacher.getEducation().getEducationalInstitution(), teacher.getEducation().getEducationalBackground(), teacher
 					.getEducation().getEducationalMajor(), teacher.getIdCard());
@@ -144,20 +135,9 @@ public class RegisterTeacherManager {
 			preparedStatement.setString(7, teacher.getPhone());
 			preparedStatement.setInt(8, MajorID);
 			preparedStatement.executeUpdate();
-			String addLogin = "insert into login (username,password,status,teacherID) VALUES (?,?,?,?)";
-			preparedStatement = dbConnection.prepareStatement(addLogin);
-			preparedStatement.setString(1, teacher.getLogin().getUsername());
-			preparedStatement.setString(2, teacher.getLogin().getPassword());
-			preparedStatement.setString(3, "Teacher");
-			preparedStatement.setString(4, teacher.getIdCard());
-			preparedStatement.executeUpdate();
-			String addEducation = "insert into education (educationalInstitution,educationalBackground,educationalMajor,teacherID) VALUES (?,?,?,?)";
-			preparedStatement = dbConnection.prepareStatement(addEducation);
-			preparedStatement.setString(1, teacher.getEducation().getEducationalInstitution());
-			preparedStatement.setString(2, teacher.getEducation().getEducationalBackground());
-			preparedStatement.setString(3, teacher.getEducation().getEducationalMajor());
-			preparedStatement.setString(4, teacher.getIdCard());
-			preparedStatement.executeUpdate();
+			addLogin(teacher.getLogin().getUsername(), teacher.getLogin().getPassword(), "Teacher", teacher.getIdCard());
+			addEducation(teacher.getEducation().getEducationalInstitution(), teacher.getEducation().getEducationalBackground(), teacher
+					.getEducation().getEducationalMajor(), teacher.getIdCard());
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			chk = false;

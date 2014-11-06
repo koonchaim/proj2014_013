@@ -95,9 +95,9 @@ public class RegisterTeacherServlet extends HttpServlet {
 						}
 						response.sendRedirect("ListTeacherServlet");
 					} else {
-						System.out.println("รหัสประจำตัวประชาชนซ้ำ");
-						request.setAttribute("message", "รหัสประจำตัวประชาชนซ้ำ");
-						response.sendRedirect("ListTeacherServlet");
+						System.out.println("รหัสประจำตัวประชาชนซ้ำ--");
+						request.setAttribute("message", "ไม่สามารถเพิ่มข้อมูลอาจารย์ได้ เนื่องจากมีข้อมูลอยู่แล้ว");
+						request.getRequestDispatcher("ListTeacherServlet").forward(request, response);
 					}
 				}
 			} catch (SQLException e) {
@@ -134,9 +134,9 @@ public class RegisterTeacherServlet extends HttpServlet {
 						}
 						response.sendRedirect("ListTeacherServlet");
 					} else {
-						System.out.println("รหัสประจำตัวประชาชนซ้ำ");
-						request.setAttribute("message", "รหัสประจำตัวประชาชนซ้ำ");
-						response.sendRedirect("ListTeacherServlet");
+						System.out.println("รหัสประจำตัวประชาชนซ้ำ**");
+						request.setAttribute("message", "ไม่สามารถเพิ่มข้อมูลอาจารย์ได้ เนื่องจากมีข้อมูลอยู่แล้ว");
+						request.getRequestDispatcher("ListTeacherServlet").forward(request, response);
 					}
 				}
 			} catch (SQLException e) {

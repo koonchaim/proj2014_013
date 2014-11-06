@@ -46,8 +46,7 @@
 					</tr>
 				</thead>
 				<tbody>
-
-
+<input type="hidden" value="${message}" id="message">
 					<c:forEach items="${listTeacher}" var="item" varStatus="theCount">
 						<tr>
 							<td class="TextCenter">${theCount.count}</td>
@@ -153,5 +152,17 @@
 	<script src="js/jasny-bootstrap.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="js/customScript.js"></script>
 	<script type="text/javascript" src="js/validateScript.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+	    var message = $('#message').val();
+	    
+	    if (message != '') {
+	    	$('#MessageAlert').text(message);
+			$('#danger').modal('show');
+		}else{
+			
+		}
+	});
+	</script>
 </body>
 </html>

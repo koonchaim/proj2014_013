@@ -182,19 +182,12 @@ function ListEducation(){
 					<jsp:include page="Admin/RegisterStudentPage.jsp" flush="false" />
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
-					<a class='btn btn-primary'
-						onclick="document.getElementById('regis-student').submit();">บันทึก</a>
+					<button type="button" class="btn btn-default" data-dismiss="modal" id="modal-cancel-regis-student">ยกเลิก</button>
+					<a id="modal-submit-regis-student" class='btn btn-primary'>บันทึก</a>
 				</div>
 			</div>
-			<!-- /.modal-content -->
 		</div>
-		<!-- /.modal-dialog -->
 	</div>
-	<!-- /.modal -->
-	<!-- 	<form id="modal-form" accept-charset="UTF-8" data-remote="true" -->
-	<!-- 		action="EditStudentServlet" method="post" class="form-horizontal" -->
-	<!-- 		role="form"> -->
 	<div class="modal fade" id="editStudent">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -207,15 +200,13 @@ function ListEducation(){
 					<jsp:include page="Admin/EditStudentPage.jsp" flush="false" />
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
-					<a class='btn btn-primary'
-						onclick="document.getElementById('edit-studentForm').submit();">แก้ไข</a>
+					<button type="button" class="btn btn-default" data-dismiss="modal" id="modal-cancel-editregis-student">ยกเลิก</button>
+					<a id="modal-submit-editregis-student" class='btn btn-primary'>แก้ไข</a>
 				</div>
 			</div>
 		</div>
 	</div>
 	<jsp:include page="modalMessage.jsp" />
-	<!-- /.modal -->
 	<!-- script -->
 	<script
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -226,15 +217,17 @@ function ListEducation(){
 	</script>
 	<script src="Admin/js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
 	<script src="Admin/js/bootstrap.min.js" type="text/javascript"></script>
-	<script
-		src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-	<script src="Admin/js/plugins/morris/morris.min.js"	type="text/javascript"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+	<script src="Admin/js/plugins/morris/morris.min.js" type="text/javascript"></script>
 	<script src="Admin/js/plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
 	<script	src="Admin/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
 	<script	src="Admin/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
 
+	<!-- fullCalendar -->
 	<script src="Admin/js/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
 	<script src="Admin/js/AdminLTE/app.js" type="text/javascript"></script>
+
+	<script type="text/javascript" src="js/customScript.js"></script>
 	<script type="text/javascript" src="js/validateScript.js"></script>
 
 </body>

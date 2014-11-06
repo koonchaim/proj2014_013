@@ -43,7 +43,7 @@
 		});
 	};
 </script>
-<form id="modal-form" accept-charset="UTF-8" data-remote="true"
+<form id="modal-form-addholiday" accept-charset="UTF-8" data-remote="true"
 	action="AddHolidayServlet" method="post" name="addHolidayfrm"
 	onSubmit="JavaScript:return addHolidaychk();" class="form-horizontal">
 
