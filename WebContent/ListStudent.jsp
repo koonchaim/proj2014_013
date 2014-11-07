@@ -136,9 +136,9 @@ function ListEducation(){
 						<td class="TextCenter">
 							<button type="button" class="btn btn-primary btn-circle"
 								data-toggle="modal" data-target="#editStudent"
-								onclick="editStudentByID(${item.studentID})">
+								onclick="editStudentByID('${item.studentID}')">
 								<i class="fa fa-wrench"  Title="แก้ไข"></i>
-							</button> <a onclick="return remove_student(${item.studentID});">
+							</button> <a onclick="return remove_student('${item.studentID}');">
 								<button type="button" class="btn btn-danger btn-circle">
 									<i class="glyphicon glyphicon-trash" Title="ลบ"></i>
 								</button>

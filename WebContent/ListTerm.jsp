@@ -33,7 +33,7 @@
 <body class="skin-blue">
 	<!--------------Header--------------->
 	<jsp:include page="Admin/Header.jsp" />
-
+	<fmt:setLocale value="th_TH"/>
 	<div class="wrapper row-offcanvas row-offcanvas-left">
 		<!---------------Menu---------------->
 		<%-- 		<jsp:include page="Admin/Menu.jsp" /> --%>
@@ -62,9 +62,10 @@
 						<tr>
 							<td>${theCount.count}</td>
 							<td>${listTermName[theCount.index]}</td>
-							<td><fmt:formatDate type="date" dateStyle="long" value="${item.startDate}" /></td>
-							
-							<td><fmt:formatDate type="date" dateStyle="long" value="${item.endDate}" /></td>
+							<td><fmt:formatDate pattern="dd MMMM YYYY"  value="${item.startDate}" /></td>
+							<td><fmt:formatDate pattern="dd MMMM YYYY"  value="${item.endDate}" /></td>
+<%-- 							<td><fmt:formatDate type="date" dateStyle="long" value="${item.startDate}"  /></td> --%>
+<%-- 							<td><fmt:formatDate type="date" dateStyle="long" value="${item.endDate}" /></td> --%>
 							<td>
 <!-- 							<button type="button" class="btn btn-primary btn-circle" -->
 <!-- 									data-toggle="modal" data-target="#editTerm" -->

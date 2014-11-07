@@ -39,7 +39,18 @@ public class ListStudentServlet extends HttpServlet {
 			String selectMajorName = request.getParameter("selectMajorName");
 			String selectMajorName11 = request.getParameter("selectLevelEdu");
 			String id = request.getParameter("id");
-			if (selectMajorName == null || selectMajorName11 == null) {
+
+			if (id != null) {
+				if (listAllMajor.removeStudent(id)) {
+					request.setAttribute("ErrorColor", "green");
+					request.setAttribute("ErrorMassage", "ลบข้อมูลนักศึกษาร้อยแล้ว");
+					request.getRequestDispatcher("ListStudent.jsp").forward(request, response);
+				} else {
+					request.setAttribute("ErrorColor", "red");
+					request.setAttribute("ErrorMassage", "ลบข้อมูลนักศึกษาไม่สำเร็จ");
+					request.getRequestDispatcher("ListStudent.jsp").forward(request, response);
+				}
+			} else if (selectMajorName == null || selectMajorName11 == null) {
 				List<MajorBean> listMajor = listAllMajor.findAllMajor();
 				List<MajorBean> listEducationLevel = listAllMajor
 						.findAllEducationLevelByMajorName(listMajor.get(listMajor.size() - 1).getMajorName());
@@ -62,7 +73,6 @@ public class ListStudentServlet extends HttpServlet {
 				request.setAttribute("listMajor", listMajor);
 				request.setAttribute("selectMajorName", selectMajorName);
 
-				
 				String[] result = selectMajorName11.split(" ");
 				String selectEducation = result[0];
 				String selectEducation1 = result[1];
@@ -73,16 +83,6 @@ public class ListStudentServlet extends HttpServlet {
 				request.setAttribute("listStudent", listStudent);
 
 				request.getRequestDispatcher("ListStudent.jsp").forward(request, response);
-			} else if (id != null) {
-				if (listAllMajor.removeStudent(id)) {
-					request.setAttribute("ErrorColor", "green");
-					request.setAttribute("ErrorMassage", "ลบข้อมูลนักศึกษาร้อยแล้ว");
-					request.getRequestDispatcher("ListStudent.jsp").forward(request, response);
-				} else {
-					request.setAttribute("ErrorColor", "red");
-					request.setAttribute("ErrorMassage", "ลบข้อมูลนักศึกษาไม่สำเร็จ");
-					request.getRequestDispatcher("ListStudent.jsp").forward(request, response);
-				}
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

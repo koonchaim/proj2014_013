@@ -189,14 +189,7 @@ public class EditStudentManager {
 	public boolean updateDataStudent(MajorBean major) throws SQLException {
 		Connection con = null;
 		PreparedStatement prep = null;
-		String update_data = "UPDATE student " + " INNER JOIN parent" + " ON student.studentID = parent.studentID" + " INNER JOIN address"
-				+ " ON parent.Parent_ID = address.Parent_ID" + " SET student.antecedent = ? " + " , student.firstName = ? "
-				+ " , student.lastName = ? " + " , parent.antecedent_parent = ? " + " , parent.firstName_parent = ? "
-				+ " , parent.lastName_parent = ? " + " , address.addNo = ? " + " , address.moo = ? " + " , address.street = ? "
-				+ " , address.subDistrict = ? " + " , address.district = ? " + " , address.province = ? " + " , address.zipCode = ? "
-				+ " , student.educationLevel_ID = (SELECT educationlevel.EducationLevel_ID FROM educationlevel "
-				+ "JOIN major ON major.Major_ID = educationlevel.Major_ID " + "WHERE educationLevel.educationalBackground = ? "
-				+ "AND educationLevel.educationLevel = ? " + "AND major.majorName = ?) " + " WHERE student.studentID = ? ";
+		String update_data = "UPDATE student SET antecedent = ? ,firstName = ?  ,lastName = ? ,EducationLevel_ID = ? WHERE studentID = ?";
 		try {
 			con = ConnectDB.getInstance().DBConnection();
 			prep = con.prepareStatement(update_data);
@@ -204,26 +197,14 @@ public class EditStudentManager {
 			prep.setString(1, major.getEducationLevel().getStudent().getAntecedent());
 			prep.setString(2, major.getEducationLevel().getStudent().getFirstName());
 			prep.setString(3, major.getEducationLevel().getStudent().getLastName());
-			// parent
-			prep.setString(4, major.getEducationLevel().getStudent().getParent().getAntecedent());
-			prep.setString(5, major.getEducationLevel().getStudent().getParent().getFirstName());
-			prep.setString(6, major.getEducationLevel().getStudent().getParent().getLastName());
-			// address
-			prep.setString(7, major.getEducationLevel().getStudent().getParent().getAddress().getAddNo());
-			prep.setString(8, major.getEducationLevel().getStudent().getParent().getAddress().getMoo());
-			prep.setString(9, major.getEducationLevel().getStudent().getParent().getAddress().getStreet());
-			prep.setString(10, major.getEducationLevel().getStudent().getParent().getAddress().getSubDistrict());
-			prep.setString(11, major.getEducationLevel().getStudent().getParent().getAddress().getDistrict());
-			prep.setString(12, major.getEducationLevel().getStudent().getParent().getAddress().getProvince());
-			prep.setString(13, major.getEducationLevel().getStudent().getParent().getAddress().getZipCode());
 
-			// education
-			prep.setString(14, major.getEducationLevel().getEducationalBackground());
-			prep.setInt(15, major.getEducationLevel().getEducationLevel());
-			prep.setString(16, major.getMajorName());
+			int educationLevel_ID = findEducationLevel_ID(major);
 
-			prep.setString(17, major.getEducationLevel().getStudent().getStudentID());
+			prep.setInt(4, educationLevel_ID);
+			prep.setString(5, major.getEducationLevel().getStudent().getStudentID());
 			prep.executeUpdate();
+			this.updateDataParent(major);
+			this.updateDataAddress(major);
 			return true;
 
 		} catch (Exception e) {
@@ -237,5 +218,125 @@ public class EditStudentManager {
 			}
 		}
 		return false;
+	}
+
+	public boolean updateDataParent(MajorBean major) throws SQLException {
+		Connection con = null;
+		PreparedStatement prep = null;
+		String update_data = "UPDATE parent SET antecedent_parent = ? ,firstName_parent = ? ,lastName_parent = ?  WHERE studentID = ?";
+		try {
+			con = ConnectDB.getInstance().DBConnection();
+			prep = con.prepareStatement(update_data);
+			// parent
+			prep.setString(1, major.getEducationLevel().getStudent().getParent().getAntecedent());
+			prep.setString(2, major.getEducationLevel().getStudent().getParent().getFirstName());
+			prep.setString(3, major.getEducationLevel().getStudent().getParent().getLastName());
+			prep.setString(4, major.getEducationLevel().getStudent().getStudentID());
+			prep.executeUpdate();
+
+			return true;
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (prep != null) {
+				prep.close();
+			}
+			if (con != null) {
+				con.close();
+			}
+		}
+		return false;
+	}
+
+	public boolean updateDataAddress(MajorBean major) throws SQLException {
+		Connection con = null;
+		PreparedStatement prep = null;
+		String update_data = "UPDATE address SET addNo = ?, moo = ?, street = ?, subDistrict = ?, district = ?, province = ?, zipCode = ? WHERE Parent_ID = ?";
+		try {
+			con = ConnectDB.getInstance().DBConnection();
+			prep = con.prepareStatement(update_data);
+			// address
+			prep.setString(1, major.getEducationLevel().getStudent().getParent().getAddress().getAddNo());
+			prep.setString(2, major.getEducationLevel().getStudent().getParent().getAddress().getMoo());
+			prep.setString(3, major.getEducationLevel().getStudent().getParent().getAddress().getStreet());
+			prep.setString(4, major.getEducationLevel().getStudent().getParent().getAddress().getSubDistrict());
+			prep.setString(5, major.getEducationLevel().getStudent().getParent().getAddress().getDistrict());
+			prep.setString(6, major.getEducationLevel().getStudent().getParent().getAddress().getProvince());
+			prep.setString(7, major.getEducationLevel().getStudent().getParent().getAddress().getZipCode());
+
+			int Parent_ID = findParent_ID(major.getEducationLevel().getStudent().getStudentID());
+
+			prep.setInt(8, Parent_ID);
+			prep.executeUpdate();
+
+			return true;
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (prep != null) {
+				prep.close();
+			}
+			if (con != null) {
+				con.close();
+			}
+		}
+		return false;
+	}
+
+	public int findEducationLevel_ID(MajorBean major) throws SQLException {
+		int EducationLevel_ID = 0;
+		Connection dbConnection = null;
+		PreparedStatement preparedStatement = null;
+		String selectSQL = "SELECT educationlevel.EducationLevel_ID FROM educationlevel JOIN major ON major.Major_ID = educationlevel.Major_ID "
+				+ " WHERE educationlevel.educationalBackground = ? AND educationlevel.educationLevel = ? AND major.majorName = ?";
+		try {
+			dbConnection = ConnectDB.getInstance().DBConnection();
+			preparedStatement = dbConnection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, major.getEducationLevel().getEducationalBackground());
+			preparedStatement.setInt(2, major.getEducationLevel().getEducationLevel());
+			preparedStatement.setString(3, major.getMajorName());
+			ResultSet rs = preparedStatement.executeQuery();
+			while (rs.next()) {
+				EducationLevel_ID = rs.getInt("EducationLevel_ID");
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (preparedStatement != null) {
+				preparedStatement.close();
+			}
+			if (dbConnection != null) {
+				dbConnection.close();
+			}
+		}
+		return EducationLevel_ID;
+	}
+
+	public int findParent_ID(String studentID) throws SQLException {
+		int Parent_ID = 0;
+		Connection dbConnection = null;
+		PreparedStatement preparedStatement = null;
+		String selectSQL = "SELECT parent.Parent_ID FROM parent WHERE studentID = ?";
+		try {
+			dbConnection = ConnectDB.getInstance().DBConnection();
+			preparedStatement = dbConnection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, studentID);
+			ResultSet rs = preparedStatement.executeQuery();
+			while (rs.next()) {
+				Parent_ID = rs.getInt("Parent_ID");
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (preparedStatement != null) {
+				preparedStatement.close();
+			}
+			if (dbConnection != null) {
+				dbConnection.close();
+			}
+		}
+		return Parent_ID;
 	}
 }

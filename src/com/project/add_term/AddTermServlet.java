@@ -2,11 +2,7 @@ package com.project.add_term;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 import javax.servlet.ServletException;
@@ -36,8 +32,7 @@ public class AddTermServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
@@ -52,27 +47,27 @@ public class AddTermServlet extends HttpServlet {
 			String term = request.getParameter("termName");
 			String date1 = request.getParameter("StartDate1");
 			String date2 = request.getParameter("EndDate1");
-			String year = request.getParameter("year");			
-			String termName = term+"/"+year;
+			String year = request.getParameter("year");
+			String termName = term + "/" + year;
 			Calendar startDay = Calendar.getInstance(Locale.ENGLISH);
 			Calendar endDay = Calendar.getInstance(Locale.ENGLISH);
 			String[] startDate = date1.split("/");
 			String[] endDate = date2.split("/");
 			startDay.set(Integer.parseInt(startDate[2]), Integer.parseInt(startDate[1]) - 1, Integer.parseInt(startDate[0]));
-			endDay.set(Integer.parseInt(endDate[2]), Integer.parseInt(endDate[1]) - 1, Integer.parseInt(endDate[0]));			
+			endDay.set(Integer.parseInt(endDate[2]), Integer.parseInt(endDate[1]) - 1, Integer.parseInt(endDate[0]));
 			termBean.setStartDate(startDay.getTime());
 			termBean.setEndDate(endDay.getTime());
 			termBean.setTermName(termName);
-			
+
 			boolean addTerm = addTermMng.addTerm(termBean);
 			if (addTerm) {
 				System.out.println("Add Term Success");
 				response.sendRedirect("ListTermServlet");
-			}else{
+			} else {
 				System.out.println("Add Term Fail");
+				response.sendRedirect("ListTermServlet");
 			}
-			
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

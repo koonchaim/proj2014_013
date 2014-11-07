@@ -14,7 +14,7 @@ public class ConnectDB {
 		Connection dbConnection = null;
 		try {
 			Class.forName(DB_DRIVER);
-			dbConnection = DriverManager.getConnection(DB_CONNECTION, DB_USER,DB_PASSWORD);
+			dbConnection = DriverManager.getConnection(DB_CONNECTION, DB_USER, DB_PASSWORD);
 			return dbConnection;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
