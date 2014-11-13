@@ -6,9 +6,9 @@ import java.sql.DriverManager;
 public class ConnectDB {
 	private static ConnectDB instance = null;
 	private static String DB_DRIVER = "com.mysql.jdbc.Driver";
-	private static String DB_CONNECTION = "jdbc:mysql://http://172.16.0.20:8080/proj2014_013?characterEncoding=utf-8";
-	private static String DB_USER = "proj2014_013";
-	private static String DB_PASSWORD = "proj2014_013";
+	private static String DB_CONNECTION = "jdbc:mysql://localhost:3306/proj2014_013?characterEncoding=utf-8";
+	private static String DB_USER = "root";
+	private static String DB_PASSWORD = "1234";
 
 	public Connection DBConnection() {
 		Connection dbConnection = null;
