@@ -37,7 +37,20 @@
 			<div class="col-md-6 col-md-offset-3">
 				<div class="thumbnail">
 					<c:forEach  items="${ViewProfile}" var="item">
-						<img data-src="holder.js/300x200" alt="..." src="${pageContext.request.contextPath}/images/profile/${item.path_image }">
+					
+<%-- 					<center> --%>
+							<c:set var="req" value="${pageContext.request}" />
+							<c:set var="url">${req.requestURL}</c:set>
+							<c:set var="uri" value="${req.requestURI}" />
+<!-- 							<a -->
+<%-- 								href="ViewAssessmentFormServlet?eid=${evaluateId}&method=online" --%>
+<!-- 								class="btn btn-default" target="_blank">ดูแบบประเมินออนไลน์</a> -->
+<!-- 							<a class="btn btn-default" id="copy-btn" name="copy-btn" -->
+<%-- 								data-clipboard-text="${fn:substring(url, 0, fn:length(url) - fn:length(uri))}${req.contextPath}/ViewAssessmentFormServlet?eid=${evaluateId}&method=online">คัดลอกลิงค์</a> --%>
+<%-- 						</center> --%>
+					
+					
+						<img data-src="holder.js/300x200" alt="..." src="${fn:substring(url, 0, fn:length(url) - fn:length(uri))}${req.contextPath}/images/profile/${item.path_image }">
 						<div align="center">
 							<p style="color: ${ErrorColor}">${ErrorMassage}</p>
 						</div>
