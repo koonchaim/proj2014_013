@@ -5,10 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.project.bean.AddressBean;
-import com.project.bean.LoginBean;
-import com.project.bean.ParentBean;
-import com.project.bean.StudentBean;
 import com.project.bean.TeacherBean;
 import com.project.utility.ConnectDB;
 
