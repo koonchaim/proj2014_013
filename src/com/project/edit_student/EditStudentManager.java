@@ -27,21 +27,6 @@ public class EditStudentManager {
 			preparedStatement.setString(1, studentID);
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
-				// AddressBean address = new AddressBean();
-				// address.setAddNo(rs.getString("addNo"));
-				// address.setMoo(rs.getString("moo"));
-				// address.setStreet(rs.getString("street"));
-				// address.setSubDistrict(rs.getString("subDistrict"));
-				// address.setDistrict(rs.getString("district"));
-				// address.setProvince(rs.getString("province"));
-				// address.setZipCode(rs.getString("zipCode"));
-				//
-				// ParentBean parent = new ParentBean();
-				// parent.setAntecedent(rs.getString("antecedent_parent"));
-				// parent.setFirstName(rs.getString("firstName_parent"));
-				// parent.setLastName(rs.getString("lastName_parent"));
-				// parent.setAddress(address);
-
 				student.setStudentID(rs.getString("studentID"));
 				student.setAntecedent(rs.getString("antecedent"));
 				student.setFirstName(rs.getString("firstName"));
